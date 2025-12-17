@@ -1,36 +1,34 @@
-body {
-  height: 100vh;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.imgBx {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.imgBx img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+/* ================== */
+/* ===      Auth Styles      === */
+/* ================== */
 
 main {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .primaryBx {
   width: 50%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .imgBx {
+  position: relative;
+  width: 50%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .auth-container {
-  width: 80%;
+  width: clamp(300px, 80%, 500px);
   border: 2px solid var(--foreground);
   border-radius: 1em;
   padding: 1em 2em;
@@ -201,4 +199,20 @@ main {
   background: #fff;
   border-radius: 4px;
   scale: 1.5;
+}
+
+@media (max-width: var(--mobile-breakpoint)) {
+  main {
+    align-items: flex-start;
+    padding-top: 2em;
+  }
+
+  main .primaryBx,
+  main .imgBx {
+    width: 100%;
+  }
+
+  main .imgBx {
+    display: none;
+  }
 }
