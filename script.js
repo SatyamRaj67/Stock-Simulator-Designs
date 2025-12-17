@@ -32,14 +32,6 @@ const STORAGE = {
   creds: "stocksim:creds", // JSON string
 };
 
-function safeJsonParse(value) {
-  try {
-    return JSON.parse(value);
-  } catch {
-    return null;
-  }
-}
-
 // ====================
 // ===      Theme Toggle      ===
 // ====================
@@ -104,45 +96,115 @@ function safeJsonParse(value) {
 })();
 
 // ====================
-// ===     Sidebar Toggle      ===
+// ===           Sidebar            ===
 // ====================
-(() => {
-  const applySidebarState = () => {
-    const sidebar = document.getElementById("sidebar");
-    if (!sidebar) return;
+function getSidebar() {
+  return document.getElementById("sidebar");
+}
 
-    const state = localStorage.getItem(STORAGE.sidebar); // "open" | "close" | null
-    if (state === "close") sidebar.classList.add("close");
-    if (state === "open") sidebar.classList.remove("close");
-  };
+function getToggleButton() {
+  return document.getElementById("toggle-btn");
+}
 
-  const sidebarState = () => {
-    const sidebar = document.getElementById("sidebar");
-    if (!sidebar) return null;
-    localStorage.setItem(
-      STORAGE.sidebar,
-      sidebar.classList.contains("close") ? "close" : "open"
-    );
-  };
+function persistSidebarState() {
+  const sidebar = getSidebar();
+  if (!sidebar) return;
+  localStorage.setItem(
+    STORAGE.sidebar,
+    sidebar.classList.contains("close") ? "close" : "open"
+  );
+}
 
-  document.addEventListener("DOMContentLoaded", applySidebarState);
-  document.addEventListener("DOMContentLoaded", () => {
-    if (!document.getElementById("sidebar")) return;
+let __sidebarInitialApplied = false;
 
-    const original = window.toggleSidebar;
-    if (typeof original === "function") {
-      window.toggleSidebar = function (...args) {
-        const result = original.apply(this, args);
-        sidebarState();
-        return result;
-      };
-    } else {
-      window.toggleSidebar = function () {
-        const sidebar = document.getElementById("sidebar");
-        if (!sidebar) return;
-        sidebar.classList.toggle("close");
-        sidebarState();
-      };
-    }
+function applySidebarStateFromStorage() {
+  const sidebar = getSidebar();
+  const toggleButton = getToggleButton();
+  if (!sidebar) return;
+
+  const state = localStorage.getItem(STORAGE.sidebar); // "open" | "close" | null
+  const shouldBeOpen = state === "open";
+
+  // Disable transitions just for initial state application (prevents open/close animation on load)
+  const nav = document.querySelector("nav");
+  const prevSidebarTransition = sidebar.style.transition;
+  const prevNavTransition = nav?.style.transition;
+
+  sidebar.style.transition = "none";
+  if (nav) nav.style.transition = "none";
+
+  if (shouldBeOpen) sidebar.classList.remove("close");
+  else sidebar.classList.add("close");
+
+  if (toggleButton) {
+    toggleButton.classList.toggle("rotate", sidebar.classList.contains("close"));
+  }
+
+  // Force reflow so the browser commits the no-transition state
+  void sidebar.offsetHeight;
+
+  // Restore transitions
+  sidebar.style.transition = prevSidebarTransition;
+  if (nav) nav.style.transition = prevNavTransition;
+}
+
+// Apply ASAP (defer scripts run after HTML parse, before first paint in most cases)
+if (!__sidebarInitialApplied) {
+  applySidebarStateFromStorage();
+  __sidebarInitialApplied = true;
+}
+
+// Keep as a fallback for pages where script load timing differs
+document.addEventListener("DOMContentLoaded", () => {
+  if (!__sidebarInitialApplied) {
+    applySidebarStateFromStorage();
+    __sidebarInitialApplied = true;
+  }
+});
+
+function closeAllSubMenus() {
+  const sidebar = getSidebar();
+  if (!sidebar) return;
+
+  Array.from(sidebar.getElementsByClassName("show")).forEach((ul) => {
+    ul.classList.remove("show");
+    ul.previousElementSibling?.classList.remove("rotate");
   });
-})()
+}
+
+function toggleSidebar() {
+  const sidebar = getSidebar();
+  const toggleButton = getToggleButton();
+  if (!sidebar) return;
+
+  sidebar.classList.toggle("close");
+  if (toggleButton) toggleButton.classList.toggle("rotate");
+
+  closeAllSubMenus();
+  persistSidebarState();
+}
+
+function toggleSubMenu(button) {
+  const sidebar = getSidebar();
+  const toggleButton = getToggleButton();
+  if (!sidebar || !button) return;
+
+  const subMenu = button.nextElementSibling;
+  if (!subMenu) return;
+
+  if (!subMenu.classList.contains("show")) {
+    closeAllSubMenus();
+  }
+
+  subMenu.classList.toggle("show");
+  button.classList.toggle("rotate");
+
+  if (sidebar.classList.contains("close")) {
+    sidebar.classList.remove("close");
+    if (toggleButton) toggleButton.classList.remove("rotate");
+    persistSidebarState();
+  }
+}
+
+window.toggleSidebar = toggleSidebar;
+window.toggleSubMenu = toggleSubMenu;

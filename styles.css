@@ -220,7 +220,6 @@ nav ul li a::before {
   height: 2px;
   background: var(--foreground);
   transform: scaleX(0);
-  transition: transform 0.5s ease-in-out;
   transform-origin: right;
 }
 
@@ -306,7 +305,6 @@ body:has(#sidebar) {
   position: sticky;
   top: 0;
   align-self: start;
-  transition: 300ms ease-in-out;
   overflow: hidden;
   text-wrap: nowrap;
 }
@@ -386,7 +384,6 @@ body:has(#sidebar) {
 #sidebar .sub-menu {
   display: grid;
   grid-template-rows: 0fr;
-  transition: 300ms ease-in-out;
 
   > div {
     overflow: hidden;
