@@ -6,6 +6,26 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <meta
+      name="description"
+      content="Stock market simulator to learn trading without risk."
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      defer
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+      defer
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      defer
+    />
     <link
       rel="stylesheet"
       href="styles.css"
@@ -23,25 +43,28 @@
 
         <div class="inputBx">
           <input
+            id="username"
             type="text"
             required
           />
-          <i>Username</i>
+          <label for="username">Username</label>
         </div>
         <div class="inputBx">
           <input
+            id="email"
             type="email"
             required
           />
-          <i>Email</i>
+          <label for="email">Email</label>
         </div>
         <div class="passwordBx">
           <div class="inputBx">
             <input
+              id="password"
               type="password"
               required
             />
-            <i>Password</i>
+            <label for="password">Password</label>
           </div>
           <div class="icon">
             <svg
@@ -71,8 +94,8 @@
         </div>
 
         <div class="links">
-            <a href="forgot.html">Forgot Password?</a>
-            <a href="login.html">Already have an account?</a>
+          <a href="forgot.html">Forgot Password?</a>
+          <a href="login.html">Already have an account?</a>
         </div>
 
         <input
@@ -104,6 +127,7 @@
       <img
         src="https://picsum.photos/360/480.webp"
         alt="Random Image"
+        fetchpriority="high"
       />
     </div>
   </body>

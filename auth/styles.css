@@ -69,7 +69,7 @@ main {
   border: 1px solid var(--foreground);
 }
 
-.auth-container .inputBx i {
+.auth-container .inputBx label {
   position: absolute;
   left: 0;
   font-style: normal;
@@ -78,8 +78,8 @@ main {
   pointer-events: none;
 }
 
-.auth-container .inputBx input:focus ~ i,
-.auth-container .inputBx input:valid ~ i {
+.auth-container .inputBx input:focus ~ label,
+.auth-container .inputBx input:valid ~ label {
   transform: translateY(-27px);
   font-size: 0.8em;
   color: var(--foreground);

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,6 +6,26 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Stock market simulator to learn trading without risk."
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      defer
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+      defer
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      defer
     />
     <link
       rel="stylesheet"
@@ -16,19 +37,22 @@
     <!-- ================== -->
     <!-- ===   Navigation Bar   === -->
     <!-- ================== -->
-    <nav>
+    <nav role="navigation">
       <div class="logo">
         <a href="#">Stock<span>Sim</span>.</a>
       </div>
       <ul class="nav-links">
-        <li><a href="#">Features</a></li>
+        <li><a href="#features">Features</a></li>
         <li><a href="#">Market</a></li>
         <li><a href="#">Academy</a></li>
       </ul>
       <div class="auth-buttons">
         <a href="auth/login.html">Login</a>
         <a href="auth/register.html">Get Started</a>
-        <button id="theme_toggle">
+        <button
+          id="theme_toggle"
+          aria-label="Theme Toggle"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -55,36 +79,38 @@
       </div>
     </nav>
 
-    <!-- =============== -->
-    <!-- === Hero Section === -->
-    <!-- =============== -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>
-          Master the Market.
-          <br />
-          <span> Zero Risk </span>
-        </h1>
-        <p>
-          Experience real-time volatility, news driven crashes, and social
-          trading with ₹10,000 in fake currency. Learn before burning real
-          cash💵.
-        </p>
-        <a href="auth/register.html">Start Trading Now 🚀</a>
-      </div>
-      <div class="hero-chart">
-        <canvas id="chart"></canvas>
-      </div>
-    </section>
+    <main id="main">
+      <!-- =============== -->
+      <!-- === Hero Section === -->
+      <!-- =============== -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>
+            Master the Market.
+            <br />
+            <span> Zero Risk </span>
+          </h1>
+          <p>
+            Experience real-time volatility, news driven crashes, and social
+            trading with ₹10,000 in fake currency. Learn before burning real
+            cash💵.
+          </p>
+          <a href="auth/register.html">Start Trading Now 🚀</a>
+        </div>
+        <div class="hero-chart">
+          <canvas id="chart"></canvas>
+        </div>
+      </section>
 
-    <!-- ================= -->
-    <!-- === Feature Section === -->
-    <!-- ================= -->
-    <section>
-      <h1>Features</h1>
-    </section>
+      <!-- ================= -->
+      <!-- === Feature Section === -->
+      <!-- ================= -->
+      <section>
+        <h1 id="features">Features</h1>
+      </section>
+    </main>
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/luxon/build/global/luxon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon/build/global/luxon.min.js" ></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon/dist/chartjs-adapter-luxon.umd.min.js"></script>
   <script src="./lib/chartjs-chart-financial.js"></script>
@@ -100,7 +126,7 @@
     const data = window.home_chart_data;
     new Chart(ctx, {
       type: "candlestick",
-      data: { datasets: [{ label: "AAPL", data }] },
+      data: { datasets: [{ label: "MAPL", data }] },
       options: {
         responsive: true,
         maintainAspectRatio: false,
