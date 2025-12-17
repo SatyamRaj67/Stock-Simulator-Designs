@@ -35,7 +35,7 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -113,11 +113,14 @@ body {
 
   font-family: "Poppins", sans-serif;
   font-display: swap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 section {
-  padding: 40px;
-  min-height: 100vh;
+  padding: 20px 40px;
+  min-height: calc(100vh - 80px);
 }
 
 a {
@@ -132,6 +135,25 @@ ul {
 /* ================== */
 /* ===     Utility Styles     === */
 /* ================== */
+h1 {
+  position: relative;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+h1::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 60px;
+  height: 2px;
+  background: var(--foreground);
+}
 
 /* ================== */
 /* ===          Navbar        === */
@@ -141,11 +163,11 @@ nav {
   position: fixed;
   width: 100%;
   height: 60px;
-  background: var(--background);
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   border-bottom: 1px solid var(--foreground);
+  background: var(--background);
   z-index: 9999;
 }
 
@@ -220,17 +242,46 @@ nav .auth-buttons a:nth-child(2):hover {
   color: var(--foreground);
 }
 
+nav .auth-buttons button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--foreground);
+  background: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav .auth-buttons button svg{
+  width: 20px;
+  height: 20px;
+  fill: var(--foreground);
+}
+
+nav .auth-buttons button:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+nav .auth-buttons button:hover svg{
+  fill: var(--background);
+}
+
 /* ================== */
 /* ===     Hero Section    === */
 /* ================== */
 
 .hero {
+  height: 100vh;
   padding-top: 80px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .hero .hero-content {
+  flex: 1;
   width: 60%;
 }
 
@@ -238,6 +289,11 @@ nav .auth-buttons a:nth-child(2):hover {
   color: var(--foreground);
   font-size: 4rem;
   line-height: 1.25em;
+  text-align: left;
+}
+
+.hero .hero-content h1 span {
+  color: var(--muted-foreground);
 }
 
 .hero .hero-content p {
@@ -249,7 +305,7 @@ nav .auth-buttons a:nth-child(2):hover {
 .hero .hero-content a {
   padding: 12px 24px;
   background-color: var(--accent);
-  color: var(--background);
+  color: var(--foreground);
   text-transform: uppercase;
   border-radius: 4px;
   border: 1px solid var(--accent);
@@ -260,20 +316,7 @@ nav .auth-buttons a:nth-child(2):hover {
   color: var(--foreground);
 }
 
-.hero .hero-image {
-  display: flex;
-  justify-content: center;
-  width: 40%;
-}
-
-.hero .hero-image .hero-imgBx {
-  width: 80%;
-  height: 80vh;
-}
-
-.hero .hero-image .hero-imgBx img {
-  position: relative;
-  width: 100%;
+.hero .hero-chart {
   height: 100%;
-  object-fit: cover;
+  width: 40%;
 }
