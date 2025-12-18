@@ -39,6 +39,12 @@ const STORAGE = {
     return payload;
   };
 
+  const getDashboardUrl = () => {
+    const thisScript = document.currentScript || Array.from(document.scripts).at(-1);
+    const base = thisScript?.src || window.location.href;
+    return new URL("../dashboard/index.html", base).toString();
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     ensureBlankCreds();
 
@@ -47,9 +53,9 @@ const STORAGE = {
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const saved = storeCredsFromForm(form);
+      storeCredsFromForm(form);
 
-      window.location.assign("/dashboard/index.html");
+      window.location.assign(getDashboardUrl());
     });
   });
 })();
