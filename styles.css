@@ -120,7 +120,7 @@ section {
 }
 
 section:first-child {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 80px;
 }
 
@@ -162,7 +162,7 @@ h1::before {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -10px;
+  bottom: 0;
   width: 60px;
   height: 2px;
   background: var(--foreground);
@@ -610,6 +610,7 @@ body:has(#sidebar) nav .logo {
 /* ================== */
 
 .hero {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -617,8 +618,9 @@ body:has(#sidebar) nav .logo {
 }
 
 .hero .hero-content {
+  position: relative;
   flex: 1;
-  height: 100%;
+  min-height: 100%;
   width: 60%;
 
   display: flex;
@@ -662,7 +664,7 @@ body:has(#sidebar) nav .logo {
   position: relative;
   flex: 1;
   width: 40%;
-  height: 100%;
+  min-height: 100%;
 }
 
 @media (max-width: 768px) {

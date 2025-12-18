@@ -135,21 +135,30 @@
   </body>
   <script>
     const passwordBx = document.querySelector(".passwordBx");
-    const icon = document.querySelectorAll(".passwordBx .icon svg");
+    const passwordInput = passwordBx?.querySelector("input");
+    const iconBtn = document.querySelector(".passwordBx .icon");
+    const icons = iconBtn?.querySelectorAll("svg");
 
-    icon.forEach((iconElement) => {
-      iconElement.addEventListener("click", () => {
-        if (iconElement === icon[0]) {
-          icon[0].style.display = "none";
-          icon[1].style.display = "block";
-          passwordBx.querySelector("input").setAttribute("type", "text");
-        } else {
-          icon[1].style.display = "none";
-          icon[0].style.display = "block";
-          passwordBx.querySelector("input").setAttribute("type", "password");
-        }
+    if (iconBtn && passwordInput && icons && icons.length >= 2) {
+      const [eyeOpen, eyeClosed] = icons;
+
+      const setState = (visible) => {
+        passwordInput.type = visible ? "text" : "password";
+        eyeOpen.style.display = visible ? "none" : "block";
+        eyeClosed.style.display = visible ? "block" : "none";
+        iconBtn.setAttribute("aria-pressed", String(visible));
+        iconBtn.setAttribute(
+          "aria-label",
+          visible ? "Hide password" : "Show password"
+        );
+      };
+
+      setState(false);
+
+      iconBtn.addEventListener("click", () => {
+        setState(passwordInput.type === "password");
       });
-    });
+    }
   </script>
   <script src="../script.js"></script>
 </html>
