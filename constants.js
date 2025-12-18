@@ -31,3 +31,5 @@ window.home_chart_data = [
   { x: Date.parse("2024-01-30T00:00:00Z"), o: 172, h: 175, l: 170, c: 174 },
   { x: Date.parse("2024-01-31T00:00:00Z"), o: 174, h: 178, l: 173, c: 177 },
 ];
+
+window.profile_img = "public/Profile.jpeg";

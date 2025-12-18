@@ -120,7 +120,14 @@ section {
 }
 
 section:first-child {
-  padding-top: 60px;
+  height: 100vh;
+  padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+  section:first-child {
+    height: unset;
+  }
 }
 
 a {
@@ -299,7 +306,6 @@ nav .auth-buttons button:hover svg {
     padding: 0 12px;
   }
 
-
   nav .logo a {
     font-size: 1.5em;
   }
@@ -321,7 +327,7 @@ body:has(#sidebar) {
   grid-template-columns: auto 1fr;
 }
 
-body:has(#sidebar) nav .logo{
+body:has(#sidebar) nav .logo {
   display: none;
 }
 
@@ -347,9 +353,13 @@ body:has(#sidebar) nav .logo{
 
 #sidebar ul {
   list-style: none;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
-#sidebar > ul > li:first-child {
+#sidebar ul li:has(.logo) {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 16px;
@@ -359,18 +369,40 @@ body:has(#sidebar) nav .logo{
   }
 }
 
+#sidebar ul li.sidebar-footer {
+  margin-top: auto;
+}
+
+#sidebar ul li a {
+  position: relative;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+#sidebar ul li.active a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 4px;
+  height: 40px;
+  background: var(--sidebar-accent-foreground);
+  transform: translateX(-16px);
+}
+
 #sidebar ul li.active a {
-  color: var(--sidebar-accent-foreground);
+  color: var(--sidebar-accent);
+  background: var(--sidebar-accent-foreground);
 }
 
 #sidebar ul li.active a svg {
-  fill: var(--sidebar-accent-foreground);
+  fill: var(--sidebar-accent);
 }
 
 #sidebar a,
 #sidebar .dropdown-btn,
 #sidebar .logo {
-  border-radius: 0.5em;
+  border-radius: var(--radius);
   padding: 0.85em;
   text-decoration: none;
   color: var(--sidebar-foreground);
@@ -379,7 +411,8 @@ body:has(#sidebar) nav .logo{
   gap: 1em;
 }
 
-#sidebar .logo button {
+#sidebar .logo {
+  padding: 10px 20px;
   font-size: 1.5em;
   font-weight: bold;
   background: none;
@@ -441,7 +474,7 @@ body:has(#sidebar) nav .logo{
   margin-left: auto;
   padding: 1em;
   border: none;
-  border-radius: 0.5em;
+  border-radius: var(--radius);
   background: none;
   cursor: pointer;
 }
@@ -474,7 +507,7 @@ body:has(#sidebar) nav .logo{
     grid-template-columns: 1fr;
   }
 
-  body:has(#sidebar) nav .logo{
+  body:has(#sidebar) nav .logo {
     display: block;
   }
 
@@ -484,7 +517,7 @@ body:has(#sidebar) nav .logo{
   }
 
   #sidebar {
-    height: 60px;
+    height: 61px;
     width: 100%;
     border-right: none;
     border-top: 1px solid var(--sidebar-border);
@@ -500,6 +533,7 @@ body:has(#sidebar) nav .logo{
       grid-auto-flow: column;
       align-items: center;
       overflow-x: scroll;
+      overflow-y: hidden;
     }
 
     ul li {
@@ -551,6 +585,23 @@ body:has(#sidebar) nav .logo{
 
   #sidebar.close {
     width: 100%;
+    padding: 0;
+  }
+
+  #sidebar ul li.active a::before,
+  #sidebar ul li.active a::after {
+    width: 80%;
+    height: 6px;
+    background: var(--sidebar-accent);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #sidebar ul li.active a::before {
+    top: 0;
+    border-top: 1px solid var(--sidebar-border);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
   }
 }
 
@@ -561,13 +612,19 @@ body:has(#sidebar) nav .logo{
 .hero {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
 .hero .hero-content {
   flex: 1;
+  height: 100%;
   width: 60%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .hero .hero-content h1 {
@@ -602,8 +659,10 @@ body:has(#sidebar) nav .logo{
 }
 
 .hero .hero-chart {
-  height: 100%;
+  position: relative;
+  flex: 1;
   width: 40%;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -611,6 +670,7 @@ body:has(#sidebar) nav .logo{
     height: 100%;
     padding: 12px;
     flex-direction: column;
+    align-items: center;
     gap: 16px;
   }
 
@@ -629,5 +689,9 @@ body:has(#sidebar) nav .logo{
   .hero .hero-chart {
     width: 100%;
     height: 260px;
+  }
+
+  .hero .hero-chart canvas {
+    height: 260px !important;
   }
 }
