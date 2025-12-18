@@ -49,8 +49,7 @@ const STORAGE = {
       e.preventDefault();
       const saved = storeCredsFromForm(form);
 
-      console.log("Saved credentials (demo):", saved);
-      console.log("localStorage key:", STORAGE.creds);
+      window.location.assign("/dashboard/index.html");
     });
   });
 })();

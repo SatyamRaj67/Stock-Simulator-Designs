@@ -3,9 +3,8 @@
 /* ================== */
 
 main {
-  width: 100vw;
-  height: 100vh;
-  padding: 0;
+  width: 100%;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,16 +20,17 @@ main .primaryBx {
 main .imgBx {
   position: relative;
   width: 50%;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .auth-container {
-  width: clamp(300px, 80%, 500px);
+  width: clamp(300px, 90vw, 500px);
+  background: var(--background);
   border: 2px solid var(--foreground);
-  border-radius: 1em;
+  border-radius: var(--radius);
   padding: 1em 2em;
   display: flex;
   justify-content: center;
@@ -82,8 +82,8 @@ main .imgBx {
   font-size: 0.8em;
   color: var(--foreground);
   border: 1px solid var(--foreground);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
   padding: 4px 4px;
   transition-delay: border 0.5s;
 }
@@ -152,7 +152,7 @@ main .imgBx {
   padding: 12px;
   font-size: 1em;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: var(--radius);
   cursor: pointer;
 }
 
@@ -167,10 +167,10 @@ main .imgBx {
 }
 
 .auth-container .socials div {
-  width: 50%;
+  flex: 1 1 180px;
   padding: 10px;
   border: 1px solid var(--foreground);
-  border-radius: 32px;
+  border-radius: var(--radius);
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -201,18 +201,28 @@ main .imgBx {
   scale: 1.5;
 }
 
-@media (max-width: var(--mobile-breakpoint)) {
-  main {
-    align-items: flex-start;
-    padding-top: 2em;
-  }
-
-  main .primaryBx,
-  main .imgBx {
+@media (max-width: 768px) {
+  main .primaryBx {
     width: 100%;
   }
 
   main .imgBx {
-    display: none;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .auth-container .links {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .auth-container input[type="submit"] {
+    width: 100%;
+  }
+
+  .auth-container .socials {
+    width: 100%;
   }
 }

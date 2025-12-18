@@ -3,6 +3,7 @@
 /* ================== */
 :root {
   --mobile-breakpoint: 768px;
+  /* I am writing it here, but the variable was never reused as that requires postcss */
 
   --radius: 0.625rem;
 
@@ -24,8 +25,8 @@
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
 
-  --accent: oklch(34.018% 0.10097 141.652);
-  --accent-foreground: oklch(80.148% 0.21109 145.394);
+  --accent: oklch(80.148% 0.21109 145.394);
+  --accent-foreground: oklch(68.835% 0.22955 142.073);
 
   --destructive: oklch(0.577 0.245 27.325);
 
@@ -115,12 +116,11 @@ body {
 
 section {
   padding: 20px 40px;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 60px);
 }
 
 section:first-child {
-  height: 100vh;
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 a {
@@ -220,6 +220,7 @@ nav ul li a::before {
   height: 2px;
   background: var(--foreground);
   transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
   transform-origin: right;
 }
 
@@ -286,12 +287,42 @@ nav .auth-buttons button:hover svg {
   fill: var(--background);
 }
 
+@media (max-width: 768px) {
+  body:has(#sidebar) nav,
+  body:has(#sidebar.close) nav {
+    left: 0;
+    width: 100%;
+  }
+
+  nav {
+    justify-content: space-between;
+    padding: 0 12px;
+  }
+
+
+  nav .logo a {
+    font-size: 1.5em;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav .auth-buttons a {
+    display: none;
+  }
+}
+
 /* ================== */
 /* ===        Sidebar         === */
 /* ================== */
 body:has(#sidebar) {
   display: grid;
   grid-template-columns: auto 1fr;
+}
+
+body:has(#sidebar) nav .logo{
+  display: none;
 }
 
 #sidebar {
@@ -436,9 +467,15 @@ body:has(#sidebar) {
   }
 }
 
-@media (max-width: var(--mobile-breakpoint)) {
-  body {
+@media (max-width: 768px) {
+  body,
+  body:has(#sidebar),
+  body:has(#sidebar.close) {
     grid-template-columns: 1fr;
+  }
+
+  body:has(#sidebar) nav .logo{
+    display: block;
   }
 
   .container {
@@ -511,6 +548,10 @@ body:has(#sidebar) {
       }
     }
   }
+
+  #sidebar.close {
+    width: 100%;
+  }
 }
 
 /* ================== */
@@ -519,6 +560,7 @@ body:has(#sidebar) {
 
 .hero {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -562,4 +604,30 @@ body:has(#sidebar) {
 .hero .hero-chart {
   height: 100%;
   width: 40%;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 100%;
+    padding: 12px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero .hero-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero .hero-content h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    text-align: center;
+    padding: 0;
+  }
+
+  .hero .hero-chart {
+    width: 100%;
+    height: 260px;
+  }
 }
