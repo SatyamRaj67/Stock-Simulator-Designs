@@ -1,6 +1,7 @@
 main section{
   display: flex;
   justify-content: center;
+  padding: 0;
 }
 
 /* ================== */
@@ -8,7 +9,7 @@ main section{
 /* ================== */
 
 .container {
-  width: clamp(300px, 90vw, 500px);
+  width: clamp(200px, 90vw, 500px);
   background: var(--background);
   border: 2px solid var(--foreground);
   border-radius: var(--radius);
