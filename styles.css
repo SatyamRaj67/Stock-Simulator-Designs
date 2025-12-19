@@ -25,8 +25,10 @@
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
 
-  --accent: oklch(80.148% 0.21109 145.394);
-  --accent-foreground: oklch(68.835% 0.22955 142.073);
+  --accent: oklch(95.75% 0.06688 141.194);
+  --accent-foreground: oklch(37.703% 0.06991 163.448);
+
+  --accent-something: oklch(60.273% 0.14322 154.272);
 
   --destructive: oklch(0.577 0.245 27.325);
 
@@ -69,8 +71,8 @@
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
 
-  --accent: oklch(34.018% 0.10097 141.652);
-  --accent-foreground: oklch(80.148% 0.21109 145.394);
+ --accent: oklch(37.703% 0.06991 163.448);
+  --accent-foreground: oklch(95.75% 0.06688 141.194);
 
   --destructive: oklch(0.704 0.191 22.216);
 
@@ -140,13 +142,14 @@ section:first-child {
   padding-top: 60px;
 }
 
-section:last-child{
-  padding-bottom: 60px;
-}
 
 @media (max-width: 768px) {
   section:first-child {
     height: unset;
+  }
+
+  section:last-child{
+    padding-bottom: 58px;
   }
 }
 
@@ -288,7 +291,7 @@ nav .auth-buttons a:nth-child(2):hover {
   color: var(--foreground);
 }
 
-nav .auth-buttons button {
+nav button {
   width: 40px;
   height: 40px;
   border: 1px solid var(--foreground);
@@ -299,18 +302,18 @@ nav .auth-buttons button {
   justify-content: center;
 }
 
-nav .auth-buttons button svg {
+nav button svg {
   width: 20px;
   height: 20px;
   fill: var(--foreground);
 }
 
-nav .auth-buttons button:hover {
+nav button:hover {
   background-color: var(--foreground);
   color: var(--background);
 }
 
-nav .auth-buttons button:hover svg {
+nav button:hover svg {
   fill: var(--background);
 }
 
