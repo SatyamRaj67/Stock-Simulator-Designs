@@ -1,0 +1,116 @@
+#social-sidebar {
+    height: calc(100dvh - 60px);
+    position: sticky;
+    top: 60px;
+    width: 250px;
+    background: var(--sidebar);
+    border-right: 1px solid var(--sidebar-border);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#social-sidebar ul{
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+    overflow: auto;
+}
+
+#social-sidebar .banner{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+
+    .logo{
+        font-weight: 600;
+    }
+}
+
+#social-sidebar ul li.sidebar-footer{
+    margin-top: auto;
+}
+
+#social-sidebar ul li a{
+    position: relative;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#social-sidebar ul li a .imgBx{
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+#social-sidebar ul li.active a{
+    color: var(--sidebar-accent);
+    background: var(--sidebar-accent-foreground);
+}
+
+#social-sidebar ul li.active a::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 4px;
+    height: 40px;
+    background: var(--sidebar-accent-foreground);
+    transform: translateX(-16px);
+}
+
+#social-sidebar ul li.active a svg{
+    fill: var(--sidebar-accent);
+}
+
+#social-sidebar a,
+#social-sidebar .dropdown-btn,
+#social-sidebar .logo{
+    border-radius: var(--radius);
+    padding: 0.85em;
+    text-decoration: none;
+    color: var(--sidebar-foreground);
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#social-sidebar a:has(.imgBx){
+    padding: 0.5em;
+}
+
+#social-sidebar .logo{
+    padding: 10px 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    background: none;
+    border: none;
+    color: var(--sidebar-foreground);
+    cursor: pointer;
+}
+
+#social-sidebar svg{
+    flex-shrink: 0;
+    fill: var(--sidebar-foreground);
+}
+
+#social-sidebar a span,
+#social-sidebar .dropdown-btn span{
+    flex-grow: 1;
+}
+
+#social-sidebar a:hover,
+#social-sidebar .dropdown-btn:hover {
+  background: var(--sidebar-accent);
+}
+
+@media (max-width: 768px) {
+    #social-sidebar{
+        width: 100%;
+        height: calc(100vh - 61px - 60px);
+    }
+}

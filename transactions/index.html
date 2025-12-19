@@ -30,6 +30,10 @@
       rel="stylesheet"
       href="../styles.css"
     />
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
     <title>Transactions | Stock Sim</title>
     <script
       type="text/javascript"
@@ -269,12 +273,197 @@
     </aside>
     <main>
       <section>
-        <h1>Transactions Coming Soon!</h1>
+        <h1>Transactions</h1>
+        <div
+          id="transactions-table"
+          class="tx-card"
+        >
+          <div
+            class="tx-toolbar"
+            role="region"
+            aria-label="Transactions controls"
+          >
+            <div class="tx-toolbar__row">
+              <label class="tx-field">
+                <span class="tx-field__label">Search</span>
+                <input
+                  id="tx-search"
+                  class="tx-input"
+                  type="search"
+                  placeholder="Search by stock, type, status, id…"
+                  autocomplete="off"
+                />
+              </label>
+
+              <label class="tx-field">
+                <span class="tx-field__label">Type</span>
+                <select
+                  id="tx-filter-type"
+                  class="tx-select"
+                >
+                  <option value="">All</option>
+                  <option value="Buy">Buy</option>
+                  <option value="Sell">Sell</option>
+                </select>
+              </label>
+
+              <label class="tx-field">
+                <span class="tx-field__label">Status</span>
+                <select
+                  id="tx-filter-status"
+                  class="tx-select"
+                >
+                  <option value="">All</option>
+                  <option value="COMPLETED">COMPLETED</option>
+                  <option value="PENDING">PENDING</option>
+                </select>
+              </label>
+
+              <label class="tx-field">
+                <span class="tx-field__label">Rows</span>
+                <select
+                  id="tx-page-size"
+                  class="tx-select"
+                >
+                  <option value="5">5</option>
+                  <option
+                    value="10"
+                    selected
+                  >
+                    10
+                  </option>
+                  <option value="20">20</option>
+                </select>
+              </label>
+
+              <button
+                id="tx-reset"
+                class="tx-btn"
+                type="button"
+              >
+                Reset
+              </button>
+            </div>
+
+            <div class="tx-toolbar__row tx-toolbar__row--meta">
+              <div
+                id="tx-meta"
+                class="tx-meta"
+                aria-live="polite"
+              ></div>
+              <div
+                id="tx-pagination"
+                class="tx-pagination"
+                aria-label="Pagination"
+              ></div>
+            </div>
+          </div>
+
+          <div
+            class="tx-tablewrap"
+            role="region"
+            aria-label="Transactions table"
+          >
+            <table class="tx-table">
+              <thead>
+                <tr>
+                  <th>
+                    <button
+                      class="tx-th"
+                      data-sort="id"
+                      type="button"
+                    >
+                      ID
+                    </button>
+                  </th>
+                  <th>
+                    <button
+                      class="tx-th"
+                      data-sort="type"
+                      type="button"
+                    >
+                      Type
+                    </button>
+                  </th>
+                  <th>
+                    <button
+                      class="tx-th"
+                      data-sort="stock"
+                      type="button"
+                    >
+                      Stock
+                    </button>
+                  </th>
+                  <th class="tx-num">
+                    <button
+                      class="tx-th"
+                      data-sort="shares"
+                      type="button"
+                    >
+                      Shares
+                    </button>
+                  </th>
+                  <th class="tx-num">
+                    <button
+                      class="tx-th"
+                      data-sort="price"
+                      type="button"
+                    >
+                      Price
+                    </button>
+                  </th>
+                  <th class="tx-num">
+                    <button
+                      class="tx-th"
+                      data-sort="total"
+                      type="button"
+                    >
+                      Total
+                    </button>
+                  </th>
+                  <th>
+                    <button
+                      class="tx-th"
+                      data-sort="date"
+                      type="button"
+                    >
+                      Date
+                    </button>
+                  </th>
+                  <th>
+                    <button
+                      class="tx-th"
+                      data-sort="status"
+                      type="button"
+                    >
+                      Status
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="tx-tbody">
+                <!-- rows injected by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            id="tx-empty"
+            class="tx-empty"
+            hidden
+          >
+            No transactions found.
+          </div>
+        </div>
       </section>
     </main>
   </body>
   <script
     src="../constants.js"
+    defer
+  ></script>
+  <script
+    src="transactions.js"
     defer
   ></script>
 </html>

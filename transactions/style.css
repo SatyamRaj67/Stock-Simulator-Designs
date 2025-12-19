@@ -1,0 +1,178 @@
+/* =========================
+   Transactions table UI
+   ========================= */
+
+.tx-card {
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.tx-toolbar {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tx-toolbar__row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: end;
+}
+
+.tx-toolbar__row--meta {
+  margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tx-field {
+  display: grid;
+  gap: 6px;
+  min-width: 180px;
+}
+
+.tx-field__label {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.tx-input,
+.tx-select {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.15);
+  color: inherit;
+  outline: none;
+}
+
+.tx-input:focus,
+.tx-select:focus {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.tx-btn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  cursor: pointer;
+}
+
+.tx-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tx-meta {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.tx-pagination {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tx-page {
+  min-width: 30px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.tx-tablewrap {
+  width: 100%;
+  overflow: auto;
+}
+
+.tx-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.tx-table thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.tx-table tbody td {
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: middle;
+}
+
+.tx-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tx-num {
+  text-align: right;
+}
+
+.tx-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+.tx-th {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  opacity: 0.9;
+}
+
+.tx-th.is-active {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.tx-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tx-pill--buy {
+  border-color: rgba(46, 204, 113, 0.35);
+  background: rgba(46, 204, 113, 0.12);
+}
+
+.tx-pill--sell {
+  border-color: rgba(231, 76, 60, 0.35);
+  background: rgba(231, 76, 60, 0.12);
+}
+
+.tx-pill--ok {
+  border-color: rgba(52, 152, 219, 0.35);
+  background: rgba(52, 152, 219, 0.12);
+}
+
+.tx-pill--pending {
+  border-color: rgba(241, 196, 15, 0.35);
+  background: rgba(241, 196, 15, 0.12);
+}
+
+.tx-empty {
+  padding: 18px 12px;
+  opacity: 0.85;
+}
+
