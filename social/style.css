@@ -171,6 +171,7 @@ article {
   display: grid;
   grid-template-rows: auto 1fr auto;
   height: 100dvh; 
+  min-height: 0;
 }
 
 .messages {
@@ -181,12 +182,13 @@ article {
   background: var(--background);
 
   overflow-y: auto; 
+  min-height: 0;
 }
 
-/* The inner container should NOT scroll */
 .messages .messages-content {
   position: static;
   height: auto;
+  min-height: calc(100% - 12px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end; 

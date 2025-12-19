@@ -1,14 +1,16 @@
 @media (max-width: 768px) {
-    #social-sidebar {
-        display: none;
-    }
+  #social-sidebar {
+    display: none;
+  }
 
-    article {
-        display: block;
-        height: calc(100dvh - 61px);
-    }
+  article {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: calc(100dvh - 61px);
+    min-height: 0;
+  }
 
-    article .messages{
-        height: calc(100% - 61px - 62px);
-    }
+  article .messages {
+    min-height: 0;
+  }
 }
