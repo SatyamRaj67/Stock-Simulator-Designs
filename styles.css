@@ -379,6 +379,7 @@ body:has(#sidebar) nav .logo {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 16px;
+  border-bottom: 1px solid var(--sidebar-border);
 
   .logo {
     font-weight: 600;
