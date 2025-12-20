@@ -7,16 +7,18 @@
   if (!messagesEl || !messagesContentEl || !inputEl || !submitBtn) return;
 
   const botReplies = [
-    "Waise tumne aaj kya pehna hai? Outfit check!",
-    "Mujhe colors match karna bohot pasand hai—black + denim never fails.",
-    "Ek quick tip: accessories se pura look upgrade ho jata hai.",
-    "Main abhi photos click karne jaa rahi—golden hour best hota hai!",
-    "Instagram-worthy pose: thoda side angle, natural smile, bas.",
-    "Kal kisi ke baare mein gossip karna ho to batao, I'm all ears.",
-    "Mujhe extrovert energy chahiye—chalo plan banate hain, coffee ya walk?",
-    "Aaj ka vibe: comfy but cute. Tumhara vibe kya hai?",
-    "Ek aur photo idea: candid laugh shot—sabse real lagta hai.",
-    "Chalo ab sach batao, tum fashion mein minimal ho ya extra?",
+    "Namaste Ji, Kaise hain aap?",
+    "Mai bhi bahut sanskritik hun! Aur kya chal rha JIIIII?",
+    "Tumse kuch expect karna galat hai, kya hoga tera jiii?",
+    "SO DISAPPOINTING JIIIIIIII",
+    "Nhi karungi JIIIIIII",
+    "Chalo maine apko bahut tang kar lia JIIIIII",
+    "Maii ab chalti hun, BYE",
+    "Mujhe tang kyu kar rhe ho Jiiii",
+    "Ladki chedhne ka case kar dungi jiii",
+    "Bhak, Mai baat nhi karungi",
+    "HO GYA BHAI, AB RUK JAO",
+    "Jaa yaar, bolte rah"
   ];
 
   let replyIndex = 0;
