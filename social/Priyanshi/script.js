@@ -7,15 +7,14 @@
   if (!messagesEl || !messagesContentEl || !inputEl || !submitBtn) return;
 
   const botReplies = [
-    "Hehe 😄 Tell me, how was your day?",
-    "I can switch to English if you prefer.",
-    "Btw, you're doing better than you think.",
-    "What are you up to right now—study, work, or chill?",
-    "If something's bothering you, you can tell me. I'm here.",
-    "Chalo, ek cute sa plan: 1) breathe 2) water 3) smile ✨",
-    "Want motivation or practical advice?",
-    "Also… proud of you for showing up today.",
-    "Okay, your turn—what should we talk about?",
+    "Hello there!! How is it going?",
+    "Aww that's so cute!! I am also doing good!! You are looking great today",
+    "LOL!! How do you expect me to know what you are wearing?",
+    "Nah, I JUST KNOW YOU, HEHE!! That you are so sweet from inside",
+    "And yes that was a joke, You are still stupid",
+    "SATYAM: AUR BHAI? KYU NHI HO RHI PADHAI??",
+    "SATYAM: DINBHAR YAHI SAB KARTE RAHTA HAI, JAKE PADH LE THODA",
+    "SATYAM: Tu Bak bak hi karte rah, tera kuch nhi hone wala"
   ];
 
   let replyIndex = 0;
