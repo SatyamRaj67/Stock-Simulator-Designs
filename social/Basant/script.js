@@ -7,16 +7,15 @@
   if (!messagesEl || !messagesContentEl || !inputEl || !submitBtn) return;
 
   const botReplies = [
-    "Haan. Bata kya scene hai?",
-    "Enthusiasm nahi hai, par info de deta hu.",
-    "Basic rule: risk pehle, profit baad me. Position size decide kar.",
-    "Stock upar kyu gaya? Demand > supply. Simple.",
-    "News pe overreact mat kar. Numbers dekh: revenue, profit, debt, cashflow.",
-    "PE high ho sakta hai, par growth bhi high ho to justified ho sakta. Context dekh.",
-    "Stop-loss lagana boring hai, par kaam ka hai.",
-    "Diversification ka matlab 20 random stocks nahi. Quality + reason.",
-    "Long term me compounding jeet ta hai. Jaldi ameer banne ka shortcut nahi.",
-    "Agar samajh nahi aa raha, to skip kar. Opportunity roz aati hai."
+    "Namaste Ji!",
+    "Aur maqsad pura nhi karna hai kya?",
+    "KYU NHI HO RAHI PADHAI?",
+    "ABHI BHI TIME HAI PADHNE KA",
+    "KARLE THODA PADHAI",
+    "Abhi bhi nhi gya padhne? Jata hai ki Mammi ko call karu?",
+    "Mammi dekho ye nhi padh rha hai",
+    "Apart from jokes, Padhle. Kyu nhi aa rhe number?",
+    "Bolte rah, tera kuch nhi hone wala",
   ];
 
   let replyIndex = 0;
