@@ -288,6 +288,7 @@ header .nav-links a:hover::before {
 header .auth-links {
   display: flex;
   gap: 15px;
+  padding-right: 1em;
 }
 
 header .auth-links a {
@@ -372,7 +373,7 @@ body:has(nav) {
   grid-area: logo;
   display: flex;
   align-items: center;
-  padding: 0 1em;
+  padding-right: 1em;
   background: var(--sidebar);
   border-bottom: 1px solid var(--sidebar-border);
   border-right: 1px solid var(--sidebar-border);
@@ -389,10 +390,8 @@ body:has(nav.close) .logo-container {
 
 nav {
   grid-area: nav;
-  box-sizing: border-box;
   height: 100%;
   width: 250px;
-  padding: 5px 1em;
   background: var(--sidebar);
   border-right: 1px solid var(--sidebar-border);
 
@@ -401,7 +400,6 @@ nav {
 }
 
 nav.close {
-  padding: 5px;
   width: 60px;
 }
 
@@ -443,15 +441,13 @@ nav ul li.active a svg {
 }
 
 nav a,
-nav .dropdown-btn,
 .logo {
-  border-radius: var(--radius);
-  padding: 0.85em;
+  padding: 1em;
   text-decoration: none;
   color: var(--sidebar-foreground);
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 1.15em;
 }
 
 .logo {
@@ -473,39 +469,16 @@ nav svg {
   fill: var(--sidebar-foreground);
 }
 
-nav a span,
-nav .dropdown-btn span {
+nav a span {
   flex-grow: 1;
 }
 
-nav a:hover,
-nav .dropdown-btn:hover {
+nav a:hover{
   background: var(--sidebar-accent);
-}
-
-nav .sub-menu {
-  display: grid;
-  grid-template-rows: 0fr;
-}
-
-nav .sub-menu > div {
-  overflow: hidden;
-}
-
-nav .sub-menu.show {
-  grid-template-rows: 1fr;
-}
-
-.dropdown-btn svg {
-  transition: 200ms ease;
 }
 
 .rotate svg:last-child {
   rotate: 180deg;
-}
-
-nav .sub-menu a {
-  padding-left: 2em;
 }
 
 #toggle-btn {
