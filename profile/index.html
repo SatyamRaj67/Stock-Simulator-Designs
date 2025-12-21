@@ -39,19 +39,44 @@
     ></script>
   </head>
   <body class="dark">
+    <div class="logo-container">
+      <a
+        class="logo"
+        href="../index.html"
+        >StockSim
+      </a>
+      <button
+        onclick="toggleSidebar()"
+        id="toggle-btn"
+        aria-label="Toggle Sidebar"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e3e3e3"
+        >
+          <path
+            d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+          />
+        </svg>
+      </button>
+    </div>
     <!-- ================== -->
     <!-- ===   Navigation Bar   === -->
     <!-- ================== -->
-    <nav role="navigation">
+    <header>
       <div class="logo">
-        <a href="../index.html">Stock<span>Sim</span>.</a>
+        <a href="./index.html">Stock<span>Sim</span>.</a>
       </div>
-      <ul class="nav-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#">Ananya</a></li>
-        <li><a href="#">Academy</a></li>
-      </ul>
-      <div class="auth-buttons">
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="auth-links">
         <button
           id="theme_toggle"
           aria-label="Theme Toggle"
@@ -81,37 +106,13 @@
           </svg>
         </button>
       </div>
-    </nav>
+    </header>
 
     <!-- ================ -->
     <!-- ===       Sidebar      === -->
     <!-- ================ -->
-    <aside id="sidebar">
+    <nav id="sidebar">
       <ul>
-        <li>
-          <a
-            class="logo"
-            href="../index.html"
-            >StockSim
-          </a>
-          <button
-            onclick="toggleSidebar()"
-            id="toggle-btn"
-            aria-label="Toggle Sidebar"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#e3e3e3"
-            >
-              <path
-                d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
-              />
-            </svg>
-          </button>
-        </li>
         <li>
           <a
             href="../dashboard/index.html"
@@ -267,7 +268,7 @@
           </a>
         </li>
       </ul>
-    </aside>
+    </nav>
 
     <!-- =============== -->
     <!-- ===       Main       === -->
