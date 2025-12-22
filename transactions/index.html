@@ -272,13 +272,29 @@
     <main>
       <section>
         <h1>Transactions</h1>
+        <table>
+          <caption>
+            List of all stock transactions
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Type</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Shares</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dynamically generated rows will go here -->
+          </tbody>
+        </table>
       </section>
     </main>
   </body>
-  <script
-    src="constants.js"
-    defer
-  ></script>
   <script
     src="transactions.js"
     defer

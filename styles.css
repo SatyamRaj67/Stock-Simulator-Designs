@@ -171,6 +171,114 @@ section {
   }
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table caption {
+  margin: 10px 0;
+}
+
+table tr {
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+table th {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--sidebar);
+  padding: 0.5em 1em;
+}
+
+table th:first-child {
+  border-top-left-radius: var(--radius);
+}
+
+table th:last-child {
+  border-top-right-radius: var(--radius);
+}
+
+table th:hover {
+  background: var(--sidebar-accent);
+}
+
+table td {
+  padding: 0.5em;
+}
+
+table th,
+table td {
+  text-align: center;
+}
+
+table .badge {
+  display: inline-flex;
+  padding: 0 1em;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  width: fit-content;
+  margin-left: auto;
+  border: 1px solid transparent;
+}
+
+table .badge[data-color="green"] {
+  background: oklch(72.276% 0.19199 149.6 / 0.18);
+  border-color: oklch(72.276% 0.19199 149.6 / 0.35);
+  color: oklch(72.276% 0.19199 149.6);
+}
+
+table .badge[data-color="red"] {
+  background: oklch(63.681% 0.20784 25.315 / 0.18);
+  border-color: oklch(63.681% 0.20784 25.315 / 0.35);
+  color: oklch(63.681% 0.20784 25.315);
+}
+
+table .badge[data-color="yellow"] {
+  background: oklch(79.524% 0.1616 86.05 / 0.18);
+  border-color: oklch(79.524% 0.1616 86.05 / 0.35);
+  color: oklch(79.524% 0.1616 86.05);
+}
+
+table .badge[data-color="gray"] {
+  background: oklch(71.068% 0.0352 256.828 / 0.18);
+  border-color: oklch(71.068% 0.0352 256.828 / 0.35);
+  color: oklch(71.068% 0.0352 256.828);
+}
+
+@media (max-width: 768px) {
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    display: block;
+    border: 1px solid var(--sidebar-border);
+    border-bottom: 2px solid var(--sidebar-border);
+    margin-bottom: 3em;
+    background: linear-gradient(90deg, var(--sidebar) 100px, transparent 100px);
+  }
+
+  table td {
+    border-bottom: 1px solid var(--sidebar-border);
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+  }
+}
 /* ================== */
 /* ===     Utility Styles     === */
 /* ================== */
@@ -473,7 +581,7 @@ nav a span {
   flex-grow: 1;
 }
 
-nav a:hover{
+nav a:hover {
   background: var(--sidebar-accent);
 }
 
