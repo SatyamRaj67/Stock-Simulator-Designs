@@ -1,0 +1,184 @@
+section {
+  padding: 2em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto minmax(260px, 45vh) auto;
+  grid-template-areas:
+    "card1 card2 card3 card4"
+    "chart chart chart list"
+    "transactions transactions transactions transactions";
+  gap: 0.5em;
+}
+
+section .card {
+  background: var(--card);
+  border: 1px dashed var(--border);
+}
+
+section .card span {
+  width: 100%;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  color: var(--muted-foreground);
+  border-bottom: 1px dashed var(--border);
+}
+
+section .card h2 {
+  padding: 0.2em 0.5em;
+  font-size: 1.5em;
+  margin: 0.2em 0;
+  font-weight: 500;
+}
+
+section .card .info {
+  width: 100%;
+  font-size: 0.9em;
+  display: flex;
+}
+
+section .card .info p {
+  flex: 1;
+  text-align: center;
+  padding: 0.25em;
+}
+
+section .card .info p:first-child {
+  border: 1px solid;
+  border-bottom: 0;
+  border-left: 0;
+  background: oklch(72.276% 0.19199 149.6 / 0.18);
+  border-color: oklch(72.276% 0.19199 149.6 / 0.35);
+  color: oklch(72.276% 0.19199 149.6);
+}
+
+section .card .info p:nth-child(2) {
+  border: 1px solid;
+  border-bottom: 0;
+  background: oklch(63.681% 0.20784 25.315 / 0.18);
+  border-color: oklch(63.681% 0.20784 25.315 / 0.35);
+  color: oklch(63.681% 0.20784 25.315);
+}
+
+section .card .info p:last-child {
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  border-right: 0;
+  background: none;
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+
+section .card1 {
+  grid-area: card1;
+}
+section .card2 {
+  grid-area: card2;
+}
+section .card3 {
+  grid-area: card3;
+}
+section .card4 {
+  grid-area: card4;
+}
+
+section .chart {
+  width: 100%;
+  grid-area: chart;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  padding: 1em;
+}
+
+section ul.list {
+  grid-area: list;
+  padding: 0.5em;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  overflow-x: auto;
+}
+
+section ul h2 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+section ul li {
+  display: flex;
+  padding: 0.5em;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+section ul li:hover {
+  background: var(--sidebar-accent);
+}
+
+section ul li h2 {
+  text-align: left;
+  font-size: 1em;
+}
+
+section ul li p {
+  font-size: 0.65em;
+  color: var(--muted-foreground);
+}
+section ul li p.up {
+  color: oklch(72.276% 0.19199 149.6);
+}
+section ul li p.down {
+  color: oklch(63.681% 0.20784 25.315);
+}
+
+section ul li .prices {
+  margin-left: auto;
+  text-align: right;
+}
+
+section .transactions {
+  grid-area: transactions;
+  height: 370px;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  padding: 1em;
+  overflow-x: auto;
+}
+
+@media (max-width: 1060px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+      "card1 card2"
+      "card3 card4"
+      "chart chart"
+      "list list"
+      "transactions transactions";
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 0.5em;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-areas:
+      "card1"
+      "card2"
+      "card3"
+      "card4"
+      "chart"
+      "list"
+      "transactions";
+  }
+
+  section .chart{
+    padding: 0;
+    height: 200px;
+  }
+}

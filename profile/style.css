@@ -8,6 +8,7 @@ main section{
 /* ================== */
 
 .container {
+  margin: 2em 0;
   width: clamp(200px, 90vw, 500px);
   background: var(--background);
   border: 2px solid var(--foreground);

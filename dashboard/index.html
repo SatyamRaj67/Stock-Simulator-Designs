@@ -27,6 +27,10 @@
       rel="stylesheet"
       href="../styles.css"
     />
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
     <title>Dashboard | Stock Sim</title>
     <script
       type="text/javascript"
@@ -45,7 +49,7 @@
       <div class="nav-links">
         <a href="#">Home</a>
         <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="#transactions">Transactions</a>
       </div>
 
       <div class="auth-links">
@@ -266,9 +270,131 @@
       </ul>
     </nav>
     <main>
+      <h1>Dashboard</h1>
       <section>
-        <h1>Dashboard Coming Soon!</h1>
+        <div class="card card1">
+          <span>Total Balance</span>
+          <h2>$69420.69</h2>
+          <div class="info">
+            <p>▲2.5%(+$320)</p>
+            <p>This Month</p>
+          </div>
+        </div>
+        <div class="card card2">
+          <span>Day's P&L</span>
+          <h2>+$420.69</h2>
+          <div class="info">
+            <p>▲ 1.2%</p>
+            <p>Today</p>
+          </div>
+        </div>
+        <div class="card card3">
+          <span>Margin Used</span>
+          <h2>$42069.42</h2>
+          <div class="info">
+            <p>36%BuyingPower</p>
+            <p>Last Year</p>
+          </div>
+        </div>
+        <div class="card card4">
+          <span>Open Orders</span>
+          <h2>16 Orders</h2>
+          <div class="info">
+            <p>8 Buys</p>
+            <p>6 Sells</p>
+            <p>2 Others</p>
+          </div>
+        </div>
+
+        <div class="chart">
+          <canvas id="chart"></canvas>
+        </div>
+
+        <ul class="list">
+          <h2>Watchlist</h2>
+          <li>
+            <div class="symbol">
+              <h2>AAPL</h2>
+              <p>Apple Inc.</p>
+            </div>
+            <div class="prices">
+              <h2>$175.40</h2>
+              <p class="up">+1.2%</p>
+            </div>
+          </li>
+          <li>
+            <div class="symbol">
+              <h2>TSLA</h2>
+              <p>Tesla Inc.</p>
+            </div>
+            <div class="prices">
+              <h2>$240.10</h2>
+              <p class="down">-0.8%</p>
+            </div>
+          </li>
+          <li>
+            <div class="symbol">
+              <h2>TSLA</h2>
+              <p>Tesla Inc.</p>
+            </div>
+            <div class="prices">
+              <h2>$240.10</h2>
+              <p class="down">-0.8%</p>
+            </div>
+          </li>
+          <li>
+            <div class="symbol">
+              <h2>TSLA</h2>
+              <p>Tesla Inc.</p>
+            </div>
+            <div class="prices">
+              <h2>$240.10</h2>
+              <p class="down">-0.8%</p>
+            </div>
+          </li>
+          <li>
+            <div class="symbol">
+              <h2>NVDA</h2>
+              <p>NVIDIA Corporation</p>
+            </div>
+            <div class="prices">
+              <h2>$420.69</h2>
+              <p class="up">+19.6%</p>
+            </div>
+          </li>
+        </ul>
+
+        <div
+          class="transactions"
+          id="transactions"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Type</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </section>
     </main>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/luxon/build/global/luxon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon/dist/chartjs-adapter-luxon.umd.min.js"></script>
+  <script src="../lib/chartjs-chart-financial.js"></script>
+
+  <!-- Your data first, then your chart code -->
+  <script src="../constants.js"></script>
+  <script src="../script.js"></script>
+
+  <script src="../transactions/transactions.js"></script>
 </html>

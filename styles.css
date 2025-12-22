@@ -184,6 +184,10 @@ table tr {
   border-bottom: 1px solid var(--sidebar-border);
 }
 
+table tr:hover {
+  background: var(--sidebar-accent);
+}
+
 table th {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -629,7 +633,7 @@ body:has(#sidebar.close) #toggle-btn {
   body:has(nav.close) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 1fr 60px;
+    grid-template-rows: 60px 1fr 61px;
     grid-template-areas:
       "header"
       "main"
