@@ -166,6 +166,10 @@ section .transactions {
       "list list"
       "transactions transactions";
   }
+
+  section .chart{
+    height: 300px;
+  }
 }
 
 @media (max-width: 768px) {

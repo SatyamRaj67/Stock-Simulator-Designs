@@ -1,4 +1,7 @@
-window.home_chart_data = [
+// ====================
+// ===   Candlestick Chart    ===
+// ====================
+const chart_data = [
   { x: Date.parse("2024-01-01T00:00:00Z"), o: 150, h: 155, l: 145, c: 152 },
   { x: Date.parse("2024-01-02T00:00:00Z"), o: 152, h: 158, l: 151, c: 157 },
   { x: Date.parse("2024-01-03T00:00:00Z"), o: 157, h: 160, l: 154, c: 159 },
@@ -31,3 +34,23 @@ window.home_chart_data = [
   { x: Date.parse("2024-01-30T00:00:00Z"), o: 172, h: 175, l: 170, c: 174 },
   { x: Date.parse("2024-01-31T00:00:00Z"), o: 174, h: 178, l: 173, c: 177 },
 ];
+
+(() => {
+  const canvas = document.getElementById("chart");
+  if (canvas && Array.isArray(chart_data)) {
+    const ctx = canvas.getContext("2d");
+    
+    new Chart(ctx, {
+      type: "candlestick",
+      data: { datasets: [{ label: "MAPL", data: chart_data }] },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { type: "timeseries" },
+          y: { type: "linear" },
+        },
+      },
+    });
+  }
+})();

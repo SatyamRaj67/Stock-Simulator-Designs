@@ -1,29 +1,4 @@
 // ====================
-// ===   Candlestick Chart    ===
-// ====================
-(() => {
-  const canvas = document.getElementById("chart");
-  const hasChartLib = typeof window.Chart !== "undefined";
-  const data = window.home_chart_data;
-
-  if (canvas && hasChartLib && Array.isArray(data)) {
-    const ctx = canvas.getContext("2d");
-    new Chart(ctx, {
-      type: "candlestick",
-      data: { datasets: [{ label: "MAPL", data }] },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: { type: "timeseries" },
-          y: { type: "linear" },
-        },
-      },
-    });
-  }
-})();
-
-// ====================
 // === Local Storage Setup  ===
 // ====================
 const STORAGE = {
@@ -39,7 +14,11 @@ const STORAGE = {
   const media = window.matchMedia?.("(prefers-color-scheme: dark)");
   const themeToggleBtn = document.getElementById("theme_toggle");
 
-  const getStoredTheme = () => localStorage.getItem(STORAGE.theme); // "dark"|"light"|null
+  const getStoredTheme = () => {
+    const stored = localStorage.getItem(STORAGE.theme);
+    return stored === "dark" || stored === "light" ? stored : null;
+  };
+
   const setStoredTheme = (value) => localStorage.setItem(STORAGE.theme, value);
 
   const setTheme = (isDark, source = "user") => {
@@ -122,7 +101,7 @@ function applySidebarStateFromStorage() {
   const toggleButton = getToggleButton();
   if (!sidebar) return;
 
-  const state = localStorage.getItem(STORAGE.sidebar); // "open" | "close" | null
+  const state = localStorage.getItem(STORAGE.sidebar);
   const shouldBeOpen = state === "open";
 
   // Disable transitions just for initial state application (prevents open/close animation on load)
@@ -137,7 +116,10 @@ function applySidebarStateFromStorage() {
   else sidebar.classList.add("close");
 
   if (toggleButton) {
-    toggleButton.classList.toggle("rotate", sidebar.classList.contains("close"));
+    toggleButton.classList.toggle(
+      "rotate",
+      sidebar.classList.contains("close")
+    );
   }
 
   // Force reflow so the browser commits the no-transition state
@@ -145,32 +127,21 @@ function applySidebarStateFromStorage() {
 
   // Restore transitions
   sidebar.style.transition = prevSidebarTransition;
-  if (nav) nav.style.transition = prevNavTransition;
+  if (nav && typeof prevNavTransition === "string")
+    nav.style.transition = prevNavTransition;
 }
 
-// Apply ASAP (defer scripts run after HTML parse, before first paint in most cases)
 if (!__sidebarInitialApplied) {
   applySidebarStateFromStorage();
   __sidebarInitialApplied = true;
 }
 
-// Keep as a fallback for pages where script load timing differs
 document.addEventListener("DOMContentLoaded", () => {
   if (!__sidebarInitialApplied) {
     applySidebarStateFromStorage();
     __sidebarInitialApplied = true;
   }
 });
-
-function closeAllSubMenus() {
-  const sidebar = getSidebar();
-  if (!sidebar) return;
-
-  Array.from(sidebar.getElementsByClassName("show")).forEach((ul) => {
-    ul.classList.remove("show");
-    ul.previousElementSibling?.classList.remove("rotate");
-  });
-}
 
 function toggleSidebar() {
   const sidebar = getSidebar();
@@ -180,31 +151,7 @@ function toggleSidebar() {
   sidebar.classList.toggle("close");
   if (toggleButton) toggleButton.classList.toggle("rotate");
 
-  closeAllSubMenus();
   persistSidebarState();
 }
 
-function toggleSubMenu(button) {
-  const sidebar = getSidebar();
-  const toggleButton = getToggleButton();
-  if (!sidebar || !button) return;
-
-  const subMenu = button.nextElementSibling;
-  if (!subMenu) return;
-
-  if (!subMenu.classList.contains("show")) {
-    closeAllSubMenus();
-  }
-
-  subMenu.classList.toggle("show");
-  button.classList.toggle("rotate");
-
-  if (sidebar.classList.contains("close")) {
-    sidebar.classList.remove("close");
-    if (toggleButton) toggleButton.classList.remove("rotate");
-    persistSidebarState();
-  }
-}
-
 window.toggleSidebar = toggleSidebar;
-window.toggleSubMenu = toggleSubMenu;

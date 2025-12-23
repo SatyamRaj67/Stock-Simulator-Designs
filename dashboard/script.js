@@ -23,18 +23,21 @@ const stock_data = [
 ];
 
 const watchlist = document.getElementById("watchlist");
+if (!watchlist) throw new Error("Watchlist element not found");
 
 stock_data.forEach((stock) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
+  const li = document.createElement("li");
+  li.innerHTML = `
       <div class="symbol">
         <h2>${stock.ticker}</h2>
         <p>${stock.name}</p>
       </div>
       <div class="prices">
         <h2>$${stock.price.toFixed(2)}</h2>
-        <p class="${stock.change.startsWith('+') ? 'up' : 'down'}">${stock.change}</p>
+        <p class="${stock.change.startsWith("+") ? "up" : "down"}">${
+    stock.change
+  }</p>
       </div>
     `;
-    watchlist.appendChild(li);
-})
+  watchlist.appendChild(li);
+});
