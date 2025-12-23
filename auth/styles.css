@@ -2,16 +2,17 @@
 /* ===      Auth Styles      === */
 /* ================== */
 
-body {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-areas: "left right";
-}
-
 body.auth-single {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+main{
+  all: unset;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas: "left right";
 }
 
 .leftBx,
@@ -206,6 +207,10 @@ body.auth-single {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: "main";
+  }
+
+  body a{
+    padding: 0.25em;
   }
 
   .leftBx,

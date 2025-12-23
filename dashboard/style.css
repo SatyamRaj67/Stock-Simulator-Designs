@@ -92,18 +92,24 @@ section .chart {
   padding: 1em;
 }
 
-section ul.list {
+section .list {
   grid-area: list;
-  padding: 0.5em;
   background: var(--card);
   border: 1px dashed var(--border);
-  overflow-x: auto;
+
+  display: flex;
+  flex-direction: column;
 }
 
-section ul h2 {
+section h2 {
   text-align: center;
   font-size: 2em;
   font-weight: 500;
+}
+
+section ul{
+  height: auto;
+  overflow-x: auto;
 }
 
 section ul li {
@@ -146,10 +152,10 @@ section .transactions {
   background: var(--card);
   border: 1px dashed var(--border);
   padding: 1em;
-  overflow-x: auto;
+  overflow-y: scroll;
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1200px) {
   section {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto auto auto auto auto;
@@ -180,5 +186,6 @@ section .transactions {
   section .chart{
     padding: 0;
     height: 200px;
+    width: 100%;
   }
 }

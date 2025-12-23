@@ -1,4 +1,4 @@
-const data = [
+const transaction_data = [
   {
     id: 1,
     type: "Buy",
@@ -244,7 +244,7 @@ function renderTransactions() {
     }
   }
 
-  tbody.innerHTML = data
+  tbody.innerHTML = transaction_data
     .map(
       (transaction) => `
         <tr>

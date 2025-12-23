@@ -31,12 +31,13 @@
       rel="stylesheet"
       href="style.css"
     />
+    <link
+      rel="icon"
+      href="../public/favicon.ico"
+      type="image/x-icon"
+    />
+
     <title>Dashboard | Stock Sim</title>
-    <script
-      type="text/javascript"
-      src="../script.js"
-      defer
-    ></script>
   </head>
   <body class="dark">
     <!-- ================== -->
@@ -233,7 +234,10 @@
           class="sidebar-footer"
           aria-label="Go to Settings"
         >
-          <a href="../settings/index.html">
+          <a
+            href="../settings/index.html"
+            aria-label="Go to Settings"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -309,60 +313,12 @@
         <div class="chart">
           <canvas id="chart"></canvas>
         </div>
-
-        <ul class="list">
+        <div class="list">
           <h2>Watchlist</h2>
-          <li>
-            <div class="symbol">
-              <h2>AAPL</h2>
-              <p>Apple Inc.</p>
-            </div>
-            <div class="prices">
-              <h2>$175.40</h2>
-              <p class="up">+1.2%</p>
-            </div>
-          </li>
-          <li>
-            <div class="symbol">
-              <h2>TSLA</h2>
-              <p>Tesla Inc.</p>
-            </div>
-            <div class="prices">
-              <h2>$240.10</h2>
-              <p class="down">-0.8%</p>
-            </div>
-          </li>
-          <li>
-            <div class="symbol">
-              <h2>TSLA</h2>
-              <p>Tesla Inc.</p>
-            </div>
-            <div class="prices">
-              <h2>$240.10</h2>
-              <p class="down">-0.8%</p>
-            </div>
-          </li>
-          <li>
-            <div class="symbol">
-              <h2>TSLA</h2>
-              <p>Tesla Inc.</p>
-            </div>
-            <div class="prices">
-              <h2>$240.10</h2>
-              <p class="down">-0.8%</p>
-            </div>
-          </li>
-          <li>
-            <div class="symbol">
-              <h2>NVDA</h2>
-              <p>NVIDIA Corporation</p>
-            </div>
-            <div class="prices">
-              <h2>$420.69</h2>
-              <p class="up">+19.6%</p>
-            </div>
-          </li>
-        </ul>
+          <ul  id="watchlist">
+            <!-- Watchlist items will be populated here -->
+          </ul>
+        </div>
 
         <div
           class="transactions"
@@ -395,6 +351,7 @@
   <!-- Your data first, then your chart code -->
   <script src="../constants.js"></script>
   <script src="../script.js"></script>
+  <script src="script.js"></script>
 
   <script src="../transactions/transactions.js"></script>
 </html>
