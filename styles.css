@@ -216,6 +216,21 @@ table td {
   text-align: center;
 }
 
+table a {
+  padding: 0.25em 1em;
+  border-radius: var(--radius);
+  border: 1px solid var(--sidebar-border);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+table a:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
+
 table .badge {
   display: inline-flex;
   padding: 0 1em;
@@ -264,11 +279,20 @@ table .badge[data-color="gray"] {
     border: 1px solid var(--sidebar-border);
     border-bottom: 2px solid var(--sidebar-border);
     margin-bottom: 3em;
-    background: linear-gradient(90deg, var(--sidebar-accent) 100px, transparent 100px);
+    background: linear-gradient(
+      90deg,
+      var(--sidebar-accent) 100px,
+      transparent 100px
+    );
   }
 
   table tr:hover {
-    background: linear-gradient(90deg, var(--sidebar-accent) 100px, var(--sidebar-accent-foreground) 101px, transparent 101px);
+    background: linear-gradient(
+      90deg,
+      var(--sidebar-accent) 100px,
+      var(--sidebar-accent-foreground) 101px,
+      transparent 101px
+    );
     border-color: var(--sidebar-accent-foreground);
   }
 

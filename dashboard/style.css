@@ -1,8 +1,9 @@
 section {
   padding: 2em;
+  padding-top: 1em;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto minmax(260px, 45vh) auto;
+  grid-template-rows: auto 400px auto;
   grid-template-areas:
     "card1 card2 card3 card4"
     "chart chart chart list"
@@ -71,22 +72,22 @@ section .card .info p:last-child {
   color: var(--muted-foreground);
 }
 
-section .card1 {
+section .card:nth-child(1) {
   grid-area: card1;
 }
-section .card2 {
+section .card:nth-child(2) {
   grid-area: card2;
 }
-section .card3 {
+section .card:nth-child(3) {
   grid-area: card3;
 }
-section .card4 {
+section .card:nth-child(4) {
   grid-area: card4;
 }
 
 section .chart {
-  width: 100%;
   grid-area: chart;
+  width: 100%;
   background: var(--card);
   border: 1px dashed var(--border);
   padding: 1em;
