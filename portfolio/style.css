@@ -1,3 +1,7 @@
+:root {
+  --timeline-extend: 16em;
+}
+
 section {
   background: var(--background);
   position: relative;
@@ -9,7 +13,7 @@ section {
 
 section:first-child {
   min-height: 0;
-  height: calc(100vh - 60px - 60px);
+  height: calc(100vh - 60px - var(--timeline-extend));
 }
 
 section:first-child h1 {
@@ -24,8 +28,9 @@ section:first-child p {
   font-size: 1.5em;
 }
 
-section:nth-child(2) {
+section.timeline-section {
   z-index: -3;
+  padding-top: var(--timeline-extend);
 }
 
 section .timeline-progress {
@@ -111,8 +116,7 @@ section.timeline-section article .timeline-left .timeline-date {
 
 section.timeline-section .overlay-top {
   position: absolute;
-  height: 80px;
-  background: transparent;
+  height: var(--timeline-extend);
   background-image: linear-gradient(to bottom, var(--background), transparent);
   inset: 0 0 auto;
 }
@@ -127,11 +131,6 @@ section.timeline-section .overlay-bottom {
 @media (max-width: 768px) {
   section {
     padding: 1em;
-    min-height: 50vh;
-  }
-
-  section:first-child {
-    height: calc(100vh - 60px - 128px);
   }
 
   section:first-child h1 {
@@ -141,7 +140,7 @@ section.timeline-section .overlay-bottom {
   section.timeline-section article {
     padding: 1em 0;
     grid-template-rows: 1fr;
-    grid-template-columns: 64px 1fr;
+    grid-template-columns: 36px 1fr;
     grid-template-areas: "center left";
     width: 100%;
   }
@@ -167,5 +166,12 @@ section.timeline-section .overlay-bottom {
 
   section.timeline-section .timeline-progress {
     left: calc(1em + 6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.timeline-section .overlay-top,
+  section.timeline-section .overlay-top::after {
+    animation: none !important;
   }
 }

@@ -33,9 +33,8 @@
   --destructive: oklch(0.577 0.245 27.325);
 
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-
+  
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -50,6 +49,15 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  
+  --table-accent: oklch(0.97 0 0);
+  --table-accent-foreground: oklch(0.205 0 0);
+  --table-border: oklch(0.922 0 0);
+  
+  --input: oklch(0.922 0 0);
+  --input-accent: oklch(0.97 0 0);
+  --input-foreground: oklch(0.145 0 0);
+  --input-border: oklch(0.922 0 0);
 }
 
 .dark {
@@ -77,9 +85,8 @@
   --destructive: oklch(0.704 0.191 22.216);
 
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-
+  
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -94,6 +101,15 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.439 0 0);
+  
+  --table-accent: oklch(0.269 0 0);
+  --table-accent-foreground: oklch(0.985 0 0);
+  --table-border: oklch(1 0 0 / 10%);
+  
+  --input: oklch(1 0 0 / 15%);
+  --input-accent: oklch(0.269 0 0);
+  --input-foreground: oklch(0.985 0 0);
+  --input-border: oklch(1 0 0 / 10%);
 }
 
 /* ================== */
@@ -181,11 +197,11 @@ table caption {
 }
 
 table tr {
-  border-bottom: 1px solid var(--sidebar-border);
+  border-bottom: 1px solid var(--table-border);
 }
 
 table tr:hover {
-  background: var(--sidebar-accent);
+  background: var(--table-accent);
 }
 
 table th {
@@ -204,7 +220,7 @@ table th:last-child {
 }
 
 table th:hover {
-  background: var(--sidebar-accent);
+  background: var(--table-accent);
 }
 
 table td {
@@ -219,7 +235,7 @@ table td {
 table a {
   padding: 0.25em 1em;
   border-radius: var(--radius);
-  border: 1px solid var(--sidebar-border);
+  border: 1px solid var(--table-border);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -276,12 +292,12 @@ table .badge[data-color="gray"] {
 
   table tr {
     display: block;
-    border: 1px solid var(--sidebar-border);
-    border-bottom: 2px solid var(--sidebar-border);
+    border: 1px solid var(--table-border);
+    border-bottom: 2px solid var(--table-border);
     margin-bottom: 3em;
     background: linear-gradient(
       90deg,
-      var(--sidebar-accent) 100px,
+      var(--table-accent) 100px,
       transparent 100px
     );
   }
@@ -289,15 +305,15 @@ table .badge[data-color="gray"] {
   table tr:hover {
     background: linear-gradient(
       90deg,
-      var(--sidebar-accent) 100px,
-      var(--sidebar-accent-foreground) 101px,
+      var(--table-accent) 100px,
+      var(--table-accent-foreground) 101px,
       transparent 101px
     );
-    border-color: var(--sidebar-accent-foreground);
+    border-color: var(--table-accent-foreground);
   }
 
   table td {
-    border-bottom: 1px solid var(--sidebar-border);
+    border-bottom: 1px solid var(--table-border);
     display: block;
     font-size: 0.8em;
     text-align: right;
@@ -338,21 +354,21 @@ h1::before {
 input {
   width: 100%;
   padding: 0.75em 0.5em;
-  background: var(--sidebar-accent);
-  color: var(--sidebar-foreground);
-  border: 1px solid var(--sidebar-border);
+  background: var(--input-accent);
+  color: var(--input-foreground);
+  border: 1px solid var(--input-border);
   outline: none;
 }
 
 input:focus {
-  border-color: var(--sidebar-accent-foreground);
+  border-color: var(--input-accent-foreground);
 }
 
 button {
   padding: 0.75em 0.5em;
   color: var(--foreground);
-  background: var(--sidebar-accent);
-  border: 1px solid var(--sidebar-border);
+  background: var(--input-accent);
+  border: 1px solid var(--input-border);
   outline: 0;
   display: flex;
   align-items: center;
