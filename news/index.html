@@ -36,11 +36,28 @@
       href="../public/favicon.ico"
       type="image/x-icon"
     />
-
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>News | Stock Sim</title>
     <script
       type="text/javascript"
       src="../script.js"
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      src="script.js"
       defer
     ></script>
   </head>
@@ -275,11 +292,21 @@
         </li>
       </ul>
     </nav>
-    <section>
+    <main>
       <h1>News</h1>
-      <main>
-        <p>This is the News page. I know so informative, LOL</p>
-      </main>
-    </section>
+      <section>
+        <div class="data">
+          <h2 id="data-title">Title</h2>
+          <div id="chart"></div>
+          <ul id="info"></ul>
+        </div>
+        <div class="news">
+          <h1>Daily Recap</h1>
+          <ul id="news"></ul>
+        </div>
+      </section>
+    </main>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js" defer></script>
+  <script src="chart.js" defer></script>
 </html>

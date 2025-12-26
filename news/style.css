@@ -1,0 +1,229 @@
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: "data news";
+  padding: 1em;
+  gap: 1em;
+}
+
+section > div{
+  min-width: 0;
+}
+
+.data {
+  grid-area: data;
+  padding: 1em;
+  background: var(--sidebar);
+  border: 1px dashed var(--border);
+}
+
+.data ul {
+  padding: 1em;
+  background: var(--sidebar);
+  border: 1px dashed var(--border);
+}
+
+.data ul li {
+  position: relative;
+  margin-bottom: 0.4em;
+  padding: 0.2em 0.5em;
+  background: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr 16em;
+  grid-template-rows: 1fr;
+  grid-template-areas: "sector battery";
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+.data ul li .sector{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5em;
+}
+
+.data ul li span {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.data ul li span:before {
+  position: absolute;
+  content: "";
+  background: conic-gradient(var(--color) calc(var(--deg)), transparent 0%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: scaleX(var(--transform));
+}
+
+.data ul li .battery {
+  position: relative;
+  grid-area: battery;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  height: 18px;
+  width: 100%;
+  background: var(--muted-background);
+  padding: 4px 2px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--color);
+}
+
+.data ul li .battery::before {
+  content: attr(data-percent);
+  position: absolute;
+  font-family: "Roboto", monospace;
+  font-size: 0.8em;
+  left: -4.5em;
+}
+
+.data ul li .battery .segment {
+  flex: 1;
+  height: 100%;
+  border-radius: 2px;
+  transition: background 0.1s ease, box-shadow 0.1s ease;
+}
+
+.data ul li .battery .segment.active-positive {
+  background: oklch(72.276% 0.19199 149.6);
+  box-shadow: 0 0 8px oklch(72.276% 0.19199 149.6 / 0.45);
+}
+
+.data ul li .battery .segment.active-negative {
+  background: oklch(63.681% 0.20784 25.315);
+  box-shadow: 0 0 8px oklch(63.681% 0.20784 25.315 / 0.45);
+}
+
+.data ul li .battery .segment.inactive-positive {
+  background: oklch(72.276% 0.19199 149.6 / 0.3);
+}
+
+.data ul li .battery .segment.inactive-negative {
+  background: oklch(63.681% 0.20784 25.315 / 0.3);
+}
+
+.news {
+  grid-area: news;
+  padding: 0 1em;
+  padding-bottom: 1em;
+  background: var(--sidebar);
+  border: 1px dashed var(--border);
+}
+
+.news ul {
+  background: var(--sidebar);
+  border: 1px dashed var(--border);
+}
+
+.news ul li {
+  border-bottom: 1px solid var(--border);
+  padding: 1em;
+}
+
+.news ul li.active{
+  background: var(--sidebar-accent);
+}
+
+.news ul li:hover{
+  background: var(--sidebar-accent);
+}
+
+.news ul li .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.news ul li .head .imgBx {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--sidebar-accent);
+  border-radius: var(--radius);
+  width: fit-content;
+}
+
+.news ul li .head .imgBx::before {
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: attr(data-length);
+  font-family: "Roboto", monospace;
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  right: 0;
+}
+
+.news ul li .head .imgBx img {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: translateX(calc(var(--i) * -14px));
+  overflow: hidden;
+}
+
+.news ul li .head .date {
+  font-size: 0.8em;
+  color: var(--muted-foreground);
+}
+
+.news h2 {
+  font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 0.5em;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+    "news"
+      "data";
+    }
+    
+    .news {
+    padding: 0 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+  .news ul li .head{
+    gap: 0.5em;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .news ul li .head > div{
+    flex: 1 1 auto;
+  }
+
+  .data ul li {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "sector"
+      "battery";
+  }
+
+  .data ul li .battery::before {
+    left: unset;
+    right: 0;
+    top: -1em;
+  }
+}
