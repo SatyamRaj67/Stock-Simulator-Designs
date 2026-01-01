@@ -50,17 +50,19 @@
       rel="stylesheet"
     />
     <title>News | Stock Sim</title>
+
+    <!-- Load Chart.js first -->
     <script
-      type="text/javascript"
-      src="../script.js"
+      src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
       defer
     ></script>
-    <script
-      type="text/javascript"
-      src="script.js"
-      defer
-    ></script>
+
+    <!-- Your scripts after (in order) -->
+    <script type="text/javascript" src="../script.js" defer></script>
+    <script type="text/javascript" src="script.js" defer></script>
+    <script type="text/javascript" src="chart.js" defer></script>
   </head>
+
   <body class="dark">
     <div class="logo-container">
       <a
@@ -297,9 +299,15 @@
       <section>
         <div class="data">
           <h2 id="data-title">Title</h2>
-          <div id="chart"></div>
+
+          <!-- Chart goes here -->
+          <div class="chart-wrap">
+            <canvas id="newsChart"></canvas>
+          </div>
+
           <ul id="info"></ul>
         </div>
+
         <div class="news">
           <h1>Daily Recap</h1>
           <ul id="news"></ul>
@@ -307,6 +315,4 @@
       </section>
     </main>
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js" defer></script>
-  <script src="chart.js" defer></script>
 </html>

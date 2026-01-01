@@ -99,15 +99,29 @@ const news_data = [
   },
 ];
 
-const newsContainer = document.getElementById("news");
-const info = document.getElementById("info");
-const dataTitle = document.getElementById("data-title");
+// Make data available to chart.js (it reads window.news_data)
+window.news_data = news_data;
 
-function parsePercent(str) {
-  const n = Number.parseFloat(String(str).replace("%", ""));
+// Cache DOM once
+const newsListContainer = document.getElementById("news");
+const infoListContainer = document.getElementById("info");
+const dataTitleEl = document.getElementById("data-title");
+
+if (!newsListContainer || !infoListContainer || !dataTitleEl) {
+  throw new Error("Missing required elements: #news, #info, or #data-title");
+}
+
+// ----- utils -----
+function parsePercent(percentStr) {
+  const n = Number.parseFloat(String(percentStr).replace("%", ""));
   return Number.isFinite(n) ? n : 0;
 }
 
+function clamp(n, min, max) {
+  return Math.max(min, Math.min(max, n));
+}
+
+// ----- UI builders -----
 function buildBatteryEl(changePercentStr) {
   const totalSegments = 49;
   const centerIndex = Math.floor(totalSegments / 2); // 24
@@ -134,9 +148,7 @@ function buildBatteryEl(changePercentStr) {
     seg.classList.add("segment");
 
     if (idx === centerIndex) {
-      seg.classList.add(
-        isPositive ? "active-positive" : "active-negative"
-      );
+      seg.classList.add(isPositive ? "active-positive" : "active-negative");
       battery.appendChild(seg);
       continue;
     }
@@ -157,81 +169,58 @@ function buildBatteryEl(changePercentStr) {
   return battery;
 }
 
-function setSelectedNewsItem(index) {
-  const items = newsContainer.querySelectorAll("li");
+// ----- renderers -----
+function renderNewsList(items) {
+  newsListContainer.innerHTML = "";
 
-  // Remove active state from all items
-  items.forEach((el) => {
-    el.classList.remove("active");
-    el.removeAttribute("aria-current");
-  });
+  const frag = document.createDocumentFragment();
 
-  // Add active state to the selected item
-  const selected = newsContainer.querySelector(`li[data-index="${index}"]`);
-  if (selected) {
-    selected.classList.add("active");
-    selected.setAttribute("aria-current", "true");
-  }
-}
-
-function renderNewsList() {
-  newsContainer.innerHTML = "";
-  news_data.forEach((news, i) => {
+  items.forEach((news, index) => {
     const li = document.createElement("li");
-    li.dataset.index = String(i);
-    li.style.setProperty("--i", i);
+    li.dataset.index = String(index);
 
     li.innerHTML = `
       <div class="head">
-        <div class="imgBx" data-length="+${news.influencedStocks.length}">
-          ${news.influencedStocks
-            .map(
-              (stock, i) => `
-                <img 
-                  src="https://storage.googleapis.com/iex/api/logos/${stock}.png" 
-                  alt="${news.title} logo"
-                  style="--i: ${i};" 
-                />
-              `
-            )
-            .join("")}
-        </div>
         <div class="date">${news.startDate} - ${news.endDate}</div>
       </div>
       <h2>${news.title}</h2>
       <p>${news.description}</p>
     `;
 
-    newsContainer.appendChild(li);
+    frag.appendChild(li);
   });
+
+  newsListContainer.appendChild(frag);
 }
 
-// --- init ---
-renderNewsList();
+function setSelectedNewsItem(index) {
+  const items = newsListContainer.querySelectorAll("li");
+  items.forEach((item) => {
+    item.classList.remove("active");
+    item.removeAttribute("aria-current");
+  });
 
-// Select + render first item on initial load (if any)
-if (news_data.length > 0) {
-  setSelectedNewsItem(0);
-  renderInfoForNews(0);
+  const selected = newsListContainer.querySelector(`li[data-index="${index}"]`);
+  if (selected) {
+    selected.classList.add("active");
+    selected.setAttribute("aria-current", "true");
+  }
 }
-
-newsContainer.addEventListener("click", (e) => {
-  const li = e.target.closest("li");
-  if (!li || !newsContainer.contains(li)) return;
-
-  const idx = Number(li.dataset.index);
-  if (!Number.isInteger(idx)) return;
-
-  setSelectedNewsItem(idx);
-  renderInfoForNews(idx);
-});
 
 function renderInfoForNews(index) {
   const news = news_data[index];
   if (!news) return;
 
-  dataTitle.textContent = news.title;
-  info.innerHTML = "";
+  dataTitleEl.textContent = news.title;
+  infoListContainer.innerHTML = "";
+
+  // Chart may not be ready on first run because chart.js loads after script.js.
+  // This is still safe: chart.js will initialize itself with news_data[0] anyway.
+  if (typeof window.updateNewsChart === "function") {
+    window.updateNewsChart(news);
+  }
+
+  const frag = document.createDocumentFragment();
 
   news.influencedSectors.forEach((sector) => {
     const row = document.createElement("li");
@@ -239,28 +228,51 @@ function renderInfoForNews(index) {
     const val = parsePercent(sector.change_percent);
     const isPositive = val >= 0;
 
-    const deg = Math.min(Math.abs(val) * 10, 100);
+    // same idea as your other version: bigger percent => more "fill"
+    const deg = clamp(Math.abs(val) * 10, 0, 100);
 
     row.innerHTML = `
       <div class="sector">
         <span style="
-        --deg: ${deg}%;
-        --color: ${
-          isPositive
-            ? "oklch(72.276% 0.19199 149.6)"
-            : "oklch(63.681% 0.20784 25.315)"
-        };
-        --transform: ${isPositive ? "1" : "-1"};
-      ">
-        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
-          <circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="2"></circle>
-        </svg>
-      </span>
+          --deg: ${deg}%;
+          --color: ${
+            isPositive
+              ? "oklch(72.276% 0.19199 149.6)"
+              : "oklch(63.681% 0.20784 25.315)"
+          };
+          --transform: ${isPositive ? "1" : "-1"};
+        ">
+          <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="2"></circle>
+          </svg>
+        </span>
         ${sector.sector}
       </div>
     `;
 
     row.appendChild(buildBatteryEl(sector.change_percent));
-    info.appendChild(row);
+    frag.appendChild(row);
   });
+
+  infoListContainer.appendChild(frag);
+}
+
+// ----- events -----
+newsListContainer.addEventListener("click", (e) => {
+  const li = e.target.closest("li");
+  if (!li || !newsListContainer.contains(li)) return;
+
+  const index = Number(li.dataset.index);
+  if (!Number.isInteger(index)) return;
+
+  setSelectedNewsItem(index);
+  renderInfoForNews(index);
+});
+
+// ----- init -----
+renderNewsList(news_data);
+
+if (news_data.length > 0) {
+  setSelectedNewsItem(0);
+  renderInfoForNews(0);
 }

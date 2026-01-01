@@ -36,19 +36,45 @@ const chart_data = [
 ];
 
 (() => {
+  function getThemeColors() {
+    const cs = getComputedStyle(document.body);
+    const grid =
+      cs.getPropertyValue("--border").trim() || "rgba(255,255,255,0.12)";
+    const text = cs.getPropertyValue("--muted-foreground").trim() || "#b7b7b7";
+    const line =
+      cs.getPropertyValue("--border").trim() || "rgba(255,255,255,0.12)";
+    return { grid, text, line };
+  }
+
   const canvas = document.getElementById("chart");
   if (canvas && Array.isArray(chart_data)) {
     const ctx = canvas.getContext("2d");
-    
+    const colors = getThemeColors();
+
     new Chart(ctx, {
       type: "candlestick",
-      data: { datasets: [{ label: "MAPL", data: chart_data }] },
+      data: {
+        datasets: [
+          {
+            label: "MAPL",
+            data: chart_data,
+          },
+        ],
+      },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          x: { type: "timeseries" },
-          y: { type: "linear" },
+          x: {
+            type: "timeseries",
+            ticks: { color: colors.text },
+            grid: { color: colors.grid },
+          },
+          y: {
+            type: "linear",
+            ticks: { color: colors.text },
+            grid: { color: colors.grid },
+          },
         },
       },
     });

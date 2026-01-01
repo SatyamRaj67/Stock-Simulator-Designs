@@ -11,6 +11,20 @@ section > div{
   min-width: 0;
 }
 
+
+.chart-wrap {
+  padding: 0.75em;
+  background: var(--sidebar);
+  border: 1px dashed var(--border);
+  margin: 0.75em 0 1em;
+}
+
+#newsChart {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+
 .data {
   grid-area: data;
   padding: 1em;
@@ -141,18 +155,18 @@ section > div{
 }
 
 .news ul li .head {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .news ul li .head .imgBx {
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: center;
   background: var(--sidebar-accent);
   border-radius: var(--radius);
-  width: fit-content;
 }
 
 .news ul li .head .imgBx::before {
@@ -180,7 +194,9 @@ section > div{
 }
 
 .news ul li .head .date {
+  width: 100%;
   font-size: 0.8em;
+  text-align: right;
   color: var(--muted-foreground);
 }
 
