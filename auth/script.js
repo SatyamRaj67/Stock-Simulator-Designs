@@ -2,7 +2,7 @@
 // === Credentials Storage ===
 // ====================
 (() => {
-  const STORAGE = {
+  const STORAGE = window.STOCKSIM_STORAGE ?? {
     theme: "stocksim:theme", // "dark" | "light"
     sidebar: "stocksim:sidebar", // "open" | "close"
     creds: "stocksim:creds", // JSON string
@@ -50,14 +50,12 @@
     document.addEventListener("DOMContentLoaded", () => {
       ensureBlankCreds();
 
-      const form =
-        document.querySelector < HTMLFormElement > "form.auth-container";
+      const form = document.querySelector("form.auth-container");
       if (!form) return;
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         storeCredsFromForm(form);
-
         window.location.assign(getDashboardUrl());
       });
     });

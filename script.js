@@ -7,6 +7,8 @@ const STORAGE = {
   creds: "stocksim:creds", // JSON string
 };
 
+window.STORAGE = STORAGE;
+
 // ====================
 // ===      Theme Toggle      ===
 // ====================
