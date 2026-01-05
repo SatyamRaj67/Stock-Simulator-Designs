@@ -90,7 +90,7 @@ section .chart {
   width: 100%;
   background: var(--card);
   border: 1px dashed var(--border);
-  padding: 1em;
+  padding: 0.5em;
 }
 
 section .list {
@@ -108,7 +108,7 @@ section h2 {
   font-weight: 500;
 }
 
-section ul{
+section ul {
   height: auto;
   overflow-x: auto;
 }
@@ -168,7 +168,7 @@ section .transactions {
       "transactions transactions";
   }
 
-  section .chart{
+  section .chart {
     height: 300px;
   }
 }
@@ -188,13 +188,13 @@ section .transactions {
       "transactions";
   }
 
-  section .chart{
+  section .chart {
     padding: 0;
     height: 200px;
     width: 100%;
   }
 
-  section ul{
+  section ul {
     height: 200px;
   }
 }

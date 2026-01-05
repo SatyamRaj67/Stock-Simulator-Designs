@@ -311,7 +311,7 @@
         </div>
 
         <div class="chart">
-          <canvas id="chart"></canvas>
+          <div id="chart-container"></div>
         </div>
         <div class="list">
           <h2>Watchlist</h2>
@@ -343,15 +343,17 @@
       </section>
     </main>
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/luxon/build/global/luxon.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon/dist/chartjs-adapter-luxon.umd.min.js"></script>
-  <script src="../lib/chartjs-chart-financial.js"></script>
+  <script src="../data.js"></script>
 
-  <!-- Your data first, then your chart code -->
-  <script src="../chart.js"></script>
+  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="https://colorjs.io/dist/color.global.js"></script>
+
+  <script
+    src="../chart.js"
+    defer
+  ></script>
+
   <script src="../script.js"></script>
   <script src="script.js"></script>
-
   <script src="../transactions/transactions.js"></script>
 </html>

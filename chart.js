@@ -1,82 +1,108 @@
-// ====================
-// ===   Candlestick Chart    ===
-// ====================
-const chart_data = [
-  { x: Date.parse("2024-01-01T00:00:00Z"), o: 150, h: 155, l: 145, c: 152 },
-  { x: Date.parse("2024-01-02T00:00:00Z"), o: 152, h: 158, l: 151, c: 157 },
-  { x: Date.parse("2024-01-03T00:00:00Z"), o: 157, h: 160, l: 154, c: 159 },
-  { x: Date.parse("2024-01-04T00:00:00Z"), o: 159, h: 162, l: 158, c: 161 },
-  { x: Date.parse("2024-01-05T00:00:00Z"), o: 161, h: 165, l: 160, c: 164 },
-  { x: Date.parse("2024-01-06T00:00:00Z"), o: 164, h: 166, l: 162, c: 163 },
-  { x: Date.parse("2024-01-07T00:00:00Z"), o: 163, h: 168, l: 161, c: 167 },
-  { x: Date.parse("2024-01-08T00:00:00Z"), o: 167, h: 170, l: 165, c: 169 },
-  { x: Date.parse("2024-01-09T00:00:00Z"), o: 169, h: 171, l: 166, c: 167 },
-  { x: Date.parse("2024-01-10T00:00:00Z"), o: 167, h: 169, l: 164, c: 165 },
-  { x: Date.parse("2024-01-11T00:00:00Z"), o: 165, h: 167, l: 162, c: 163 },
-  { x: Date.parse("2024-01-12T00:00:00Z"), o: 163, h: 166, l: 161, c: 165 },
-  { x: Date.parse("2024-01-13T00:00:00Z"), o: 165, h: 169, l: 164, c: 168 },
-  { x: Date.parse("2024-01-14T00:00:00Z"), o: 168, h: 170, l: 166, c: 167 },
-  { x: Date.parse("2024-01-15T00:00:00Z"), o: 167, h: 172, l: 166, c: 171 },
-  { x: Date.parse("2024-01-16T00:00:00Z"), o: 171, h: 173, l: 169, c: 170 },
-  { x: Date.parse("2024-01-17T00:00:00Z"), o: 170, h: 174, l: 168, c: 173 },
-  { x: Date.parse("2024-01-18T00:00:00Z"), o: 173, h: 175, l: 170, c: 171 },
-  { x: Date.parse("2024-01-19T00:00:00Z"), o: 171, h: 172, l: 167, c: 168 },
-  { x: Date.parse("2024-01-20T00:00:00Z"), o: 168, h: 170, l: 165, c: 166 },
-  { x: Date.parse("2024-01-21T00:00:00Z"), o: 166, h: 169, l: 164, c: 168 },
-  { x: Date.parse("2024-01-22T00:00:00Z"), o: 168, h: 171, l: 167, c: 170 },
-  { x: Date.parse("2024-01-23T00:00:00Z"), o: 170, h: 173, l: 169, c: 172 },
-  { x: Date.parse("2024-01-24T00:00:00Z"), o: 172, h: 174, l: 170, c: 171 },
-  { x: Date.parse("2024-01-25T00:00:00Z"), o: 171, h: 176, l: 170, c: 175 },
-  { x: Date.parse("2024-01-26T00:00:00Z"), o: 175, h: 177, l: 172, c: 173 },
-  { x: Date.parse("2024-01-27T00:00:00Z"), o: 173, h: 178, l: 171, c: 177 },
-  { x: Date.parse("2024-01-28T00:00:00Z"), o: 177, h: 179, l: 174, c: 175 },
-  { x: Date.parse("2024-01-29T00:00:00Z"), o: 175, h: 176, l: 171, c: 172 },
-  { x: Date.parse("2024-01-30T00:00:00Z"), o: 172, h: 175, l: 170, c: 174 },
-  { x: Date.parse("2024-01-31T00:00:00Z"), o: 174, h: 178, l: 173, c: 177 },
-];
-
 (() => {
-  function getThemeColors() {
-    const cs = getComputedStyle(document.body);
-    const grid =
-      cs.getPropertyValue("--border").trim() || "rgba(255,255,255,0.12)";
-    const text = cs.getPropertyValue("--muted-foreground").trim() || "#b7b7b7";
-    const line =
-      cs.getPropertyValue("--border").trim() || "rgba(255,255,255,0.12)";
-    return { grid, text, line };
+  const container = document.getElementById("chart-container");
+  if (!container) return;
+
+  if (!window.LightweightCharts) {
+    console.error(
+      "LightweightCharts not found. Make sure the CDN script is loaded before chart.js."
+    );
+    return;
   }
 
-  const canvas = document.getElementById("chart");
-  if (canvas && Array.isArray(chart_data)) {
-    const ctx = canvas.getContext("2d");
-    const colors = getThemeColors();
+  const hasColorJs = typeof window.Color === "function";
+  if (!hasColorJs) {
+    console.warn(
+      "Color.js not found; OKLCH -> RGB conversion may fail in Lightweight Charts."
+    );
+  }
 
-    new Chart(ctx, {
-      type: "candlestick",
-      data: {
-        datasets: [
-          {
-            label: "MAPL",
-            data: chart_data,
+  const readCssVar = (name, fallback) => {
+    const raw = getComputedStyle(document.body).getPropertyValue(name).trim();
+    return raw || fallback;
+  };
+
+  const toRgbCss = (cssColor, fallback) => {
+    if (!cssColor) return fallback;
+    if (!hasColorJs) return fallback;
+    try {
+      const colorObj = new window.Color(cssColor);
+      const srgbColor = colorObj.to("srgb");
+      const [r, g, b] = srgbColor.coords;
+      const alpha = srgbColor.alpha ?? 1;
+
+      const r255 = Math.round(r * 255);
+      const g255 = Math.round(g * 255);
+      const b255 = Math.round(b * 255);
+
+      return `rgba(${r255}, ${g255}, ${b255}, ${alpha})`;
+    } catch {
+      return fallback;
+    }
+  };
+
+  const create = () => {
+    const chart = window.LightweightCharts.createChart(container, {
+      width: container.clientWidth || 600,
+      height: container.clientHeight || 320,
+    });
+
+    const candles = chart.addSeries(window.LightweightCharts.CandlestickSeries);
+
+    const data = Array.isArray(window.chartData) ? window.chartData : [];
+    candles.setData(data);
+    chart.timeScale().fitContent();
+
+    const applyTheme = () => {
+      chart.applyOptions({
+        layout: {
+          background: {
+            type: "solid",
+            color: toRgbCss(readCssVar("--background"), "#111"),
           },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: {
-            type: "timeseries",
-            ticks: { color: colors.text },
-            grid: { color: colors.grid },
+          textColor: toRgbCss(readCssVar("--foreground"), "#fff"),
+        },
+        grid: {
+          vertLines: {
+            color: toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)"),
           },
-          y: {
-            type: "linear",
-            ticks: { color: colors.text },
-            grid: { color: colors.grid },
+          horzLines: {
+            color: toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)"),
           },
         },
-      },
-    });
-  }
+        rightPriceScale: {
+          borderColor: toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)"),
+        },
+        timeScale: {
+          borderColor: toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)"),
+        },
+        crosshair: {
+          vertLine: {
+            labelBackgroundColor: toRgbCss(readCssVar("--accent"), "#000000"),
+          },
+          horzLine: {
+            labelBackgroundColor: toRgbCss(readCssVar("--accent"), "#000000"),
+          },
+        },
+      });
+    };
+
+    const resize = () => {
+      chart.applyOptions({
+        width: container.clientWidth || 600,
+        height: container.clientHeight || 320,
+      });
+    };
+
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(container);
+
+    const mo = new MutationObserver(() => applyTheme());
+    mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+    window.addEventListener("resize", resize, { passive: true });
+    
+    applyTheme();
+  };
+
+  create();
 })();
