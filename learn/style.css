@@ -110,22 +110,6 @@ aside .inputBx {
   order: 1;
 }
 
-aside ul li a {
-  position: relative;
-  font-size: 1em;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 1em;
-}
-
-aside ul li a .imgBx {
-  width: 36px;
-  height: 36px;
-  border-radius: 4px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
 aside ul li.active a {
   color: var(--sidebar-accent);
   background: var(--sidebar-accent-foreground);
@@ -149,6 +133,7 @@ aside a,
 aside .dropdown-btn {
   padding: 0.85em;
   text-decoration: none;
+  letter-spacing: 0.1em;
   color: var(--sidebar-foreground);
   display: flex;
   align-items: center;
@@ -172,6 +157,7 @@ aside svg {
 aside a span,
 aside .dropdown-btn span {
   flex-grow: 1;
+  text-transform: uppercase;
 }
 
 aside a:hover,

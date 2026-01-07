@@ -41,22 +41,22 @@
     };
 
     const getDashboardUrl = () => {
-      const thisScript =
-        document.currentScript ?? Array.from(document.scripts).at(-1);
-      const base = thisScript?.src || window.location.href;
-      return new URL("../dashboard/index.html", base).toString();
+      return new URL(
+        "../../dashboard/index.html",
+        window.location.href
+      ).toString();
     };
 
     document.addEventListener("DOMContentLoaded", () => {
       ensureBlankCreds();
 
-      const form = document.querySelector("form.auth-container");
-      if (!form) return;
+      const form = document.querySelector("form");
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
+
         storeCredsFromForm(form);
-        window.location.assign(getDashboardUrl());
+        window.location.href = getDashboardUrl();
       });
     });
   })();
