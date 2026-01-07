@@ -83,6 +83,22 @@ aside ul {
   height: 60px;
 }
 
+.banner button {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.banner button:hover {
+  background: var(--sidebar-accent);
+}
+
 .banner .logo {
   font-weight: 600;
 }

@@ -657,20 +657,20 @@ nav a:hover {
   background: var(--sidebar-accent);
 }
 
-body:has(#sidebar.close) .logo-container {
+body:has(nav.close) .logo-container {
   width: 60px;
   padding: 0;
   justify-content: center;
 }
 
-body:has(#sidebar.close) .logo-container .logo {
+body:has(nav.close) .logo-container .logo {
   padding: 0;
   width: 0;
   overflow: hidden;
   white-space: nowrap;
 }
 
-body:has(#sidebar.close) #toggle-btn {
+body:has(nav.close) #toggle-btn {
   margin-left: 0;
 }
 
