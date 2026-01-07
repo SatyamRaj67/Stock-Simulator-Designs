@@ -56,7 +56,7 @@
       layout: {
         background: {
           type: "solid",
-          color: toRgbCss(readCssVar("--background"), "#111"),
+          color: toRgbCss(readCssVar("--sidebar"), "#111"),
         },
         textColor: toRgbCss(readCssVar("--foreground"), "#fff"),
       },

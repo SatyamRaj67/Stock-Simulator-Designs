@@ -4,7 +4,7 @@ body:has(aside) {
   grid-template-columns: auto 250px 1fr;
   grid-template-rows: 60px 1fr 60px;
   grid-template-areas:
-    "logo banner header"
+    "logo aside header"
     "nav aside main"
     "nav aside input";
 }
@@ -72,18 +72,14 @@ aside ul {
   order: 2;
 }
 
-.banner {
-  grid-area: banner;
+aside .banner {
   display: flex;
   justify-content: space-between;
-  background: var(--sidebar);
   border-bottom: 1px solid var(--sidebar-border);
-  border-right: 1px solid var(--sidebar-border);
   order: 0;
-  height: 60px;
 }
 
-.banner .logo {
+aside .banner .logo {
   font-weight: 600;
 }
 
@@ -431,9 +427,8 @@ main {
   /* === Main Social Page === */
   body.social:has(aside) {
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 1fr 60px;
+    grid-template-rows: 1fr 60px;
     grid-template-areas:
-      "banner"
       "aside"
       "nav";
   }
@@ -459,7 +454,7 @@ main {
   /* === All Social Child Pages === */
   body.social-home:has(aside) {
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 1fr 60px 61px;
+    grid-template-rows: 60px 1fr 60px 60px;
     grid-template-areas:
       "header"
       "main"

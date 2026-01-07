@@ -25,18 +25,19 @@
     />
     <link
       rel="stylesheet"
-      href="../../styles.css"
+      href="../styles.css"
     />
     <link
       rel="stylesheet"
-      href="../style.css"
+      href="style.css"
     />
+    <link
+      rel="icon"
+      href="../public/favicon.ico"
+      type="image/x-icon"
+    />
+
     <title>Social | Stock Sim</title>
-    <script
-      type="text/javascript"
-      src="../../script.js"
-      defer
-    ></script>
     <script
       type="text/javascript"
       src="../script.js"
@@ -48,11 +49,11 @@
       defer
     ></script>
   </head>
-  <body class="dark social-home">
+  <body class="dark social">
     <div class="logo-container">
       <a
         class="logo"
-        href="../../index.html"
+        href="../index.html"
         >StockSim
       </a>
       <button
@@ -82,12 +83,19 @@
       </div>
       <div class="content">
         <div class="imgBx">
-          <img
-            src="../../public/Sanskriti.png"
-            alt="Friends"
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e3e3e3"
+          >
+            <path
+              d="M200-120q-33 0-56.5-23.5T120-200v-160h80v160h160v80H200Zm560 0H600v-80h160v-160h80v160q0 33-23.5 56.5T760-120ZM120-760q0-33 23.5-56.5T200-840h160v80H200v160h-80v-160Zm720 0v160h-80v-160H600v-80h160q33 0 56.5 23.5T840-760ZM480-240q21 0 35.5-14.5T530-290q0-21-14.5-35.5T480-340q-21 0-35.5 14.5T430-290q0 21 14.5 35.5T480-240Zm-36-153h73q0-34 8-52t35-45q35-35 46.5-56.5T618-598q0-54-39-88t-99-34q-50 0-86 26t-52 74l66 27q7-26 26.5-42.5T480-652q29 0 46.5 15.5T544-595q0 20-9.5 37.5T502-521q-33 29-45.5 56T444-393Z"
+            />
+          </svg>
         </div>
-        <p>Sanskriti</p>
+        <p>Someone</p>
       </div>
 
       <div class="auth-links">
@@ -129,7 +137,7 @@
       <ul>
         <li>
           <a
-            href="../../dashboard/index.html"
+            href="../dashboard/index.html"
             aria-label="Go to Dashboard"
           >
             <svg
@@ -149,7 +157,7 @@
 
         <li>
           <a
-            href="../../market/index.html"
+            href="../market/index.html"
             aria-label="Go to Market"
           >
             <svg
@@ -168,7 +176,7 @@
         </li>
         <li>
           <a
-            href="../../portfolio/index.html"
+            href="../portfolio/index.html"
             aria-label="Go to Portfolio"
           >
             <svg
@@ -188,7 +196,7 @@
 
         <li>
           <a
-            href="../../transactions/index.html"
+            href="../transactions/index.html"
             aria-label="Go to Transactions"
           >
             <svg
@@ -205,9 +213,9 @@
             <span> Transactions</span>
           </a>
         </li>
-        <li class="active">
-          <a
-            href="../../social/index.html"
+        <li>
+          <div
+            href="../social/index.html"
             aria-label="Go to Social"
           >
             <svg
@@ -222,11 +230,11 @@
               />
             </svg>
             <span> Social</span>
-          </a>
+          </div>
         </li>
         <li>
           <a
-            href="../../news/index.html"
+            href="../news/index.html"
             aria-label="Go to News"
           >
             <svg
@@ -247,7 +255,7 @@
           class="sidebar-footer"
           aria-label="Go to Settings"
         >
-          <a href="../../settings/index.html">
+          <a href="../settings/index.html">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -264,7 +272,7 @@
         </li>
         <li>
           <a
-            href="../../profile/index.html"
+            href="../profile/index.html"
             aria-label="Go to Profile"
           >
             <svg
@@ -283,30 +291,30 @@
         </li>
       </ul>
     </nav>
-    <div class="banner">
-      <a
-        href="../index.html"
-        class="logo"
-        >Socials</a
-      >
-      <button
-        id="toggle-btn"
-        aria-label="Icon"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#e3e3e3"
-        >
-          <path
-            d="M640-80v-90q-56-18-94-64t-44-106h80q8 43 40.5 71.5T700-240h120q25 0 42.5 17.5T880-180v100H640Zm120-200q-33 0-56.5-23.5T680-360q0-33 23.5-56.5T760-440q33 0 56.5 23.5T840-360q0 33-23.5 56.5T760-280ZM360-400q0-150 105-255t255-105v80q-117 0-198.5 81.5T440-400h-80Zm160 0q0-83 58.5-141.5T720-600v80q-50 0-85 35t-35 85h-80ZM80-520v-100q0-25 17.5-42.5T140-680h120q45 0 77.5-28.5T378-780h80q-6 60-44 106t-94 64v90H80Zm120-200q-33 0-56.5-23.5T120-800q0-33 23.5-56.5T200-880q33 0 56.5 23.5T280-800q0 33-23.5 56.5T200-720Z"
-          />
-        </svg>
-      </button>
-    </div>
     <aside id="social-sidebar">
+      <div class="banner">
+        <a
+          href="#"
+          class="logo"
+          >Socials</a
+        >
+        <button
+          id="toggle-btn"
+          aria-label="Icon"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e3e3e3"
+          >
+            <path
+              d="M640-80v-90q-56-18-94-64t-44-106h80q8 43 40.5 71.5T700-240h120q25 0 42.5 17.5T880-180v100H640Zm120-200q-33 0-56.5-23.5T680-360q0-33 23.5-56.5T760-440q33 0 56.5 23.5T840-360q0 33-23.5 56.5T760-280ZM360-400q0-150 105-255t255-105v80q-117 0-198.5 81.5T440-400h-80Zm160 0q0-83 58.5-141.5T720-600v80q-50 0-85 35t-35 85h-80ZM80-520v-100q0-25 17.5-42.5T140-680h120q45 0 77.5-28.5T378-780h80q-6 60-44 106t-94 64v90H80Zm120-200q-33 0-56.5-23.5T120-800q0-33 23.5-56.5T200-880q33 0 56.5 23.5T280-800q0 33-23.5 56.5T200-720Z"
+            />
+          </svg>
+        </button>
+      </div>
       <div class="inputBx">
         <input
           type="text"
@@ -317,12 +325,12 @@
       <ul>
         <li>
           <a
-            href="../Ronit/index.html"
+            href="./Ronit/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Ronit.png"
+                src="../public/Ronit.png"
                 alt="Friends"
               />
             </div>
@@ -331,12 +339,12 @@
         </li>
         <li>
           <a
-            href="../Misti/index.html"
+            href="./Misti/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Misti.png"
+                src="../public/Misti.png"
                 alt="Friends"
               />
             </div>
@@ -345,12 +353,12 @@
         </li>
         <li>
           <a
-            href="../Basant/index.html"
+            href="./Basant/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Basant.png"
+                src="../public/Basant.png"
                 alt="Friends"
               />
             </div>
@@ -359,12 +367,12 @@
         </li>
         <li>
           <a
-            href="../Priyanshi/index.html"
+            href="./Priyanshi/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Priyanshi.jpg"
+                src="../public/Priyanshi.jpg"
                 alt="Friends"
               />
             </div>
@@ -373,12 +381,12 @@
         </li>
         <li>
           <a
-            href="../Amisha/index.html"
+            href="./Amisha/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Amisha.jpg"
+                src="../public/Amisha.jpg"
                 alt="Friends"
               />
             </div>
@@ -387,12 +395,12 @@
         </li>
         <li>
           <a
-            href="../Aaradhya/index.html"
+            href="./Aaradhya/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Aaradhya.jpg"
+                src="../public/Aaradhya.jpg"
                 alt="Friends"
               />
             </div>
@@ -401,12 +409,12 @@
         </li>
         <li>
           <a
-            href="../Sonu/index.html"
+            href="./Sonu/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Sonu.jpg"
+                src="../public/Sonu.jpg"
                 alt="Friends"
               />
             </div>
@@ -415,12 +423,12 @@
         </li>
         <li>
           <a
-            href="../Sanskriti/index.html"
+            href="./Sanskriti/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Sanskriti.png"
+                src="../public/Sanskriti.png"
                 alt="Friends"
               />
             </div>
@@ -429,12 +437,12 @@
         </li>
         <li>
           <a
-            href="../Shashwat/index.html"
+            href="./Shashwat/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Shashwat.png"
+                src="../public/Shashwat.png"
                 alt="Friends"
               />
             </div>
@@ -443,12 +451,12 @@
         </li>
         <li>
           <a
-            href="../Shrishti/index.html"
+            href="./Shrishti/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Shrishti.jpg"
+                src="../public/Shrishti.jpg"
                 alt="Friends"
               />
             </div>
@@ -457,12 +465,12 @@
         </li>
         <li>
           <a
-            href="../Ishita/index.html"
+            href="./Ishita/index.html"
             aria-label="Go to Friends"
           >
             <div class="imgBx">
               <img
-                src="../../public/Ishita.png"
+                src="../public/Ishita.png"
                 alt="Friends"
               />
             </div>
@@ -471,22 +479,7 @@
         </li>
       </ul>
     </aside>
-    <main class="messages">
-      <div class="messages-content"></div>
-    </main>
-    <form class="messageBox">
-      <input
-        class="message-input"
-        type="text"
-        placeholder="Send Message ..."
-        aria-label="Message"
-      />
-      <button
-        type="submit"
-        class="message-submit"
-      >
-        Send
-      </button>
-    </form>
+    <main></main>
+    <div class="messageBox"></div>
   </body>
 </html>
