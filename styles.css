@@ -25,6 +25,12 @@
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
 
+  --red: oklch(63.681% 0.20784 25.315);
+  --yellow: oklch(79.524% 0.1616 86.05);
+  --green: oklch(72.276% 0.19199 149.6);
+  --blue: oklch(65.832% 0.1756 254.828);
+  --gray: oklch(71.068% 0.0352 256.828);
+
   --accent: oklch(95.75% 0.06688 141.194);
   --accent-foreground: oklch(37.703% 0.06991 163.448);
 
@@ -34,7 +40,7 @@
 
   --border: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -49,11 +55,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  
+
   --table-accent: oklch(0.97 0 0);
   --table-accent-foreground: oklch(0.205 0 0);
   --table-border: oklch(0.922 0 0);
-  
+
   --input: oklch(0.922 0 0);
   --input-accent: oklch(0.97 0 0);
   --input-foreground: oklch(0.145 0 0);
@@ -86,7 +92,7 @@
 
   --border: oklch(1 0 0 / 10%);
   --ring: oklch(0.556 0 0);
-  
+
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -101,11 +107,11 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.439 0 0);
-  
+
   --table-accent: oklch(0.269 0 0);
   --table-accent-foreground: oklch(0.985 0 0);
   --table-border: oklch(1 0 0 / 10%);
-  
+
   --input: oklch(1 0 0 / 15%);
   --input-accent: oklch(0.269 0 0);
   --input-foreground: oklch(0.985 0 0);
@@ -262,27 +268,33 @@ table .badge {
 }
 
 table .badge[data-color="green"] {
-  background: oklch(72.276% 0.19199 149.6 / 0.18);
-  border-color: oklch(72.276% 0.19199 149.6 / 0.35);
-  color: oklch(72.276% 0.19199 149.6);
+  background: color-mix(in oklch, var(--green) 18%, transparent);
+  border-color: color-mix(in oklch, var(--green) 35%, transparent);
+  color: var(--green);
 }
 
 table .badge[data-color="red"] {
-  background: oklch(63.681% 0.20784 25.315 / 0.18);
-  border-color: oklch(63.681% 0.20784 25.315 / 0.35);
-  color: oklch(63.681% 0.20784 25.315);
+  background: color-mix(in oklch, var(--red) 18%, transparent);
+  border-color: color-mix(in oklch, var(--red) 35%, transparent);
+  color: var(--red);
 }
 
 table .badge[data-color="yellow"] {
-  background: oklch(79.524% 0.1616 86.05 / 0.18);
-  border-color: oklch(79.524% 0.1616 86.05 / 0.35);
-  color: oklch(79.524% 0.1616 86.05);
+  background: color-mix(in oklch, var(--yellow) 18%, transparent);
+  border-color: color-mix(in oklch, var(--yellow) 35%, transparent);
+  color: var(--yellow);
+}
+
+table .badge[data-color="blue"] {
+  background: color-mix(in oklch, var(--blue) 18%, transparent);
+  border-color: color-mix(in oklch, var(--blue) 35%, transparent);
+  color: var(--blue);
 }
 
 table .badge[data-color="gray"] {
-  background: oklch(71.068% 0.0352 256.828 / 0.18);
-  border-color: oklch(71.068% 0.0352 256.828 / 0.35);
-  color: oklch(71.068% 0.0352 256.828);
+  background: color-mix(in oklch, var(--gray) 18%, transparent);
+  border-color: color-mix(in oklch, var(--gray) 35%, transparent);
+  color: var(--gray);
 }
 
 @media (max-width: 768px) {
@@ -848,7 +860,31 @@ main {
   transition: all 0s;
 }
 
-#chart-container a{
+#chart-container a {
   display: none;
 }
 
+/* Page load + navigation transitions (minimal) */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+
+  background: var(--background);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+html.is-loading .page-transition,
+html.is-navigating .page-transition {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    transition: none;
+  }
+}
+
+/* ...existing code... */
