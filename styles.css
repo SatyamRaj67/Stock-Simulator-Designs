@@ -553,8 +553,12 @@ body:has(nav) {
   justify-content: flex-end;
 }
 
-body:has(nav.close) .logo-container {
+html.sidebar-closed .logo-container {
   width: 60px;
+}
+
+html.sidebar-closed .logo-container svg {
+  rotate: 180deg;
 }
 
 nav {
@@ -568,7 +572,7 @@ nav {
   text-wrap: nowrap;
 }
 
-nav.close {
+html.sidebar-closed nav {
   width: 60px;
 }
 
@@ -669,26 +673,26 @@ nav a:hover {
   background: var(--sidebar-accent);
 }
 
-body:has(nav.close) .logo-container {
+html.sidebar-closed .logo-container {
   width: 60px;
   padding: 0;
   justify-content: center;
 }
 
-body:has(nav.close) .logo-container .logo {
+html.sidebar-closed .logo-container .logo {
   padding: 0;
   width: 0;
   overflow: hidden;
   white-space: nowrap;
 }
 
-body:has(nav.close) #toggle-btn {
+html.sidebar-closed #toggle-btn {
   margin-left: 0;
 }
 
 @media (max-width: 768px) {
   body:has(nav),
-  body:has(nav.close) {
+  html.sidebar-closed body:has(nav) {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 60px 1fr 61px;
@@ -703,7 +707,7 @@ body:has(nav.close) #toggle-btn {
   }
 
   nav,
-  nav.close {
+  html.sidebar-closed nav {
     width: 100%;
     border-top: 1px solid var(--sidebar-border);
     padding: 0;
@@ -864,7 +868,10 @@ main {
   display: none;
 }
 
-/* Page load + navigation transitions (minimal) */
+/* ================== */
+/* ===   Page Transitions   === */
+/* ================== */
+
 .page-transition {
   position: fixed;
   inset: 0;
@@ -886,5 +893,3 @@ html.is-navigating .page-transition {
     transition: none;
   }
 }
-
-/* ...existing code... */

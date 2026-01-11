@@ -19,20 +19,24 @@
       content="stock market, simulator, trading, learn, finance, investment, stocksim"
     />
     <script>
-      const THEME_KEY = "STOCKSIM:THEME";
-      const savedTheme = localStorage.getItem(THEME_KEY);
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
+      try {
+        const THEME_KEY = "STOCKSIM:THEME";
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
 
-      const isDark =
-        savedTheme === "dark"
-          ? true
-          : savedTheme === "light"
-          ? false
-          : prefersDark;
+        const isDark =
+          savedTheme === "dark"
+            ? true
+            : savedTheme === "light"
+            ? false
+            : prefersDark;
 
-      document.documentElement.classList.toggle("dark", isDark);
+        document.documentElement.classList.toggle("dark", isDark);
+      } catch (error) {
+        console.error("Error accessing localStorage:", error);
+      }
     </script>
     <link
       rel="preconnect"

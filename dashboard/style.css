@@ -50,17 +50,17 @@ section .card .info p:first-child {
   border: 1px solid;
   border-bottom: 0;
   border-left: 0;
-  background: oklch(72.276% 0.19199 149.6 / 0.18);
-  border-color: oklch(72.276% 0.19199 149.6 / 0.35);
-  color: oklch(72.276% 0.19199 149.6);
+  background: color-mix(in oklab, var(--green) 18%, transparent );
+  border-color: color-mix(in oklch, var(--green) 35%, transparent);
+  color: var(--green);
 }
 
 section .card .info p:nth-child(2) {
   border: 1px solid;
   border-bottom: 0;
-  background: oklch(63.681% 0.20784 25.315 / 0.18);
-  border-color: oklch(63.681% 0.20784 25.315 / 0.35);
-  color: oklch(63.681% 0.20784 25.315);
+  background: color-mix(in oklab, var(--red) 18%, transparent );
+  border-color: color-mix(in oklch, var(--red) 35%, transparent);
+  color: var(--red);
 }
 
 section .card .info p:last-child {

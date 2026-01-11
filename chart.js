@@ -88,7 +88,7 @@
   ro.observe(container);
 
   const mo = new MutationObserver(() => applyTheme());
-  mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
   window.addEventListener("resize", resize, { passive: true });
 

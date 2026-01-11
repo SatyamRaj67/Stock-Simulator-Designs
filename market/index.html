@@ -7,9 +7,50 @@
       content="width=device-width, initial-scale=1.0"
     />
     <meta
-      name="description"
-      content="Stock Sim - Stock Market Simulator"
+      name="author"
+      content="Satyam Raj"
     />
+    <meta
+      name="description"
+      content="Stock market simulator to learn trading without risk."
+    />
+    <meta
+      name="keywords"
+      content="stock market, simulator, trading, learn, finance, investment, stocksim"
+    />
+    <!-- === THEME SCRIPT === -->
+    <script>
+      try {
+        const THEME_KEY = "STOCKSIM:THEME";
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+        const isDark =
+          savedTheme === "dark"
+            ? true
+            : savedTheme === "light"
+            ? false
+            : prefersDark;
+
+        document.documentElement.classList.toggle("dark", isDark);
+      } catch (error) {
+        console.error("Error accessing localStorage:", error);
+      }
+    </script>
+    <!-- === SIDEBAR SCRIPT === -->
+    <script>
+      try {
+        const SIDEBAR_KEY = "STOCKSIM:SIDEBAR_STATE";
+        const savedSidebarState = localStorage.getItem(SIDEBAR_KEY);
+
+        const isClosed = savedSidebarState === "close";
+        document.documentElement.classList.toggle("sidebar-closed", isClosed);
+      } catch (error) {
+        console.error("Error accessing localStorage:", error);
+      }
+    </script>
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -38,11 +79,6 @@
     />
 
     <title>Market | Stock Sim</title>
-    <script
-      type="text/javascript"
-      src="../script.js"
-      defer
-    ></script>
   </head>
   <body class="dark">
     <!-- ================== -->
@@ -296,7 +332,9 @@
       <section>
         <h1>Market</h1>
         <table>
-          <caption>Stock Market Overview</caption>
+          <caption>
+            Stock Market Overview
+          </caption>
           <thead>
             <tr>
               <th scope="col">Stock</th>
@@ -307,8 +345,7 @@
               <th scope="col">Trade</th>
             </tr>
           </thead>
-          <tbody>
-          </tbody>
+          <tbody></tbody>
         </table>
       </section>
     </main>
@@ -317,4 +354,5 @@
     src="script.js"
     defer
   ></script>
+  <script src="../app.js"></script>
 </html>
