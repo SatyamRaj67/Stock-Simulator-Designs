@@ -77,14 +77,13 @@ main {
   color: var(--foreground);
   background: var(--background);
 
-  overflow-y: auto;
+  overflow-y: scroll;
   min-height: 0;
 }
 
 .messages .messages-content {
-  position: static;
+  position: relative;
   height: auto;
-  min-height: calc(100% - 12px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

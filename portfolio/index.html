@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,15 +24,15 @@
         const THEME_KEY = "STOCKSIM:THEME";
         const savedTheme = localStorage.getItem(THEME_KEY);
         const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
 
         const isDark =
           savedTheme === "dark"
             ? true
             : savedTheme === "light"
-            ? false
-            : prefersDark;
+              ? false
+              : prefersDark;
 
         document.documentElement.classList.toggle("dark", isDark);
       } catch (error) {
@@ -79,13 +79,8 @@
     />
 
     <title>Portfolio | Stock Sim</title>
-    <script
-      type="text/javascript"
-      src="../script.js"
-      defer
-    ></script>
   </head>
-  <body class="dark">
+  <body>
     <div class="logo-container">
       <a
         class="logo"
@@ -410,4 +405,5 @@
       <section></section>
     </main>
   </body>
+  <script src="../app.js"></script>
 </html>

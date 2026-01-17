@@ -953,19 +953,17 @@
   }
 
   @media (max-width: 768px) {
-    /* === Main Social Page === */
-    body.social:has(aside) {
+    body:has(aside) {
       grid-template-columns: 1fr;
-      grid-template-rows: 60px 1fr 60px;
+      grid-template-rows: 60px 1fr 61px;
       grid-template-areas:
         "banner"
         "aside"
         "nav";
     }
 
-    body.social:has(aside) main,
-    body.social:has(aside) header,
-    body.social:has(aside) .messageBox {
+    body:has(aside) main,
+    body:has(aside) header {
       display: none;
     }
 
@@ -992,8 +990,15 @@
         "nav";
     }
 
+    body.social-home:has(aside) main {
+      display: block;
+    }
+    
+    body.social-home:has(aside) header {
+      display: flex;
+    }
+
     body.social-home aside,
-    body.social-home header .logo,
     body.social-home .logo-container,
     body.social-home .banner {
       display: none;

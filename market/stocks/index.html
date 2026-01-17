@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,15 +24,15 @@
         const THEME_KEY = "STOCKSIM:THEME";
         const savedTheme = localStorage.getItem(THEME_KEY);
         const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
 
         const isDark =
           savedTheme === "dark"
             ? true
             : savedTheme === "light"
-            ? false
-            : prefersDark;
+              ? false
+              : prefersDark;
 
         document.documentElement.classList.toggle("dark", isDark);
       } catch (error) {
@@ -72,10 +72,18 @@
       rel="stylesheet"
       href="../style.css"
     />
-    <title>Social | Stock Sim</title>
-    
+    <link
+      rel="icon"
+      href="../../public/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <title>Market | Stock Sim</title>
   </head>
-  <body social-home">
+  <body>
+    <!-- ================== -->
+    <!-- ===   Navigation Bar   === -->
+    <!-- ================== -->
     <div class="logo-container">
       <a
         class="logo"
@@ -100,21 +108,12 @@
         </svg>
       </button>
     </div>
-    <!-- ================== -->
-    <!-- ===   Navigation Bar   === -->
-    <!-- ================== -->
     <header>
       <div class="logo">
         <a href="./index.html">Stock<span>Sim</span>.</a>
       </div>
-      <div class="content">
-        <div class="imgBx">
-          <img
-            src="../../public/Shashwat.png"
-            alt="Friends"
-          />
-        </div>
-        <p>Shashwat</p>
+      <div class="nav-links">
+        <a href="#">Market</a>
       </div>
 
       <div class="auth-links">
@@ -174,7 +173,7 @@
           </a>
         </li>
 
-        <li>
+        <li class="active">
           <a
             href="../../market/index.html"
             aria-label="Go to Market"
@@ -232,7 +231,7 @@
             <span> Transactions</span>
           </a>
         </li>
-        <li class="active">
+        <li>
           <a
             href="../../social/index.html"
             aria-label="Go to Social"
@@ -331,13 +330,11 @@
     </nav>
     <div class="banner">
       <a
-        href="../index.html"
+        href="#"
         class="logo"
-        >Socials</a
+        >LEARN</a
       >
-      <button
-        aria-label="Icon"
-      >
+      <button aria-label="Icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -352,201 +349,152 @@
       </button>
     </div>
     <aside id="social-sidebar">
-      <div class="inputBx">
-        <input
-          type="text"
-          id="nameSearch"
-          placeholder="Search Friends"
-        />
-      </div>
       <ul>
         <li>
-          <a
-            href="../Ronit/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Ronit.png"
-                alt="Friends"
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M762-96 645-212l-88 88-28-28q-23-23-23-57t23-57l169-169q23-23 57-23t57 23l28 28-88 88 116 117q12 12 12 28t-12 28l-50 50q-12 12-28 12t-28-12Zm118-628L426-270l5 4q23 23 23 57t-23 57l-28 28-88-88L198-96q-12 12-28 12t-28-12l-50-50q-12-12-12-28t12-28l116-117-88-88 28-28q23-23 57-23t57 23l4 5 454-454h160v160ZM334-583l24-23 23-24-23 24-24 23Zm-56 57L80-724v-160h160l198 198-57 56-174-174h-47v47l174 174-56 57Zm92 199 430-430v-47h-47L323-374l47 47Zm0 0-24-23-23-24 23 24 24 23Z"
               />
-            </div>
-            <span> Ronit</span>
+            </svg>
+            <span> Fight Against </span>
           </a>
         </li>
         <li>
-          <a
-            href="../Misti/index.html"
-            aria-label="Go to Friends"
+          <button
+            onclick="toggleSubMenu(this)"
+            class="dropdown-btn"
           >
-            <div class="imgBx">
-              <img
-                src="../../public/Misti.png"
-                alt="Friends"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M220-520 80-600v-160l140-80 140 80v160l-140 80Zm0-92 60-34v-68l-60-34-60 34v68l60 34Zm440 123v-93l140 82v280L560-80 320-220v-280l140-82v93l-60 35v188l160 93 160-93v-188l-60-35Zm-140 89v-480h360l-80 120 80 120H600v240h-80Zm40 69ZM220-680Z"
               />
+            </svg>
+            <span>Strategy</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+            </svg>
+          </button>
+          <ul class="sub-menu">
+            <div>
+              <li><a href="#">Folder</a></li>
+              <li><a href="#">Document</a></li>
+              <li><a href="#">Project</a></li>
             </div>
-            <span> Misti</span>
+          </ul>
+        </li>
+        <li>
+          <button
+            onclick="toggleSubMenu(this)"
+            class="dropdown-btn"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M320-280v-23q0-44 44-70.5T480-400q72 0 116 26.5t44 70.5v23H320Zm160-160q-33 0-56.5-23.5T400-520q0-33 23.5-56.5T480-600q33 0 56.5 23.5T560-520q0 33-23.5 56.5T480-440ZM120-592v306q14 13 34 22.5t46 14.5v-317q-22-5-42.5-11.5T120-592Zm720-1q-17 8-37 14.5T760-567v318q26-5 46-14.5t34-22.5v-307ZM280-154q-115-14-177.5-47T40-280v-400q0-57 113.5-88T480-799q213 0 326.5 31T920-680v400q0 46-62.5 79T680-154v-480q51-8 90.5-19.5T827-676q-43-17-147-30.5T480-720q-96 0-200 13.5T133-676q17 12 56.5 23t90.5 19v480ZM120-592v343-343Zm720-1v344-344Z"
+              />
+            </svg>
+            <span>Simulation</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+            </svg>
+          </button>
+          <ul class="sub-menu">
+            <div>
+              <li><a href="#">Folder</a></li>
+              <li><a href="#">Document</a></li>
+              <li><a href="#">Project</a></li>
+            </div>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M480-160q75 0 127.5-52.5T660-340q0-75-52.5-127.5T480-520q-75 0-127.5 52.5T300-340q0 75 52.5 127.5T480-160ZM363-572q20-11 42.5-17.5T451-598L350-800H250l113 228Zm234 0 114-228H610l-85 170 19 38q14 4 27 8.5t26 11.5ZM256-208q-17-29-26.5-62.5T220-340q0-36 9.5-69.5T256-472q-42 14-69 49.5T160-340q0 47 27 82.5t69 49.5Zm448 0q42-14 69-49.5t27-82.5q0-47-27-82.5T704-472q17 29 26.5 62.5T740-340q0 36-9.5 69.5T704-208ZM480-80q-40 0-76.5-11.5T336-123q-9 2-18 2.5t-19 .5q-91 0-155-64T80-339q0-87 58-149t143-69L120-880h280l80 160 80-160h280L680-559q85 8 142.5 70T880-340q0 92-64 156t-156 64q-9 0-18.5-.5T623-123q-31 20-67 31.5T480-80Zm0-260ZM363-572 250-800l113 228Zm234 0 114-228-114 228ZM406-230l28-91-74-53h91l29-96 29 96h91l-74 53 28 91-74-56-74 56Z"
+              />
+            </svg>
+            <span> Leaderboard</span>
           </a>
         </li>
         <li>
-          <a
-            href="../Basant/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Basant.png"
-                alt="Friends"
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M280-120v-80h160v-124q-49-11-87.5-41.5T296-442q-75-9-125.5-65.5T120-640v-40q0-33 23.5-56.5T200-760h80v-80h400v80h80q33 0 56.5 23.5T840-680v40q0 76-50.5 132.5T664-442q-18 46-56.5 76.5T520-324v124h160v80H280Zm0-408v-152h-80v40q0 38 22 68.5t58 43.5Zm200 128q50 0 85-35t35-85v-240H360v240q0 50 35 85t85 35Zm200-128q36-13 58-43.5t22-68.5v-40h-80v152Zm-200-52Z"
               />
-            </div>
-            <span> Basant</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="../Priyanshi/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Priyanshi.jpg"
-                alt="Friends"
-              />
-            </div>
-            <span> Priyanshi</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="../Amisha/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Amisha.jpg"
-                alt="Friends"
-              />
-            </div>
-            <span> Amisha</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="../Aaradhya/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Aaradhya.jpg"
-                alt="Friends"
-              />
-            </div>
-            <span> Aaradhya</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="../Sonu/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Sonu.jpg"
-                alt="Friends"
-              />
-            </div>
-            <span> Sonu</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="../Sanskriti/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Sanskriti.png"
-                alt="Friends"
-              />
-            </div>
-            <span> Sanskriti</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="../Shashwat/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Shashwat.png"
-                alt="Friends"
-              />
-            </div>
-            <span> Shashwat</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="../Shrishti/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Shrishti.jpg"
-                alt="Friends"
-              />
-            </div>
-            <span> Shrishti</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="../Ishita/index.html"
-            aria-label="Go to Friends"
-          >
-            <div class="imgBx">
-              <img
-                src="../../public/Ishita.png"
-                alt="Friends"
-              />
-            </div>
-            <span> Ishita</span>
+            </svg>
+            <span> Achievements</span>
           </a>
         </li>
       </ul>
     </aside>
-    <main class="messages">
-      <div class="messages-content"></div>
+    <main>
+      <section>
+        <h1>Market</h1>
+        <table>
+          <caption>
+            Stock Market Overview
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Stock</th>
+              <th scope="col">Price</th>
+              <th scope="col">24H Change</th>
+              <th scope="col">Market Cap</th>
+              <th scope="col">Volume</th>
+              <th scope="col">Trade</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
     </main>
-    <form class="messageBox">
-      <input
-        class="message-input"
-        type="text"
-        placeholder="Send Message ..."
-        aria-label="Message"
-      />
-      <button
-        type="submit"
-        class="message-submit"
-      >
-        Send
-      </button>
-    </form>
   </body>
-<script
-      type="text/javascript"
-      src="../../app.js"
-      defer
-    ></script>
-    <script
-      type="text/javascript"
-      src="../script.js"
-      defer
-    ></script>
-    <script
-      type="text/javascript"
-      src="script.js"
-      defer
-    ></script>
+  <script
+    src="script.js"
+    defer
+  ></script>
+  <script src="../../app.js"></script>
 </html>
