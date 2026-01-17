@@ -121,7 +121,7 @@
 /* ================== */
 /* ===       Layer Rules     === */
 /* ================== */
-@layer top, base;
+@layer base, nav, aside, top;
 
 /* ================== */
 /* ===     Global Styles    === */
@@ -404,14 +404,6 @@
     border-bottom: 1px solid var(--sidebar-border);
   }
 
-  body:has(nav) header {
-    justify-content: space-between;
-  }
-
-  body:has(nav) header .logo {
-    display: none;
-  }
-
   header div:not(.logo) {
     display: flex;
     align-items: center;
@@ -532,13 +524,49 @@
   }
 
   /* ================== */
-  /* ===         Navbar        === */
+  /* ===          Main          === */
   /* ================== */
+  main {
+    grid-area: main;
+    overflow-y: auto;
+  }
+
+  #chart-container {
+    width: 100%;
+    height: 100%;
+    transition: all 0s;
+  }
+
+  #chart-container table,
+  #chart-container thead,
+  #chart-container tbody,
+  #chart-container tfoot,
+  #chart-container tr,
+  #chart-container th,
+  #chart-container td {
+    all: revert;
+    transition: all 0s;
+  }
+
+  #chart-container a {
+    display: none;
+  }
+}
+
+@layer nav {
   body:has(nav) {
     grid-template-columns: auto 1fr;
     grid-template-areas:
       "logo header"
       "nav main";
+  }
+
+  body:has(nav) header {
+    justify-content: space-between;
+  }
+
+  body:has(nav) header .logo {
+    display: none;
   }
 
   .logo-container {
@@ -693,9 +721,65 @@
     margin-left: 0;
   }
 
-  /* ================= */
-  /* ===          Aside         === */
-  /* ================= */
+  @media (max-width: 768px) {
+    body:has(nav),
+    html.sidebar-closed body:has(nav) {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 60px 1fr 61px;
+      grid-template-areas:
+        "header"
+        "main"
+        "nav";
+    }
+
+    body .logo-container {
+      display: none;
+    }
+
+    nav,
+    html.sidebar-closed nav {
+      width: 100%;
+      border-top: 1px solid var(--sidebar-border);
+      padding: 0;
+    }
+
+    nav ul {
+      display: grid;
+      grid-auto-columns: 60px;
+      grid-auto-flow: column;
+      align-items: center;
+      overflow-x: scroll;
+    }
+
+    nav ul li {
+      height: 100%;
+    }
+
+    nav ul li a {
+      height: 100%;
+      justify-content: center;
+      border-radius: 0;
+    }
+
+    nav ul li a span {
+      display: none;
+    }
+
+    nav ul li.active a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 40px;
+      height: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--sidebar-accent);
+    }
+  }
+}
+
+@layer aside {
   body:has(aside) {
     height: 100dvh;
     display: grid;
@@ -869,89 +953,51 @@
   }
 
   @media (max-width: 768px) {
-    body:has(nav),
-    html.sidebar-closed body:has(nav) {
-      display: grid;
+    /* === Main Social Page === */
+    body.social:has(aside) {
       grid-template-columns: 1fr;
-      grid-template-rows: 60px 1fr 61px;
+      grid-template-rows: 60px 1fr 60px;
       grid-template-areas:
-        "header"
-        "main"
+        "banner"
+        "aside"
         "nav";
     }
 
-    body .logo-container {
+    body.social:has(aside) main,
+    body.social:has(aside) header,
+    body.social:has(aside) .messageBox {
       display: none;
     }
 
-    nav,
-    html.sidebar-closed nav {
-      width: 100%;
+    aside ul {
+      flex: 1;
+      flex-direction: column-reverse;
+      order: 1;
+    }
+
+    aside .inputBx {
+      border: 0;
       border-top: 1px solid var(--sidebar-border);
-      padding: 0;
+      order: 2;
     }
 
-    nav ul {
-      display: grid;
-      grid-auto-columns: 60px;
-      grid-auto-flow: column;
-      align-items: center;
-      overflow-x: scroll;
+    /* === All Social Child Pages === */
+    body.social-home:has(aside) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 60px 1fr 60px 61px;
+      grid-template-areas:
+        "header"
+        "main"
+        "input"
+        "nav";
     }
 
-    nav ul li {
-      height: 100%;
-    }
-
-    nav ul li a {
-      height: 100%;
-      justify-content: center;
-      border-radius: 0;
-    }
-
-    nav ul li a span {
+    body.social-home aside,
+    body.social-home header .logo,
+    body.social-home .logo-container,
+    body.social-home .banner {
       display: none;
     }
-
-    nav ul li.active a::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 40px;
-      height: 4px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--sidebar-accent);
-    }
-  }
-
-  /* ================== */
-  /* ===          Main          === */
-  /* ================== */
-  main {
-    grid-area: main;
-    overflow-y: auto;
-  }
-
-  #chart-container {
-    width: 100%;
-    height: 100%;
-    transition: all 0s;
-  }
-
-  #chart-container table,
-  #chart-container thead,
-  #chart-container tbody,
-  #chart-container tfoot,
-  #chart-container tr,
-  #chart-container th,
-  #chart-container td {
-    all: revert;
-    transition: all 0s;
-  }
-
-  #chart-container a {
-    display: none;
   }
 }
 
@@ -1044,53 +1090,5 @@
   .hero .hero-chart {
     height: 300px;
     padding: 1em;
-  }
-}
-
-@media (max-width: 768px) {
-  /* === Main Social Page === */
-  body.social:has(aside) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 60px 1fr 60px;
-    grid-template-areas:
-      "banner"
-      "aside"
-      "nav";
-  }
-
-  body.social:has(aside) main,
-  body.social:has(aside) header,
-  body.social:has(aside) .messageBox {
-    display: none;
-  }
-
-  aside ul {
-    flex: 1;
-    flex-direction: column-reverse;
-    order: 1;
-  }
-
-  aside .inputBx {
-    border: 0;
-    border-top: 1px solid var(--sidebar-border);
-    order: 2;
-  }
-
-  /* === All Social Child Pages === */
-  body.social-home:has(aside) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 60px 1fr 60px 61px;
-    grid-template-areas:
-      "header"
-      "main"
-      "input"
-      "nav";
-  }
-
-  body.social-home aside,
-  body.social-home header .logo,
-  body.social-home .logo-container,
-  body.social-home .banner {
-    display: none;
   }
 }

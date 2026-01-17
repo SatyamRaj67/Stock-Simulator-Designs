@@ -296,6 +296,14 @@ main {
 /* === COPY PASTE COMPLETE === */
 
 @media (max-width: 768px) {
+  body .messageBox{
+    display: none;
+  }
+
+  body.social-home .messageBox{
+    display: flex;
+  }
+
   body.social-home .messageBox button {
     padding: 0.5em;
     letter-spacing: normal;
