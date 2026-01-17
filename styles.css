@@ -788,7 +788,7 @@
     grid-template-areas:
       "logo banner header"
       "nav aside main"
-      "nav aside input";
+      "nav aside main";
   }
 
   aside {
