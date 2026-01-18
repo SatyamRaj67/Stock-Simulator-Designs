@@ -123,11 +123,10 @@
 /* ================== */
 @layer base, nav, aside, top;
 
-/* ================== */
-/* ===     Global Styles    === */
-/* ================== */
-
 @layer base {
+  /* ================== */
+  /* ===     Global Styles    === */
+  /* ================== */
   * {
     margin: 0;
     padding: 0;
@@ -517,10 +516,6 @@
     header:not(.logo) .auth-links a {
       display: none;
     }
-
-    body:has(nav) header .logo {
-      display: block;
-    }
   }
 
   /* ================== */
@@ -731,6 +726,10 @@
         "header"
         "main"
         "nav";
+    }
+
+    body:has(nav) header .logo {
+      display: block;
     }
 
     body .logo-container {
@@ -982,18 +981,17 @@
     /* === All Social Child Pages === */
     body.social-home:has(aside) {
       grid-template-columns: 1fr;
-      grid-template-rows: 60px 1fr 60px 61px;
+      grid-template-rows: 60px 1fr 61px;
       grid-template-areas:
         "header"
         "main"
-        "input"
         "nav";
     }
 
     body.social-home:has(aside) main {
       display: block;
     }
-    
+
     body.social-home:has(aside) header {
       display: flex;
     }
