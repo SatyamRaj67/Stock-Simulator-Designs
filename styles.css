@@ -185,6 +185,16 @@
     object-fit: cover;
   }
 
+  textarea{
+    background: var(--input);
+    color: var(--input-foreground);
+    border: 1px solid var(--input-border);
+    font-family: inherit;
+    padding: 0.75em 0.5em;
+    width: 100%;
+    resize: vertical;
+  }
+
   section {
     min-height: calc(100dvh - 60px);
   }
@@ -509,7 +519,7 @@
 
   @media (max-width: 768px) {
     header {
-      padding: 0;
+      justify-content: space-between;
     }
 
     header:not(.logo) .nav-links,
@@ -1001,97 +1011,5 @@
     body.social-home .banner {
       display: none;
     }
-  }
-}
-
-/* ================== */
-/* ===     Hero Section    === */
-/* ================== */
-.hero {
-  width: 100%;
-  height: calc(100dvh - 60px);
-  position: relative;
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "content chart";
-  align-items: stretch;
-  justify-content: center;
-}
-
-.hero .hero-content {
-  grid-area: content;
-  width: auto;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 20px;
-}
-
-.hero .hero-content h1 {
-  color: var(--foreground);
-  font-size: 4rem;
-  line-height: 1.25em;
-  text-align: left;
-}
-
-.hero .hero-content h1 span {
-  color: var(--accent-foreground);
-}
-
-.hero .hero-content p {
-  margin: 20px 0;
-  font-size: 1.2rem;
-  line-height: 1.5em;
-}
-
-.hero .hero-content a {
-  padding: 12px 24px;
-  width: fit-content;
-  background-color: var(--accent);
-  color: var(--foreground);
-  text-transform: uppercase;
-  border-radius: 4px;
-  border: 1px solid var(--accent-foreground);
-}
-
-.hero .hero-content a:hover {
-  background-color: transparent;
-  color: var(--foreground);
-}
-
-.hero .hero-chart {
-  grid-area: chart;
-  width: auto;
-  min-width: 0;
-  height: calc(100dvh - 60px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2em;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "content"
-      "chart";
-    height: fit-content;
-  }
-
-  .hero .hero-content {
-    height: calc(100dvh - 60px);
-  }
-
-  .hero .hero-content h1 {
-    padding: 0;
-  }
-
-  .hero .hero-chart {
-    height: 300px;
-    padding: 1em;
   }
 }

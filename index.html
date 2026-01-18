@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,15 +24,15 @@
         const THEME_KEY = "STOCKSIM:THEME";
         const savedTheme = localStorage.getItem(THEME_KEY);
         const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
 
         const isDark =
           savedTheme === "dark"
             ? true
             : savedTheme === "light"
-            ? false
-            : prefersDark;
+              ? false
+              : prefersDark;
 
         document.documentElement.classList.toggle("dark", isDark);
       } catch (error) {
@@ -55,6 +55,10 @@
     <link
       rel="stylesheet"
       href="styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="style.css"
     />
     <link
       rel="icon"
@@ -137,10 +141,107 @@
       </section>
 
       <!-- ================= -->
-      <!-- === Feature Section === -->
+      <!-- === Benefits Section === -->
       <!-- ================= -->
       <section>
-        <h1 id="features">Features</h1>
+        <h1 id="benefits">Benefits</h1>
+        <div class="card-container">
+          <div class="card">
+            <h2>Interactive</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
+              reprehenderit eum repellendus totam tenetur? Asperiores rerum
+              harum unde fuga nobis consectetur eos at! Obcaecati optio fugiat
+              saepe, repellendus voluptatem officia.
+            </p>
+          </div>
+          <div class="card">
+            <h2>Learn</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
+              reprehenderit eum repellendus totam tenetur? Asperiores rerum
+              harum unde fuga nobis consectetur eos at! Obcaecati optio fugiat
+              saepe, repellendus voluptatem officia.
+            </p>
+          </div>
+          <div class="card">
+            <h2>Socialize</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
+              reprehenderit eum repellendus totam tenetur? Asperiores rerum
+              harum unde fuga nobis consectetur eos at! Obcaecati optio fugiat
+              saepe, repellendus voluptatem officia.
+            </p>
+          </div>
+          <div class="card">
+            <h2>Engage</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
+              reprehenderit eum repellendus totam tenetur? Asperiores rerum
+              harum unde fuga nobis consectetur eos at! Obcaecati optio fugiat
+              saepe, repellendus voluptatem officia.
+            </p>
+          </div>
+          <div class="card">
+            <h2>Enjoy</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
+              reprehenderit eum repellendus totam tenetur? Asperiores rerum
+              harum unde fuga nobis consectetur eos at! Obcaecati optio fugiat
+              saepe, repellendus voluptatem officia.
+            </p>
+          </div>
+          <div class="card">
+            <h2>Challenge</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
+              reprehenderit eum repellendus totam tenetur? Asperiores rerum
+              harum unde fuga nobis consectetur eos at! Obcaecati optio fugiat
+              saepe, repellendus voluptatem officia.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- ================= -->
+      <!-- === Benefits Section === -->
+      <!-- ================= -->
+      <section>
+        <h1 id="contact">Contact Us</h1>
+        <form action="">
+          <h2>Contact Form</h2>
+
+          <div class="inputBx">
+            <input
+              id="name"
+              type="text"
+              minlength="2"
+              required
+            />
+            <label for="name">Name</label>
+          </div>
+
+          <div class="inputBx">
+            <input
+              id="email"
+              type="email"
+              minlength="8"
+              required
+            />
+            <label for="email">Email</label>
+          </div>
+
+          <div class="messageBx">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
       </section>
     </main>
   </body>
