@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,15 +24,15 @@
         const THEME_KEY = "STOCKSIM:THEME";
         const savedTheme = localStorage.getItem(THEME_KEY);
         const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
 
         const isDark =
           savedTheme === "dark"
             ? true
             : savedTheme === "light"
-            ? false
-            : prefersDark;
+              ? false
+              : prefersDark;
 
         document.documentElement.classList.toggle("dark", isDark);
       } catch (error) {
@@ -210,7 +210,6 @@
           </a>
         </li>
 
-        
         <li>
           <a
             href="../social/index.html"
@@ -230,7 +229,7 @@
             <span> Social</span>
           </a>
         </li>
-        
+
         <li>
           <a
             href="../learn/index.html"
@@ -292,7 +291,7 @@
     </nav>
     <main>
       <section>
-        <h1>Settings Coming Soon!</h1>
+        <h1>Settings</h1>
       </section>
     </main>
   </body>
