@@ -3,14 +3,8 @@
   --second-height: 10vh;
   --third-height: 5vh;
 
-  /* unified motion tuning */
   --ease-pop: cubic-bezier(0.52, 0, 0.43, 1.32);
-  --bar-duration: 900ms;
-  --img-duration: 1100ms;
-
-  /* stagger timing */
-  --stagger: 160ms;
-  --img-offset: 140ms;
+  --transition-time: 1s;
 }
 
 main {
@@ -19,8 +13,8 @@ main {
   flex-direction: column;
 }
 
-section{
-    width: 80%;
+section {
+  width: 80%;
 }
 
 .showcase {
@@ -81,9 +75,9 @@ section{
 
   will-change: height, transform;
   transition-property: height, transform;
-  transition-duration: var(--bar-duration);
+  transition-duration: var(--transition-time);
   transition-timing-function: var(--ease-pop);
-  transition-delay: calc(var(--i) * var(--stagger));
+  transition-delay: calc(var(--i) * var(--transition-time));
 }
 
 .showcase span .imgBx {
@@ -100,14 +94,15 @@ section{
   border-radius: 50%;
 
   backface-visibility: hidden;
-  transform: rotateY(720deg) scale(1);
-  opacity: 1;
-  will-change: transform, opacity;
+  transform: rotateY(calc(360deg * 2)) scale(1);
+  will-change: transform;
 
-  transition-property: transform, opacity;
-  transition-duration: var(--img-duration);
+  transition-property: transform;
+  transition-duration: var(--transition-time);
   transition-timing-function: var(--ease-pop);
-  transition-delay: calc(var(--i) * var(--stagger) + var(--img-offset));
+  transition-delay: calc(
+    var(--i) * var(--transition-time) + var(--transition-time) / 2
+  );
 }
 
 @starting-style {
@@ -116,29 +111,119 @@ section{
   }
 
   .showcase span .imgBx img {
-    transform: rotateY(0deg) scale(0.6);
-    opacity: 0;
+    transform: rotateY(0deg) scale(0);
   }
 }
 
 .stage {
-  position: relative;
   width: 80%;
   height: 20px;
   background: var(--muted);
-  margin: 0 1em;
 }
 
-.leaderboard {
-  height: 100vh;
+ul#leaderboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em;
+  overflow: hidden;
 }
 
-.leaderboard .user-info{
-    display: flex;
+@starting-style {
+  ul#leaderboard li {
+    transform: translateX(120%);
+  }
 }
 
-.user-info .profile-pic{
-    width: 50px;
-    border-radius: 50%;
-    margin-right: 1em;
+ul#leaderboard li {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20px 1fr 80px;
+  grid-template-rows: auto;
+  grid-template-areas: "rank content score";
+  place-items: center;
+  padding: 0.5em 1em;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  transition-property: transform;
+  transition-duration: calc(var(--transition-time) / 4);
+  transition-delay: calc(
+    (var(--i) * var(--transition-time) / 4) + var(--transition-time) * 3
+  );
+  transition-timing-function: ease;
+}
+
+ul#leaderboard li:hover {
+  background: var(--muted);
+}
+
+ul#leaderboard li::before {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--score-percent);
+  height: 3px;
+  background: var(--muted-foreground);
+}
+
+ul#leaderboard li:nth-child(1)::before {
+  background: var(--gold);
+}
+
+ul#leaderboard li:nth-child(2)::before {
+  background: var(--silver);
+}
+
+ul#leaderboard li:nth-child(3)::before {
+  background: var(--bronze);
+}
+
+ul#leaderboard li .rank {
+  grid-area: rank;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: fit-content;
+  border-radius: var(--radius);
+}
+
+ul#leaderboard li:nth-child(1) .rank {
+  background: var(--gold);
+}
+
+ul#leaderboard li:nth-child(2) .rank {
+  background: var(--silver);
+}
+
+ul#leaderboard li:nth-child(3) .rank {
+  background: var(--bronze);
+}
+
+ul#leaderboard li .content {
+  width: 100%;
+  grid-area: content;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0 1em;
+}
+
+ul#leaderboard li .content .profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  margin-right: 0.5em;
+}
+
+ul#leaderboard li .score {
+  grid-area: score;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

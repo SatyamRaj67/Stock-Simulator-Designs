@@ -1,0 +1,65 @@
+main {
+  padding: 1em;
+}
+
+#achievements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  background: var(--card);
+  padding: 0.5em;
+  border: 1px dashed var(--border);
+  gap: 1em;
+}
+
+#achievements li {
+  position: relative;
+  background: var(--secondary);
+  border: 1px dashed var(--muted-foreground);
+  border-bottom: 0;
+}
+
+#achievements li.completed {
+  border-color: var(--green);
+  background: color-mix(in oklab, var(--green) 50%, transparent);
+}
+
+#achievements li:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: var(--completion-percent);
+  height: 2px;
+  background: var(--muted-foreground);
+}
+
+#achievements li.completed:before {
+  background: var(--green);
+}
+
+#achievements li h2 {
+  text-align: center;
+  padding: 0.5em;
+  font-size: 1.5em;
+  border-bottom: 1px dashed var(--border);
+}
+
+#achievements li.completed h2 {
+  border-bottom: 1px dashed var(--green);
+}
+
+#achievements li.completed h2::before {
+  content: "🏆 ";
+}
+
+#achievements li p {
+  padding: 0.5em;
+  padding-bottom: 2em;
+  font-size: 1em;
+  text-align: center;
+}
+
+#achievements li span {
+  position: absolute;
+  bottom: 0.5em;
+  left: 0.5em;
+}
