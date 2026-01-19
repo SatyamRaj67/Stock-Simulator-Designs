@@ -1,6 +1,6 @@
-@layer base, responsive;
+@layer basic, responsive;
 
-@layer base {
+@layer basic {
   body {
     height: 100dvh;
     display: grid;
@@ -10,6 +10,10 @@
       "logo banner header"
       "nav aside main"
       "nav aside input";
+  }
+
+  .logo{
+    text-transform: uppercase;
   }
 
   header .content {
