@@ -34,3 +34,25 @@ function toggleSidebar() {
 
   localStorage.setItem(SIDEBAR_KEY, nowClosed ? "close" : "open");
 }
+
+// =====================
+// ===       Aside Setup           ===
+// =====================
+
+const sidebar = document.getElementsByTagName("aside")[0];
+
+function toggleSubMenu(button) {
+  if (!button.nextElementSibling.classList.contains("show")) {
+    closeAllSubMenus();
+  }
+
+  button.nextElementSibling.classList.toggle("show");
+  button.classList.toggle("rotate");
+}
+
+function closeAllSubMenus() {
+  Array.from(sidebar.getElementsByClassName("show")).forEach((ul) => {
+    ul.classList.remove("show");
+    ul.previousElementSibling.classList.remove("rotate");
+  });
+}

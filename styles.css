@@ -31,6 +31,10 @@
   --blue: oklch(65.832% 0.1756 254.828);
   --gray: oklch(71.068% 0.0352 256.828);
 
+  --gold: oklch(76.9% 0.188 70.08);
+  --silver: oklch(80% 0 0);
+  --bronze: oklch(66.61% 0.1315 61.29);
+
   --accent: oklch(95.75% 0.06688 141.194);
   --accent-foreground: oklch(37.703% 0.06991 163.448);
 
@@ -185,7 +189,7 @@
     object-fit: cover;
   }
 
-  textarea{
+  textarea {
     background: var(--input);
     color: var(--input-foreground);
     border: 1px solid var(--input-border);
@@ -193,16 +197,6 @@
     padding: 0.75em 0.5em;
     width: 100%;
     resize: vertical;
-  }
-
-  section {
-    min-height: calc(100dvh - 60px);
-  }
-
-  @media (max-width: 768px) {
-    section {
-      min-height: fit-content;
-    }
   }
 
   table {

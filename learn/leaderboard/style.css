@@ -1,0 +1,144 @@
+:root {
+  --first-height: 20vh;
+  --second-height: 10vh;
+  --third-height: 5vh;
+
+  /* unified motion tuning */
+  --ease-pop: cubic-bezier(0.52, 0, 0.43, 1.32);
+  --bar-duration: 900ms;
+  --img-duration: 1100ms;
+
+  /* stagger timing */
+  --stagger: 160ms;
+  --img-offset: 140ms;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+section{
+    width: 80%;
+}
+
+.showcase {
+  position: relative;
+  width: 80%;
+  padding: 1em;
+  padding-bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "second first third";
+  align-items: end;
+}
+
+.first {
+  grid-area: first;
+  --bar-height: var(--first-height);
+  --bar-bg: var(--gold);
+  --i: 0;
+}
+
+.second {
+  grid-area: second;
+  --bar-height: var(--second-height);
+  --bar-bg: var(--silver);
+  --i: 1;
+}
+
+.third {
+  grid-area: third;
+  --bar-height: var(--third-height);
+  --bar-bg: var(--bronze);
+  --i: 2;
+}
+
+.showcase > div {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 35vh;
+}
+
+.showcase span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.showcase .bar {
+  height: var(--bar-height);
+  width: 100%;
+  background: var(--bar-bg);
+
+  transform-origin: bottom;
+  transform: scaleY(1);
+
+  will-change: height, transform;
+  transition-property: height, transform;
+  transition-duration: var(--bar-duration);
+  transition-timing-function: var(--ease-pop);
+  transition-delay: calc(var(--i) * var(--stagger));
+}
+
+.showcase span .imgBx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.showcase span .imgBx img {
+  border-radius: 50%;
+
+  backface-visibility: hidden;
+  transform: rotateY(720deg) scale(1);
+  opacity: 1;
+  will-change: transform, opacity;
+
+  transition-property: transform, opacity;
+  transition-duration: var(--img-duration);
+  transition-timing-function: var(--ease-pop);
+  transition-delay: calc(var(--i) * var(--stagger) + var(--img-offset));
+}
+
+@starting-style {
+  .showcase .bar {
+    height: 0;
+  }
+
+  .showcase span .imgBx img {
+    transform: rotateY(0deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.stage {
+  position: relative;
+  width: 80%;
+  height: 20px;
+  background: var(--muted);
+  margin: 0 1em;
+}
+
+.leaderboard {
+  height: 100vh;
+}
+
+.leaderboard .user-info{
+    display: flex;
+}
+
+.user-info .profile-pic{
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 1em;
+}
