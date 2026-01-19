@@ -100,12 +100,23 @@ h1 {
   color: var(--muted-foreground);
 }
 
+.contact-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "form info";
+  padding: 1em;
+  gap: 1em;
+}
+
 form {
-  margin: 1em;
+  grid-area: form;
+  height: 100%;
   background: var(--card);
   color: var(--card-foreground);
   border: 1px dashed var(--border);
-  padding: 0.5em;
+  padding: 1em;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -192,6 +203,36 @@ form button:hover {
   letter-spacing: 0.2em;
 }
 
+.info {
+  grid-area: info;
+  width: 100%;
+  height: 100%;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px dashed var(--border);
+}
+
+.info ul {
+  position: relative;
+  padding: 1em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.info ul li {
+  width: 100%;
+  border: 1px solid var(--border);
+  padding: 0.5em 1em;
+}
+
+.info ul li:hover {
+  border: 1px solid var(--foreground);
+}
+
 @media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
@@ -213,5 +254,13 @@ form button:hover {
   .hero .hero-chart {
     height: 300px;
     padding: 1em;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "form"
+      "info";
   }
 }
