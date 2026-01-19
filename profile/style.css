@@ -10,8 +10,8 @@ main section{
 .container {
   margin: 2em 0;
   width: clamp(200px, 90vw, 500px);
-  background: var(--background);
-  border: 2px solid var(--foreground);
+  background: var(--card);
+  border: 2px dashed var(--border);
   border-radius: var(--radius);
   padding: 1em 2em;
   padding-top: 0.5em;
@@ -24,7 +24,7 @@ main section{
 .container .imgBx{
   width: 150px;
   height: 150px;
-  border: 2px solid var(--foreground);
+  border: 2px solid var(--border);
   border-radius: 50%;
   overflow: hidden;
   margin-top: 10px;
@@ -40,7 +40,7 @@ main section{
   position: relative;
   width: 100%;
   border: 1px solid transparent;
-  border-bottom: 1px solid var(--foreground);
+  border-bottom: 1px solid var(--border);
   outline: none;
   background: none;
   padding: 10px;
@@ -51,13 +51,8 @@ main section{
   pointer-events: none;
 }
 
-.container .inputBx input:hover,
-.container .inputBx input:focus {
-  background: var(--muted);
-}
-
 .container .inputBx input:valid {
-  border: 1px solid var(--foreground);
+  border: 1px solid var(--border);
 }
 
 .container .inputBx label {
@@ -74,7 +69,7 @@ main section{
   transform: translateY(-27px);
   font-size: 0.8em;
   color: var(--foreground);
-  border: 1px solid var(--foreground);
+  border: 1px solid var(--border);
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
   padding: 4px 4px;
@@ -100,7 +95,7 @@ main section{
   font-size: 0.8em;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--foreground);
+  border: 1px solid var(--border);
   cursor: pointer;
 }
 
