@@ -12,7 +12,7 @@
       "nav aside input";
   }
 
-  .logo{
+  .logo {
     text-transform: uppercase;
   }
 
@@ -314,6 +314,15 @@
 
 @layer responsive {
   @media (max-width: 768px) {
+    body {
+      grid-template-columns: 1fr;
+      grid-template-rows: 60px 1fr 61px;
+      grid-template-areas:
+        "banner"
+        "aside"
+        "nav";
+    }
+
     body.social-home {
       grid-template-columns: 1fr;
       grid-template-rows: 60px 1fr 60px 61px;

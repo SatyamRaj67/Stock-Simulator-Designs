@@ -13,9 +13,10 @@ strong {
 }
 
 .danger {
+  width: clamp(50%, 400px, 90%);
   background: color-mix(in oklch, var(--red) 10%, transparent 90%);
   color: var(--red);
-  border: 1px dashed color-mix(in oklab, var(--red) 50%, var(--yellow));
+  border: 1px dashed var(--red);
   text-align: center;
 }
 
