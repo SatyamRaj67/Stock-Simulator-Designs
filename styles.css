@@ -842,6 +842,10 @@
     background: var(--sidebar-accent);
   }
 
+  .banner button svg {
+    fill: var(--foreground);
+  }
+
   .banner .logo {
     font-weight: 600;
   }
