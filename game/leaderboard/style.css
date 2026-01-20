@@ -17,9 +17,13 @@ section {
   width: 80%;
 }
 
+h2{
+  text-wrap: nowrap;
+}
+
 .showcase {
   position: relative;
-  width: 80%;
+  width: clamp(300px, 60vw, 800px);
   padding: 1em;
   padding-bottom: 0;
   display: grid;
@@ -113,12 +117,6 @@ section {
   .showcase span .imgBx img {
     transform: rotateY(0deg) scale(0);
   }
-}
-
-.stage {
-  width: 80%;
-  height: 20px;
-  background: var(--muted);
 }
 
 ul#leaderboard {
@@ -226,4 +224,23 @@ ul#leaderboard li .score {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 0.5em;
+  }
+
+  .showcase {
+    padding: 0;
+    width: 100%;
+  }
+
+  .leaderboard {
+    width: 100%;
+  }
+
+  ul#leaderboard{
+    padding: 0;
+  }
 }

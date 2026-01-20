@@ -55,17 +55,9 @@ main section{
   border: 1px solid var(--border);
 }
 
-.container .inputBx label {
+.container .inputBx label{
   position: absolute;
   left: 0;
-  font-style: normal;
-  color: var(--muted-foreground);
-  transition: 0.5s;
-  pointer-events: none;
-}
-
-.container .inputBx input:focus ~ label,
-.container .inputBx input:valid ~ label {
   transform: translateY(-27px);
   font-size: 0.8em;
   color: var(--foreground);

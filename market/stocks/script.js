@@ -7,7 +7,7 @@ const market_data = [
     change_percent: +0.79,
     market_cap: "2.5T",
     volume: "75M",
-    href: "stocks/AAPL",
+    href: "AAPL/index.html",
   },
   {
     symbol: "MSFT",
@@ -17,7 +17,7 @@ const market_data = [
     change_percent: -0.52,
     market_cap: "1.9T",
     volume: "30M",
-    href: "stocks/MSFT",
+    href: "MSFT/index.html",
   },
   {
     symbol: "GOOGL",
@@ -27,7 +27,7 @@ const market_data = [
     change_percent: +0.61,
     market_cap: "1.4T",
     volume: "20M",
-    href: "stocks/GOOGL",
+    href: "GOOGL/index.html",
   },
   {
     symbol: "AMZN",
@@ -37,7 +37,7 @@ const market_data = [
     change_percent: +2.08,
     market_cap: "1.6T",
     volume: "25M",
-    href: "stocks/AMZN",
+    href: "AMZN/index.html",
   },
   {
     symbol: "TSLA",
@@ -47,7 +47,7 @@ const market_data = [
     change_percent: -2.15,
     market_cap: "800B",
     volume: "40M",
-    href: "stocks/TSLA",
+    href: "TSLA/index.html",
   },
   {
     symbol: "NVDA",
@@ -57,7 +57,7 @@ const market_data = [
     change_percent: +1.87,
     market_cap: "1.0T",
     volume: "50M",
-    href: "stocks/NVDA",
+    href: "NVDA/index.html",
   },
 ];
 
