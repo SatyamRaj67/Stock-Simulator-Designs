@@ -11,13 +11,18 @@ const leaderboard_data = [
   },
   {
     name: "Ananya",
-    profile_pic: "../../public/profile.jpeg",
+    profile_pic: "../../public/Profile.jpeg",
     score: 2400,
   },
   {
     name: "Aaradhya",
     profile_pic: "../../public/Aaradhya.jpg",
     score: 1250,
+  },
+  {
+    name: "Aditi",
+    profile_pic: "../../public/Aditi.jpeg",
+    score: 2350,
   },
   {
     name: "Priyanshi",
