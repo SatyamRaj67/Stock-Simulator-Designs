@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,15 +24,15 @@
         const THEME_KEY = "STOCKSIM:THEME";
         const savedTheme = localStorage.getItem(THEME_KEY);
         const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
 
         const isDark =
           savedTheme === "dark"
             ? true
             : savedTheme === "light"
-            ? false
-            : prefersDark;
+              ? false
+              : prefersDark;
 
         document.documentElement.classList.toggle("dark", isDark);
       } catch (error) {
@@ -114,11 +114,11 @@
       <div class="content">
         <div class="imgBx">
           <img
-            src="../../public/Aaradhya.jpg"
+            src="../../public/Aditi.jpeg"
             alt="Friends"
           />
         </div>
-        <p>Aaradhya</p>
+        <p>Aditi</p>
       </div>
 
       <div class="auth-links">
@@ -217,7 +217,6 @@
           </a>
         </li>
 
-        
         <li class="active">
           <a
             href="../../social/index.html"
@@ -237,7 +236,7 @@
             <span> Social</span>
           </a>
         </li>
-        
+
         <li>
           <a
             href="../../learn/index.html"
@@ -257,7 +256,7 @@
             <span> Learn</span>
           </a>
         </li>
-<li>
+        <li>
           <a
             href="../../game/index.html"
             aria-label="Go to Game Section"
@@ -322,9 +321,7 @@
         class="logo"
         >Socials</a
       >
-      <button
-        aria-label="Icon"
-      >
+      <button aria-label="Icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -535,19 +532,19 @@
       </button>
     </form>
   </body>
-<script
-      type="text/javascript"
-      src="../../app.js"
-      defer
-    ></script>
-    <script
-      type="text/javascript"
-      src="../script.js"
-      defer
-    ></script>
-    <script
-      type="text/javascript"
-      src="script.js"
-      defer
-    ></script>
+  <script
+    type="text/javascript"
+    src="../../app.js"
+    defer
+  ></script>
+  <script
+    type="text/javascript"
+    src="../script.js"
+    defer
+  ></script>
+  <script
+    type="text/javascript"
+    src="script.js"
+    defer
+  ></script>
 </html>
