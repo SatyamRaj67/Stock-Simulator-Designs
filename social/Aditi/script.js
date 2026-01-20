@@ -7,7 +7,14 @@
   if (!messagesEl || !messagesContentEl || !inputEl || !submitBtn) return;
 
   const botReplies = [
-    "Hi Sweetie!",
+    "Hi Sweetie! Aap Kaise ho?",
+    "Mai bhi sundar hu, thanks for asking! Apka din kaisa hai?",
+    "SO DISAPPOINTING! Tumhe bola tha na ki padhai kar lena chahiye!!",
+    "Toh abse padhai karega na?",
+    "MAI TUMSE BAHUT EXPECT KARTI HU!! Ab jake padhai kar lo.",
+    "Abhi bhi nhi gye? Jaldi jao aur padhai shuru karo!",
+    "Shanti se ja rha hai ki nhi?",
+    "Bkte rah bhai, tu bakri hai hi!!",
   ];
 
   let replyIndex = 0;
