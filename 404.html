@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="author"
+      content="Satyam Raj"
+    />
+    <meta
+      name="description"
+      content="Stock market simulator to learn trading without risk."
+    />
+    <meta
+      name="keywords"
+      content="stock market, simulator, trading, learn, finance, investment, stocksim"
+    />
+    <!-- === THEME SCRIPT === -->
+    <script>
+      try {
+        const THEME_KEY = "STOCKSIM:THEME";
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+
+        const isDark =
+          savedTheme === "dark"
+            ? true
+            : savedTheme === "light"
+              ? false
+              : prefersDark;
+
+        document.documentElement.classList.toggle("dark", isDark);
+      } catch (error) {
+        console.error("Error accessing localStorage:", error);
+      }
+    </script>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="404.css"
+    />
+    <link
+      rel="icon"
+      href="public/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Home | Stock Sim</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <section>
+      <h2>404</h2>
+      <h3>Asset Not Found</h3>
+      <p>
+        The page you are looking for has been delisted, moved, or never existed.
+        This looks like a bad investment of your time. Let's cut our losses.
+      </p>
+      <div class="btn-group">
+        <a href="/index.html">Home</a>
+        <a href="javascript:history.back()">Go Back</a>
+      </div>
+    </section>
+
+    <div
+      class="scroll"
+      style="--t: 20s"
+    >
+      <div>
+        <span>PAGE <b class="down">▼ -100%</b></span>
+        <span>WIFI <b class="up">▲ STRONG</b></span>
+        <span>LOST <b class="down">▼ TRUE</b></span>
+        <span>HOME <b class="up">▲ BUY</b></span>
+        <span>LUCK <b class="down">▼ BEARISH</b></span>
+        <span>FOMO <b class="up">▲ RISING</b></span>
+        <span>ERROR <b class="down">▼ 404</b></span>
+        <span>PAGE <b class="down">▼ -100%</b></span>
+        <span>INDEX <b class="down">▼ CRASH</b></span>
+      </div>
+      <div>
+        <span>PAGE <b class="down">▼ -100%</b></span>
+        <span>WIFI <b class="up">▲ STRONG</b></span>
+        <span>LOST <b class="down">▼ TRUE</b></span>
+        <span>HOME <b class="up">▲ BUY</b></span>
+        <span>LUCK <b class="down">▼ BEARISH</b></span>
+        <span>FOMO <b class="up">▲ RISING</b></span>
+        <span>ERROR <b class="down">▼ 404</b></span>
+        <span>PAGE <b class="down">▼ -100%</b></span>
+        <span>INDEX <b class="down">▼ CRASH</b></span>
+      </div>
+    </div>
+  </body>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    let points = [];
+    const spacing = 4;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      points = [];
+      for (let i = 0; i < canvas.width / spacing; i++) {
+        points.push(canvas.height / 2);
+      }
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    let currentValue = canvas.height / 2;
+    let trend = 0;
+
+    function animate() {
+      points.shift();
+
+      const volatility = 20;
+      const change = (Math.random() - 0.5) * volatility;
+
+      const centerBias = (canvas.height / 2 - currentValue) * 0.05;
+
+      currentValue += change + centerBias;
+      points.push(currentValue);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue(
+        "--muted",
+      );
+      ctx.lineWidth = 1;
+
+      ctx.beginPath();
+
+      for (let i = 0; i < canvas.height; i += canvas.height / 10) {
+        ctx.moveTo(0, i);
+        ctx.lineTo(canvas.width, i);
+      }
+
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0, points[0]);
+
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(
+        0,
+        getComputedStyle(document.body).getPropertyValue("--red"),
+      );
+      gradient.addColorStop(1, "transparent");
+
+      for (let i = 1; i < points.length; i++) {
+        const x = (i * spacing + (i - 1) * spacing) / 2;
+        const y = (points[i] + points[i - 1]) / 2;
+        ctx.quadraticCurveTo(x, y, i * spacing, points[i]);
+      }
+
+      ctx.lineTo(points.length * spacing, points[points.length - 1]);
+
+      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue(
+        "--red",
+      );
+      ctx.lineWidth = 2;
+      ctx.lineJoin = "round";
+      ctx.stroke();
+
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.lineTo(0, canvas.height);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+
+      const lastX = (points.length - 1) * spacing;
+      const lastY = points[points.length - 1];
+
+      ctx.beginPath();
+      ctx.arc(lastX, lastY, 6 + 2 * Math.sin(Date.now() / 200), 0, Math.PI * 2);
+      ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--red");
+      ctx.fill();
+
+      ctx.shadowColor = getComputedStyle(document.body).getPropertyValue(
+        "--red",
+      );
+      ctx.shadowBlur = 15;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    document.addEventListener("mousemove", (e) => {
+      currentValue = currentValue + (e.clientY - currentValue) * 0.1;
+    });
+  </script>
+</html>
