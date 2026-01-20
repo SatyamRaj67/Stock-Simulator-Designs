@@ -7,26 +7,7 @@
   if (!messagesEl || !messagesContentEl || !inputEl || !submitBtn) return;
 
   const botReplies = [
-    "Hi…",
-    "Kaise ho?",
-    "Main theek hoon… bas thodi quiet rehti hoon.",
-    "Sorry, main zyada baat nahi kar pati…",
-    "Haan…",
-    "Hmm…",
-    "Achha…",
-    "Main academics mein zyada nahi hoon…",
-    "Par mujhe creative cheezein pasand hain.",
-    "Kabhi kabhi main bas sketch karti hoon.",
-    "Ya ideas likh leti hoon…",
-    "Aapka din kaisa jaa raha hai?",
-    "Aapko kya pasand hai—music, art, ya kuch aur?",
-    "Main sun rahi hoon…",
-    "Thoda shy lag raha hai…",
-    "Par theek hai… aap bolte raho.",
-    "Main help kar sakti hoon… bas simple simple bolo.",
-    "Thanks…",
-    "Okay…",
-    "Bye…"
+    "Hi Sweetie!",
   ];
 
   let replyIndex = 0;
