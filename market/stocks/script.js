@@ -7,7 +7,7 @@ const market_data = [
     change_percent: +0.79,
     market_cap: "2.5T",
     volume: "75M",
-    href: "https://www.example.com/stocks/AAPL",
+    href: "stocks/AAPL",
   },
   {
     symbol: "MSFT",
@@ -17,7 +17,7 @@ const market_data = [
     change_percent: -0.52,
     market_cap: "1.9T",
     volume: "30M",
-    href: "https://www.example.com/stocks/MSFT",
+    href: "stocks/MSFT",
   },
   {
     symbol: "GOOGL",
@@ -27,7 +27,7 @@ const market_data = [
     change_percent: +0.61,
     market_cap: "1.4T",
     volume: "20M",
-    href: "https://www.example.com/stocks/GOOGL",
+    href: "stocks/GOOGL",
   },
   {
     symbol: "AMZN",
@@ -37,7 +37,7 @@ const market_data = [
     change_percent: +2.08,
     market_cap: "1.6T",
     volume: "25M",
-    href: "https://www.example.com/stocks/AMZN",
+    href: "stocks/AMZN",
   },
   {
     symbol: "TSLA",
@@ -47,7 +47,7 @@ const market_data = [
     change_percent: -2.15,
     market_cap: "800B",
     volume: "40M",
-    href: "https://www.example.com/stocks/TSLA",
+    href: "stocks/TSLA",
   },
   {
     symbol: "NVDA",
@@ -57,7 +57,7 @@ const market_data = [
     change_percent: +1.87,
     market_cap: "1.0T",
     volume: "50M",
-    href: "https://www.example.com/stocks/NVDA",
+    href: "stocks/NVDA",
   },
 ];
 
@@ -76,8 +76,8 @@ function renderMarketTable() {
               ? "oklch(72.276% 0.19199 149.6)"
               : "oklch(63.681% 0.20784 25.315)"
           };">${stock.change >= 0 ? "+▲" : "-▼"}${Math.abs(
-        stock.change
-      )} (${Math.abs(stock.change_percent)}%)</td>
+            stock.change,
+          )} (${Math.abs(stock.change_percent)}%)</td>
           <td data-label="Market Cap">${stock.market_cap}</td>
           <td data-label="Volume">${stock.volume}</td>
           <td data-label="Trade"><a href="${stock.href}">Trade</a></td>
