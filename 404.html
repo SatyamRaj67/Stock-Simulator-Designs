@@ -66,6 +66,146 @@
       type="image/x-icon"
     />
     <title>Home | Stock Sim</title>
+
+    <!-- === Styling === -->
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+      }
+
+      canvas {
+        position: fixed;
+        z-index: -1;
+      }
+
+      section {
+        background: var(--card);
+        color: var(--card-foreground);
+        width: clamp(400px, 50%, 600px);
+        padding: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        border: 1px dashed var(--border);
+        border-radius: var(--radius);
+      }
+
+      h2 {
+        font-size: 7.5em;
+        color: var(--red);
+        text-shadow:
+          0 0 5px var(--red),
+          0 0 10px var(--red);
+      }
+
+      h3 {
+        font-size: 2em;
+      }
+
+      p {
+        color: var(--muted-foreground);
+      }
+
+      .btn-group {
+        width: 80%;
+        padding-top: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+      }
+
+      .btn-group a {
+        width: 100%;
+        padding: 0.5em 1em;
+        font-weight: 600;
+        border: 1px solid var(--foreground);
+        border-radius: var(--radius);
+        text-wrap: nowrap;
+      }
+
+      .btn-group a:hover {
+        background: var(--foreground);
+        color: var(--background);
+      }
+
+      .scroll {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: var(--card);
+        display: flex;
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          var(--foreground) 20%,
+          var(--foreground) 80%,
+          transparent
+        );
+        border-top: 1px solid var(--border);
+      }
+
+      .scroll div {
+        white-space: nowrap;
+        animation: animate var(--t) linear infinite;
+        animation-delay: calc(var(--t) / -1);
+      }
+
+      .scroll div:nth-child(2) {
+        animation: animate2 var(--t) linear infinite;
+        animation-delay: calc(var(--t) / -2);
+      }
+
+      @keyframes animate {
+        0% {
+          transform: translateX(100%);
+        }
+
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      @keyframes animate2 {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(-200%);
+        }
+      }
+
+      .scroll div span {
+        display: inline-flex;
+        letter-spacing: 0.2em;
+        padding: 0.25em 1em;
+        text-transform: uppercase;
+      }
+
+      .scroll div span:hover {
+        background: var(--muted);
+      }
+
+      .scroll div span .down,
+      .scroll div span .up {
+        margin-left: 0.5em;
+        letter-spacing: 0.1em;
+      }
+
+      .scroll div span .down {
+        color: var(--red);
+      }
+
+      .scroll div span .up {
+        color: var(--green);
+      }
+    </style>
   </head>
   <body>
     <canvas id="canvas"></canvas>
