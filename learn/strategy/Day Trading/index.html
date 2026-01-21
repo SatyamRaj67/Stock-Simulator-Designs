@@ -66,21 +66,25 @@
     />
     <link
       rel="stylesheet"
-      href="../styles.css"
+      href="../../../styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../style.css"
     />
     <link
       rel="icon"
-      href="../public/favicon.ico"
+      href="../../../public/favicon.ico"
       type="image/x-icon"
     />
 
-    <title>Learn | Stock Sim</title>
+    <title>Day Trading | Stock Sim</title>
   </head>
-  <body>
+  <body class="social-home">
     <div class="logo-container">
       <a
         class="logo"
-        href="../index.html"
+        href="../../../index.html"
         >StockSim
       </a>
       <button
@@ -149,7 +153,7 @@
       <ul>
         <li>
           <a
-            href="../dashboard/index.html"
+            href="../../../dashboard/index.html"
             aria-label="Go to Dashboard"
           >
             <svg
@@ -169,7 +173,7 @@
 
         <li>
           <a
-            href="../market/index.html"
+            href="../../../market/index.html"
             aria-label="Go to Market"
           >
             <svg
@@ -188,7 +192,7 @@
         </li>
         <li>
           <a
-            href="../portfolio/index.html"
+            href="../../../portfolio/index.html"
             aria-label="Go to Portfolio"
           >
             <svg
@@ -208,7 +212,7 @@
 
         <li>
           <a
-            href="../social/index.html"
+            href="../../../social/index.html"
             aria-label="Go to Social"
           >
             <svg
@@ -228,7 +232,7 @@
 
         <li class="active">
           <a
-            href="../learn/index.html"
+            href="../../../learn/index.html"
             aria-label="Go to Learn Section"
           >
             <svg
@@ -247,7 +251,7 @@
         </li>
         <li>
           <a
-            href="../game/index.html"
+            href="../../../game/index.html"
             aria-label="Go to Game Section"
           >
             <svg
@@ -268,7 +272,7 @@
           class="sidebar-footer"
           aria-label="Go to Settings"
         >
-          <a href="../settings/index.html">
+          <a href="../../../settings/index.html">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -285,7 +289,7 @@
         </li>
         <li>
           <a
-            href="../profile/index.html"
+            href="../../../profile/index.html"
             aria-label="Go to Profile"
           >
             <svg
@@ -355,10 +359,14 @@
           </button>
           <ul class="sub-menu">
             <div>
-              <li><a href="indicator/trend/index.html">Trend</a></li>
-              <li><a href="indicator/momentum/index.html">Momentum</a></li>
-              <li><a href="indicator/volatility/index.html">Volatility</a></li>
-              <li><a href="indicator/volume/index.html">Volume</a></li>
+              <li><a href="../../indicator/trend/index.html">Trend</a></li>
+              <li>
+                <a href="../../indicator/momentum/index.html">Momentum</a>
+              </li>
+              <li>
+                <a href="../../indicator/volatility/index.html">Volatility</a>
+              </li>
+              <li><a href="../../indicator/volume/index.html">Volume</a></li>
             </div>
           </ul>
         </li>
@@ -391,17 +399,15 @@
           </button>
           <ul class="sub-menu">
             <div>
-              <li><a href="strategy/Day Trading/index.html">Day Trading</a></li>
+              <li><a href="../Day Trading/index.html">Day Trading</a></li>
               <li>
-                <a href="strategy/Swing Trading/index.html">Swing Trading</a>
+                <a href="../Swing Trading/index.html">Swing Trading</a>
               </li>
               <li>
-                <a href="strategy/Position Trading/index.html"
-                  >Position Trading</a
-                >
+                <a href="../Position Trading/index.html">Position Trading</a>
               </li>
               <li>
-                <a href="strategy/Trend Trading/index.html">Trend Trading</a>
+                <a href="../Trend Trading/index.html">Trend Trading</a>
               </li>
             </div>
           </ul>
@@ -444,8 +450,91 @@
       </ul>
     </aside>
     <main>
-      <h1>Select a Segment to continue</h1>
+      <section>
+        <span>Module 1 : Beginner</span>
+        <h2>What is Day Trading?</h2>
+        <p>
+          Understand the mechanics of buying and selling financial instruments
+          within a single trading day.
+        </p>
+      </section>
+      <section>
+        <div class="card">
+          <h3>The Core Concept</h3>
+          <p>
+            Day trading is the act of buying and selling a financial instrument
+            (like stocks, forex, or crypto) within the same trading day. Day
+            traders seek to profit from small price fluctuations in highly
+            liquid markets.
+          </p>
+          <p class="info">
+            <b>The Golden Rule:</b>
+            Day traders rarely hold positions overnight. They close all trades
+            before the market closes to avoid "gap risk" (prices changing
+            drastically while the market is sleeping).
+          </p>
+          <b>How it works</b>
+          <p>
+            Unlike investors who look at the long-term health of a company, day
+            traders look at <b>price action</b> and <b>volatility</b>. They use
+            charts to spot patterns.
+          </p>
+          <ul>
+            <li>
+              <b>Long Position: </b>Buying with the expectation the price will
+              go UP.
+            </li>
+            <li>
+              <b>Short Position: </b>Selling borrowed shares with the
+              expectation the price will go DOWN.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="card">
+          <h3>Experiment Labs: Try It Yourself</h3>
+          <p>
+            Below is a live market simulator. The chart generates random price
+            movements that mimic real stock volatility. Your goal is to end the
+            session with a profit.
+          </p>
+          <p>
+            <i>
+              Instructions: Watch the chart. If you think it's going up, click
+              <b>BUY</b>. When you have a profit, click <b>CLOSE POSITION</b>.
+            </i>
+          </p>
+          <div class="player">
+            <p class="objective">
+              <b>OBJECTIVE: </b>
+              Make a profit of $50 in 24 hours
+            </p>
+            <div class="infos">
+              <p class="data"><b>Time: </b> <span id="time">00:00</span></p>
+              <p class="data">
+                <b>Balance: </b>$<span id="balance">10,000</span>
+                <b>P&L: </b>$<span id="pl">0</span>
+              </p>
+            </div>
+            <div class="engine">
+              <div id="chart-container"></div>
+              <div class="controls">
+                <button id="buy-btn">BUY</button>
+                <button id="sell-btn">SELL</button>
+
+                <button id="close-btn">CLOSE POSITION</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
-  <script src="../app.js"></script>
+  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="https://colorjs.io/dist/color.global.js"></script>
+  <script src="../../../app.js"></script>
+  <script src="data.js"></script>
+  <script src="chart.js"></script>
 </html>

@@ -1,0 +1,85 @@
+section {
+  padding: 2em;
+  border-bottom: 1px solid var(--muted-foreground);
+}
+
+section span {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+section h2 {
+  font-size: 2em;
+}
+
+section h3 {
+  font-size: 1.75em;
+  color: var(--accent-foreground);
+  padding-bottom: 1em;
+}
+
+section ul {
+  list-style-type: disc;
+  margin: 1em 0;
+  margin-left: 1.5em;
+}
+
+section:first-child p {
+  color: var(--muted-foreground);
+}
+
+section p:nth-child(odd) {
+  margin: 1em 0;
+}
+
+.card {
+  background: var(--card);
+  padding: 1.5em;
+  border-radius: 0.5em;
+  border: 1px dashed var(--border);
+}
+
+.info {
+  padding: 0.5em;
+  background: var(--accent);
+  border-left: 0.25em solid var(--muted-foreground);
+}
+
+.player{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: 1px solid var(--muted-foreground);
+}
+
+.player .objective{
+    font-size: 1.25em;
+}
+
+.player .infos{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.player .infos .data{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player .infos .data b{
+    margin: 0.5em;
+}
+
+.player .engine{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
