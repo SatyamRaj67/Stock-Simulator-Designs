@@ -73,6 +73,10 @@
       href="../../style.css"
     />
     <link
+      rel="stylesheet"
+      href="style.css"
+    />
+    <link
       rel="icon"
       href="../../../public/favicon.ico"
       type="image/x-icon"
@@ -251,7 +255,7 @@
             <span> Learn</span>
           </a>
         </li>
-<li>
+        <li>
           <a
             href="../../../game/index.html"
             aria-label="Go to Game Section"
@@ -392,7 +396,71 @@
       </ul>
     </aside>
     <main>
+      <h1>Stock Details</h1>
+      <section>
+        <div class="card">
+          <span>Name</span>
+          <h2>Apple Inc.</h2>
+          <div class="info">
+            <p>AAPL</p>
+            <p>Technology</p>
+          </div>
+        </div>
+        <div class="card">
+          <span>Current Price</span>
+          <h2>$420.69</h2>
+          <div class="info">
+            <p>High: $430.00</p>
+            <p>Low: $410.00</p>
+            <p>Change: 2.34%</p>
+          </div>
+        </div>
+        <div class="card">
+          <span>Holding</span>
+          <h2>15 Stocks</h2>
+          <div class="info">
+            <p>Profit made: $10.00</p>
+            <p>Potential: $15.00</p>
+          </div>
+        </div>
+        <div class="card">
+          <span>Volume</span>
+          <h2>1,428,190</h2>
+          <div class="info">
+            <p>Declining Fast</p>
+            <p>Change: -3.45%</p>
+          </div>
+        </div>
+
+        <div class="chart">
+          <div id="chart-container"></div>
+        </div>
+
+        <div class="trade card">
+          <h2>Trade Stock</h2>
+          <div class="trade-controls">
+            <label for="quantity">Quantity:</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value="1"
+            />
+
+            <div class="buttons">
+              <button id="buy-button">Buy</button>
+              <button id="sell-button">Sell</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
+  <script src="../data.js"></script>
+  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="https://colorjs.io/dist/color.global.js"></script>
+
   <script src="../../../app.js"></script>
+  <script src="../chart.js"></script>
 </html>

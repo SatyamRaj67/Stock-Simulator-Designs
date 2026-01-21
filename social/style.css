@@ -333,6 +333,10 @@
         "nav";
     }
 
+    body.social-home .logo{
+      display: none;
+    }
+
     body .messageBox {
       display: none;
     }
