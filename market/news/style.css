@@ -1,4 +1,4 @@
-section {
+section.page {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
@@ -7,7 +7,7 @@ section {
   gap: 1em;
 }
 
-section > div{
+section.page > div{
   min-width: 0;
 }
 
@@ -205,7 +205,7 @@ section > div{
 }
 
 @media (max-width: 768px) {
-  section {
+  section.page {
     padding: 0.5em;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;

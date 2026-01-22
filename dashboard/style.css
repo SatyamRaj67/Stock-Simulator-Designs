@@ -1,4 +1,4 @@
-section {
+section.page {
   padding: 2em;
   padding-top: 1em;
   display: grid;
@@ -11,12 +11,12 @@ section {
   gap: 0.5em;
 }
 
-section .card {
+section.page .card {
   background: var(--card);
   border: 1px dashed var(--border);
 }
 
-section .card span {
+section.page .card span {
   width: 100%;
   padding: 0.5em;
   display: flex;
@@ -27,26 +27,26 @@ section .card span {
   border-bottom: 1px dashed var(--border);
 }
 
-section .card h2 {
+section.page .card h2 {
   padding: 0.2em 0.5em;
   font-size: 1.5em;
   margin: 0.2em 0;
   font-weight: 500;
 }
 
-section .card .info {
+section.page .card .info {
   width: 100%;
   font-size: 0.9em;
   display: flex;
 }
 
-section .card .info p {
+section.page .card .info p {
   flex: 1;
   text-align: center;
   padding: 0.25em;
 }
 
-section .card .info p:first-child {
+section.page .card .info p:first-child {
   border: 1px solid;
   border-bottom: 0;
   border-left: 0;
@@ -55,7 +55,7 @@ section .card .info p:first-child {
   color: var(--green);
 }
 
-section .card .info p:nth-child(2) {
+section.page .card .info p:nth-child(2) {
   border: 1px solid;
   border-bottom: 0;
   background: color-mix(in oklab, var(--red) 18%, transparent );
@@ -63,7 +63,7 @@ section .card .info p:nth-child(2) {
   color: var(--red);
 }
 
-section .card .info p:last-child {
+section.page .card .info p:last-child {
   border: 1px solid var(--border);
   border-bottom: 0;
   border-right: 0;
@@ -72,20 +72,20 @@ section .card .info p:last-child {
   color: var(--muted-foreground);
 }
 
-section .card:nth-child(1) {
+section.page .card:nth-child(1) {
   grid-area: card1;
 }
-section .card:nth-child(2) {
+section.page .card:nth-child(2) {
   grid-area: card2;
 }
-section .card:nth-child(3) {
+section.page .card:nth-child(3) {
   grid-area: card3;
 }
-section .card:nth-child(4) {
+section.page .card:nth-child(4) {
   grid-area: card4;
 }
 
-section .chart {
+section.page .chart {
   grid-area: chart;
   width: 100%;
   background: var(--card);
@@ -93,7 +93,7 @@ section .chart {
   padding: 0.5em;
 }
 
-section .list {
+section.page .list {
   grid-area: list;
   background: var(--card);
   border: 1px dashed var(--border);
@@ -102,18 +102,18 @@ section .list {
   flex-direction: column;
 }
 
-section h2 {
+section.page h2 {
   text-align: center;
   font-size: 2em;
   font-weight: 500;
 }
 
-section ul {
+section.page ul {
   height: auto;
   overflow-x: auto;
 }
 
-section ul li {
+section.page ul li {
   display: flex;
   padding: 0.5em;
   border-top: 1px dashed var(--border);
@@ -122,32 +122,32 @@ section ul li {
   font-weight: 500;
 }
 
-section ul li:hover {
+section.page ul li:hover {
   background: var(--sidebar-accent);
 }
 
-section ul li h2 {
+section.page ul li h2 {
   text-align: left;
   font-size: 1em;
 }
 
-section ul li p {
+section.page ul li p {
   font-size: 0.65em;
   color: var(--muted-foreground);
 }
-section ul li p.up {
+section.page ul li p.up {
   color: oklch(72.276% 0.19199 149.6);
 }
-section ul li p.down {
+section.page ul li p.down {
   color: oklch(63.681% 0.20784 25.315);
 }
 
-section ul li .prices {
+section.page ul li .prices {
   margin-left: auto;
   text-align: right;
 }
 
-section .transactions {
+section.page .transactions {
   grid-area: transactions;
   height: 370px;
   background: var(--card);
@@ -157,7 +157,7 @@ section .transactions {
 }
 
 @media (max-width: 1200px) {
-  section {
+  section.page {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, auto);
     grid-template-areas:
@@ -168,13 +168,13 @@ section .transactions {
       "transactions transactions";
   }
 
-  section .chart {
+  section.page .chart {
     height: 300px;
   }
 }
 
 @media (max-width: 768px) {
-  section {
+  section.page {
     padding: 0.5em;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(7, auto);
@@ -188,13 +188,13 @@ section .transactions {
       "transactions";
   }
 
-  section .chart {
+  section.page .chart {
     padding: 0;
     height: 200px;
     width: 100%;
   }
 
-  section ul {
+  section.page ul {
     height: 200px;
   }
 }

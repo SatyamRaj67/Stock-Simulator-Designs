@@ -13,11 +13,11 @@ main {
   flex-direction: column;
 }
 
-section {
+section.page {
   width: 80%;
 }
 
-h2{
+h2 {
   text-wrap: nowrap;
 }
 
@@ -81,7 +81,9 @@ h2{
   transition-property: height, transform;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--ease-pop);
-  transition-delay: calc(var(--i) * var(--transition-time));
+  transition-delay: calc(
+    var(--i) * var(--transition-time) + var(--page-transition-duration)
+  );
 }
 
 .showcase span .imgBx {
@@ -105,7 +107,8 @@ h2{
   transition-duration: var(--transition-time);
   transition-timing-function: var(--ease-pop);
   transition-delay: calc(
-    var(--i) * var(--transition-time) + var(--transition-time) / 2
+    var(--i) * var(--transition-time) + var(--transition-time) / 2 +
+      var(--page-transition-duration)
   );
 }
 
@@ -149,7 +152,8 @@ ul#leaderboard li {
   transition-property: transform;
   transition-duration: calc(var(--transition-time) / 4);
   transition-delay: calc(
-    (var(--i) * var(--transition-time) / 4) + var(--transition-time) * 3
+    (var(--i) * var(--transition-time) / 4) + var(--transition-time) * 3 +
+      var(--page-transition-duration)
   );
   transition-timing-function: ease;
 }
@@ -240,7 +244,7 @@ ul#leaderboard li .score {
     width: 100%;
   }
 
-  ul#leaderboard{
+  ul#leaderboard {
     padding: 0;
   }
 }

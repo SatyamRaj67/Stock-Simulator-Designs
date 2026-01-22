@@ -2,7 +2,7 @@
   --timeline-extend: 16em;
 }
 
-section {
+section.page {
   background: var(--background);
   position: relative;
   display: flex;
@@ -11,20 +11,20 @@ section {
   flex-direction: column;
 }
 
-section:first-child {
+section.main-section {
   min-height: 0;
   height: calc(100vh - 60px - var(--timeline-extend));
 }
 
-section:first-child h1 {
+section.main-section h1 {
   font-size: 4em;
 }
 
-section:first-child h1::before {
+section.main-section h1::before {
   all: unset;
 }
 
-section:first-child p {
+section.main-section p {
   font-size: 1.5em;
   padding: 1em;
 }
@@ -258,7 +258,7 @@ section.timeline-section .overlay-bottom {
     padding: 1em;
   }
 
-  section:first-child h1 {
+  section.main-section h1 {
     font-size: 3em;
   }
 
