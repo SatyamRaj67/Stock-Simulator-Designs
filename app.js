@@ -25,7 +25,6 @@ themeToggleBtn.addEventListener("click", () => {
 // ===   Sidebar Setup       ===
 // ===================
 
-
 function toggleSidebar() {
   const SIDEBAR_KEY = "STOCKSIM:SIDEBAR_STATE";
 
@@ -56,3 +55,47 @@ function closeAllSubMenus() {
     ul.previousElementSibling.classList.remove("rotate");
   });
 }
+
+// =====================
+// ===      Page Transitions      ===
+// =====================
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+
+      if (!href || href.startsWith("#") || href === window.location.pathname) {
+        return;
+      }
+
+      event.preventDefault();
+
+      animateTransition().then(() => {
+        window.location.href = href;
+      });
+    });
+  });
+});
+
+function animateTransition() {
+  return new Promise((resolve) => {
+    const pageTransition = document.getElementById("page-transition");
+    pageTransition.classList.add("block");
+
+    const lastOverlay = pageTransition.querySelector(
+      ".overlay[style*='--i: 2']",
+    );
+    lastOverlay.addEventListener(
+      "transitionend",
+      () => {
+        resolve();
+      },
+      { once: true },
+    );
+  });
+}
+
+window.addEventListener("pageshow", (event) => {
+  const pageTransition = document.getElementById("page-transition");
+  pageTransition.classList.remove("block");
+});
