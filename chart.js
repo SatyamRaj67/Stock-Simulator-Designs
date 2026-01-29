@@ -25,7 +25,7 @@
     if (!cssColor) return fallback;
     if (!hasColorJs) return fallback;
     try {
-      const colorObj = new window.Color(cssColor);
+      const colorObj = new Color(cssColor);
       const srgbColor = colorObj.to("srgb");
       const [r, g, b] = srgbColor.coords;
       const alpha = srgbColor.alpha ?? 1;
@@ -40,14 +40,14 @@
     }
   };
 
-  const chart = window.LightweightCharts.createChart(container, {
+  const chart = LightweightCharts.createChart(container, {
     width: container.clientWidth || 600,
     height: container.clientHeight || 320,
   });
 
-  const candles = chart.addSeries(window.LightweightCharts.CandlestickSeries);
+  const candles = chart.addSeries(LightweightCharts.CandlestickSeries);
 
-  const data = Array.isArray(window.chartData) ? window.chartData : [];
+  const data = Array.isArray(chartData) ? chartData : [];
   candles.setData(data);
   chart.timeScale().fitContent();
 

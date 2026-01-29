@@ -1,4 +1,4 @@
-section {
+section:not(#page-transition) {
   padding: 2em;
   padding-top: 1em;
   display: grid;
@@ -95,12 +95,121 @@ section .chart {
   padding: 0.5em;
 }
 
-section .trade{
-    grid-area: trade;
+section .trade {
+  grid-area: trade;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.trade h2 {
+  width: 100%;
+  text-align: center;
+  padding: 0.25em 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.trade .trade-controls-input{
+  padding: 0.5em;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  border-bottom: 1px dashed var(--border);
+}
+
+.trade .quanity{
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.trade .quanity::-webkit-inner-spin-button,
+.trade .quanity::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.trade .buttons{
+  width: 100%;
+  display: flex;
+  gap: 0.5em;
+}
+
+.trade .buttons button{
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.trade .buttons button#buy{
+  background: color-mix(in oklch, var(--green) 50%, transparent);
+}
+
+.trade .buttons button#sell{
+  background: color-mix(in oklch, var(--red) 50%, transparent );
+}
+
+.trade .trade-controls-output{
+  padding: 0.5em;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: 1px dashed var(--border);
+}
+
+.trade .trade-controls-output output{
+  width: 100%;
+  padding: 0.5em;
+  background: var(--input-accent);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  text-align: right;
+}
+
+.trade .fake{
+  height: 100%;
+}
+
+section .holdings {
+  grid-area: holding;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  padding: 0.5em;
+  height: 260px;
+  min-height: 220px;
+}
+
+section .holdings #holdings_chart {
+  width: 100%;
+  height: 100%;
+}
+
+section .transactions {
+  grid-area: transactions;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  height: 260px;
+}
+
+section .transactions table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+section .transactions table .extra{
+  display: none;
 }
 
 @media (max-width: 1200px) {
-  section {
+  section:not(#page-transition) {
     padding: 0.5em;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(6, auto);
@@ -115,5 +224,9 @@ section .trade{
 
   section .chart {
     height: 300px;
+  }
+
+  section .holdings {
+    height: 220px;
   }
 }

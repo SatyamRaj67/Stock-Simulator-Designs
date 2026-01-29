@@ -66,52 +66,108 @@
     />
     <link
       rel="stylesheet"
-      href="../styles.css"
+      href="../../../styles.css"
     />
     <link
       rel="stylesheet"
-      href="style.css"
+      href="../../style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../styles.css"
     />
     <link
       rel="icon"
-      href="../public/favicon.ico"
+      href="../../../public/favicon.ico"
       type="image/x-icon"
     />
 
-    <title>Dashboard | Stock Sim</title>
+    <title>Market | Stock Sim</title>
   </head>
-  <body>
+  <body class="social-home">
     <section
       id="page-transition"
       class="block"
       aria-hidden="true"
     >
       <div class="row row1">
-        <div class="overlay" style="--i: 2"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 0"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 2"></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 0"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
       </div>
       <div class="row row2">
-        <div class="overlay" style="--i: 2"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 0"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 2"></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 0"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
       </div>
     </section>
     <!-- ================== -->
     <!-- ===   Navigation Bar   === -->
     <!-- ================== -->
+    <div class="logo-container">
+      <a
+        class="logo"
+        href="../../../index.html"
+        >StockSim
+      </a>
+      <button
+        onclick="toggleSidebar()"
+        id="toggle-btn"
+        aria-label="Toggle Sidebar"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e3e3e3"
+        >
+          <path
+            d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+          />
+        </svg>
+      </button>
+    </div>
     <header>
       <div class="logo">
         <a href="./index.html">Stock<span>Sim</span>.</a>
       </div>
       <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#chart">Chart</a>
-        <a href="#transactions">Transactions</a>
+        <a href="#">Market</a>
       </div>
 
       <div class="auth-links">
@@ -145,39 +201,15 @@
         </button>
       </div>
     </header>
-    <div class="logo-container">
-      <a
-        class="logo"
-        href="../index.html"
-        >StockSim
-      </a>
-      <button
-        onclick="toggleSidebar()"
-        id="toggle-btn"
-        aria-label="Toggle Sidebar"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#e3e3e3"
-        >
-          <path
-            d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
-          />
-        </svg>
-      </button>
-    </div>
 
     <!-- ================ -->
     <!-- ===       Sidebar      === -->
     <!-- ================ -->
     <nav id="sidebar">
       <ul>
-        <li class="active">
+        <li>
           <a
-            href="../dashboard/index.html"
+            href="../../../dashboard/index.html"
             aria-label="Go to Dashboard"
           >
             <svg
@@ -195,9 +227,9 @@
           </a>
         </li>
 
-        <li>
+        <li class="active">
           <a
-            href="../market/index.html"
+            href="../../../market/index.html"
             aria-label="Go to Market"
           >
             <svg
@@ -216,7 +248,7 @@
         </li>
         <li>
           <a
-            href="../portfolio/index.html"
+            href="../../../portfolio/index.html"
             aria-label="Go to Portfolio"
           >
             <svg
@@ -236,7 +268,7 @@
 
         <li>
           <a
-            href="../social/index.html"
+            href="../../../social/index.html"
             aria-label="Go to Social"
           >
             <svg
@@ -256,7 +288,7 @@
 
         <li>
           <a
-            href="../learn/index.html"
+            href="../../../learn/index.html"
             aria-label="Go to Learn Section"
           >
             <svg
@@ -273,9 +305,9 @@
             <span> Learn</span>
           </a>
         </li>
-<li>
+        <li>
           <a
-            href="../game/index.html"
+            href="../../../game/index.html"
             aria-label="Go to Game Section"
           >
             <svg
@@ -292,15 +324,11 @@
             <span> Game</span>
           </a>
         </li>
-        
         <li
           class="sidebar-footer"
           aria-label="Go to Settings"
         >
-          <a
-            href="../settings/index.html"
-            aria-label="Go to Settings"
-          >
+          <a href="../../../settings/index.html">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -317,7 +345,7 @@
         </li>
         <li>
           <a
-            href="../profile/index.html"
+            href="../../../profile/index.html"
             aria-label="Go to Profile"
           >
             <svg
@@ -336,88 +364,198 @@
         </li>
       </ul>
     </nav>
+    <div class="banner">
+      <a
+        href="#"
+        class="logo"
+        >MARKET</a
+      >
+      <button aria-label="Icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e3e3e3"
+        >
+          <path
+            d="M841-518v318q0 33-23.5 56.5T761-120H201q-33 0-56.5-23.5T121-200v-318q-23-21-35.5-54t-.5-72l42-136q8-26 28.5-43t47.5-17h556q27 0 47 16.5t29 43.5l42 136q12 39-.5 71T841-518Zm-272-42q27 0 41-18.5t11-41.5l-22-140h-78v148q0 21 14 36.5t34 15.5Zm-180 0q23 0 37.5-15.5T441-612v-148h-78l-22 140q-4 24 10.5 42t37.5 18Zm-178 0q18 0 31.5-13t16.5-33l22-154h-78l-40 134q-6 20 6.5 43t41.5 23Zm540 0q29 0 42-23t6-43l-42-134h-76l22 154q3 20 16.5 33t31.5 13ZM201-200h560v-282q-5 2-6.5 2H751q-27 0-47.5-9T663-518q-18 18-41 28t-49 10q-27 0-50.5-10T481-518q-17 18-39.5 28T393-480q-29 0-52.5-10T299-518q-21 21-41.5 29.5T211-480h-4.5q-2.5 0-5.5-2v282Zm560 0H201h560Z"
+          />
+        </svg>
+      </button>
+    </div>
+    <aside>
+      <ul>
+        <li>
+          <a
+            href="../../stocks/index.html"
+            aria-label="Go to Stocks"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M80-160v-640h800v640H80Zm80-80h640v-480H160v480Zm0 0v-480 480Zm160-40h80v-40h40q17 0 28.5-11.5T480-360v-120q0-17-11.5-28.5T440-520H320v-40h160v-80h-80v-40h-80v40h-40q-17 0-28.5 11.5T240-600v120q0 17 11.5 28.5T280-440h120v40H240v80h80v40Zm320-30 80-80H560l80 80Zm-80-250h160l-80-80-80 80Z"
+              />
+            </svg>
+            <span> Stock</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="../../transactions/index.html"
+            aria-label="Go to Transactions"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M240-80q-50 0-85-35t-35-85v-120h120v-560l60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60v680q0 50-35 85t-85 35H240Zm480-80q17 0 28.5-11.5T760-200v-560H320v440h360v120q0 17 11.5 28.5T720-160ZM360-600v-80h240v80H360Zm0 120v-80h240v80H360Zm320-120q-17 0-28.5-11.5T640-640q0-17 11.5-28.5T680-680q17 0 28.5 11.5T720-640q0 17-11.5 28.5T680-600Zm0 120q-17 0-28.5-11.5T640-520q0-17 11.5-28.5T680-560q17 0 28.5 11.5T720-520q0 17-11.5 28.5T680-480ZM240-160h360v-80H200v40q0 17 11.5 28.5T240-160Zm-40 0v-80 80Z"
+              />
+            </svg>
+            <span> Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="../../news/index.html"
+            aria-label="Go to News"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M198-278q-57-57-87.5-129.5T80-560q0-80 30.5-152.5T198-842l48 48q-47 47-72.5 107.5T148-560q0 66 25.5 126.5T246-326l-48 48Zm92-92q-38-38-58-87t-20-103q0-54 20-103t58-87l48 48q-29 29-43.5 65.5T280-560q0 40 14.5 76.5T338-418l-48 48Zm150 250v-348q-27-12-43.5-37T380-560q0-42 29-71t71-29q42 0 71 29t29 71q0 30-16.5 55T520-468v348h-80Zm230-250-48-48q29-29 43.5-65.5T680-560q0-40-14.5-76.5T622-702l48-48q38 38 58 87t20 103q0 54-20 103t-58 87Zm92 92-48-48q47-47 72.5-107.5T812-560q0-66-25.5-126.5T714-794l48-48q57 57 87.5 129.5T880-560q0 80-30.5 152.5T762-278Z"
+              />
+            </svg>
+            <span> News</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
     <main>
-      <h1 id="home">Dashboard</h1>
-      <section class="page">
+      <h1>Stock Details</h1>
+      <section>
         <div class="card">
-          <span>Total Balance</span>
-          <h2>$69420.69</h2>
+          <span>Name</span>
+          <h2>Amazon Inc.</h2>
           <div class="info">
-            <p>▲2.5%(+$320)</p>
-            <p>This Month</p>
+            <p>AMZN</p>
+            <p>Technology</p>
           </div>
         </div>
         <div class="card">
-          <span>Day's P&L</span>
-          <h2>+$420.69</h2>
+          <span>Current Price</span>
+          <h2>$420.69</h2>
           <div class="info">
-            <p>▲ 1.2%</p>
-            <p>Today</p>
+            <p>H: 430.00</p>
+            <p>L: 410.00</p>
+            <p>C: 2.34%</p>
           </div>
         </div>
         <div class="card">
-          <span>Margin Used</span>
-          <h2>$42069.42</h2>
+          <span>Holding</span>
+          <h2>15 Stocks</h2>
           <div class="info">
-            <p>36% Buy Power</p>
-            <p>Last Year</p>
+            <p>Profit: $10.00</p>
+            <p>Holding: $15.00</p>
           </div>
         </div>
         <div class="card">
-          <span>Open Orders</span>
-          <h2>16 Orders</h2>
+          <span>Volume</span>
+          <h2>1,428,190</h2>
           <div class="info">
-            <p>8 Buys</p>
-            <p>6 Sells</p>
-            <p>2 Others</p>
+            <p>Declining Fast</p>
+            <p>C: -3.45%</p>
           </div>
         </div>
 
         <div class="chart">
-          <div id="chart-container"
-class="chart-container"></div>
-        </div>
-        <div class="list">
-          <h2>Watchlist</h2>
-          <ul id="watchlist">
-            <!-- Watchlist items will be populated here -->
-          </ul>
+          <div
+            id="chart-container"
+            class="chart-container"
+          ></div>
         </div>
 
-        <div
-          class="transactions"
-          id="transactions"
-        >
+        <div class="trade">
+          <h2>Trade Stock</h2>
+          <form class="trade-controls-input">
+            <label for="quantity">Quantity:</label>
+            <input
+              type="number"
+              id="quantity"
+              class="quantity"
+              name="quantity"
+              min="1"
+            />
+
+            <div class="buttons">
+              <button id="buy">Buy</button>
+              <button id="sell">Sell</button>
+            </div>
+          </form>
+          <div class="trade-controls-output">
+            <label for="total_price">Cost: </label>
+            <output
+              id="total_price"
+              disabled
+              readonly
+            >
+              $0.00 USD
+            </output>
+          </div>
+          <div class="fake"></div>
+        </div>
+
+        <div class="holdings">
+          <div
+            class="chart-container"
+            id="holdings_chart"
+          ></div>
+        </div>
+
+        <div class="transactions">
           <table>
+            <caption>
+              List of all stock transactions
+            </caption>
             <thead>
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Type</th>
-                <th scope="col">Stock</th>
+                <th scope="col" class="extra">Stock</th>
                 <th scope="col">Shares</th>
-                <th scope="col">Price</th>
+                <th scope="col" class="extra">Price</th>
                 <th scope="col">Total</th>
                 <th scope="col">Date</th>
-                <th scope="col">Status</th>
+                <th scope="col" class="extra">Status</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody data-stock="AMZN">
+              <!-- Dynamically generated rows will go here -->
+            </tbody>
           </table>
         </div>
       </section>
     </main>
   </body>
   <script src="../data.js"></script>
-
   <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
   <script src="https://colorjs.io/dist/color.global.js"></script>
 
-  <script
-    src="chart.js"
-    defer
-  ></script>
-
-  <script src="../app.js"></script>
-  <script src="script.js"></script>
-  <script src="../market/transactions/transactions.js"></script>
+  <script src="../../../app.js"></script>
+  <script src="../chart.js"></script>
+  <script src="../stocks.js"></script>
 </html>

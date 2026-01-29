@@ -552,12 +552,12 @@
     transform-origin: top;
     transition-duration: calc(var(--page-transition-duration) / 5);
   }
-  
+
   #page-transition .row2 .overlay {
     transform-origin: bottom;
     transition-duration: calc(var(--page-transition-duration) / 5);
   }
-  
+
   #page-transition .overlay {
     flex: 1;
     background: var(--foreground);
@@ -571,24 +571,24 @@
     transform: scaleY(1);
   }
 
-  #chart-container {
+  .chart-container {
     width: 100%;
     height: 100%;
     transition: all 0s;
   }
 
-  #chart-container table,
-  #chart-container thead,
-  #chart-container tbody,
-  #chart-container tfoot,
-  #chart-container tr,
-  #chart-container th,
-  #chart-container td {
+  .chart-container table,
+  .chart-container thead,
+  .chart-container tbody,
+  .chart-container tfoot,
+  .chart-container tr,
+  .chart-container th,
+  .chart-container td {
     all: revert;
     transition: all 0s;
   }
 
-  #chart-container a {
+  .chart-container a {
     display: none;
   }
 }

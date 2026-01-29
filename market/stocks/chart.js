@@ -2,6 +2,9 @@
   const container = document.getElementById("chart-container");
   if (!container) return;
 
+  const holdingsContainer = document.getElementById("holdings_chart");
+  if (!holdingsContainer) return;
+
   if (!window.LightweightCharts) {
     console.error(
       "LightweightCharts not found. Make sure the CDN script is loaded before chart.js.",
@@ -40,40 +43,60 @@
     }
   };
 
-  const chart = window.LightweightCharts.createChart(container, {
+  // --- Main candlestick chart ---
+  const chart = LightweightCharts.createChart(container, {
     width: container.clientWidth || 600,
     height: container.clientHeight || 320,
   });
 
-  const candles = chart.addSeries(window.LightweightCharts.CandlestickSeries);
+  const candles = chart.addSeries(LightweightCharts.CandlestickSeries);
 
-  const data = Array.isArray(window.chartData) ? window.chartData : [];
-  candles.setData(data);
+  const candleData = Array.isArray(chartData) ? chartData : [];
+  candles.setData(candleData);
   chart.timeScale().fitContent();
 
+  // --- Holdings area chart ---
+  const holdingsChart = LightweightCharts.createChart(holdingsContainer, {
+    width: holdingsContainer.clientWidth || 600,
+    height: holdingsContainer.clientHeight || 220,
+  });
+
+  const holdingsSeries = holdingsChart.addSeries(LightweightCharts.AreaSeries, {
+    lineWidth: 2,
+  });
+
+  const holdingsData = Array.isArray(holdings_data) ? holdings_data : [];
+  holdingsSeries.setData(holdingsData);
+  holdingsChart.timeScale().fitContent();
+
   const applyTheme = () => {
+    const bg = toRgbCss(readCssVar("--card"), "#111");
+    const text = toRgbCss(readCssVar("--foreground"), "#fff");
+    const grid = toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)");
+
+    // pick a “positive” accent for the holdings curve
+    const green = toRgbCss(readCssVar("--green"), "rgba(46, 204, 113, 1)");
+    const topFill = toRgbCss(readCssVar("--green"), "rgba(46, 204, 113, 0.35)");
+    const bottomFill = "rgba(0, 0, 0, 0)";
+
     chart.applyOptions({
-      layout: {
-        background: {
-          type: "solid",
-          color: toRgbCss(readCssVar("--card"), "#111"),
-        },
-        textColor: toRgbCss(readCssVar("--foreground"), "#fff"),
-      },
-      grid: {
-        vertLines: {
-          color: toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)"),
-        },
-        horzLines: {
-          color: toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)"),
-        },
-      },
-      rightPriceScale: {
-        borderColor: toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)"),
-      },
-      timeScale: {
-        borderColor: toRgbCss(readCssVar("--border"), "rgba(0,0,0,0.15)"),
-      },
+      layout: { background: { type: "solid", color: bg }, textColor: text },
+      grid: { vertLines: { color: grid }, horzLines: { color: grid } },
+      rightPriceScale: { borderColor: grid },
+      timeScale: { borderColor: grid },
+    });
+
+    holdingsChart.applyOptions({
+      layout: { background: { type: "solid", color: bg }, textColor: text },
+      grid: { vertLines: { color: grid }, horzLines: { color: grid } },
+      rightPriceScale: { borderColor: grid },
+      timeScale: { borderColor: grid },
+    });
+
+    holdingsSeries.applyOptions({
+      lineColor: green,
+      topColor: topFill,
+      bottomColor: bottomFill,
     });
   };
 
@@ -82,18 +105,22 @@
       width: container.clientWidth || 600,
       height: container.clientHeight || 320,
     });
+
+    holdingsChart.applyOptions({
+      width: holdingsContainer.clientWidth || 600,
+      height: holdingsContainer.clientHeight || 220,
+    });
   };
 
-  const ro = new ResizeObserver(() => resize());
+  const ro = new ResizeObserver(resize);
   ro.observe(container);
+  ro.observe(holdingsContainer);
 
-  const mo = new MutationObserver(() => applyTheme());
-  mo.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["class"],
-  });
+  const mo = new MutationObserver(applyTheme);
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
   window.addEventListener("resize", resize, { passive: true });
 
   applyTheme();
+  resize();
 })();

@@ -74,7 +74,7 @@
     />
     <link
       rel="stylesheet"
-      href="style.css"
+      href="../styles.css"
     />
     <link
       rel="icon"
@@ -91,18 +91,48 @@
       aria-hidden="true"
     >
       <div class="row row1">
-        <div class="overlay" style="--i: 2"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 0"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 2"></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 0"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
       </div>
       <div class="row row2">
-        <div class="overlay" style="--i: 2"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 0"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 2"></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 0"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
       </div>
     </section>
     <!-- ================== -->
@@ -430,17 +460,17 @@
           <span>Current Price</span>
           <h2>$420.69</h2>
           <div class="info">
-            <p>High: $430.00</p>
-            <p>Low: $410.00</p>
-            <p>Change: 2.34%</p>
+            <p>H: 430.00</p>
+            <p>L: 410.00</p>
+            <p>C: 2.34%</p>
           </div>
         </div>
         <div class="card">
           <span>Holding</span>
           <h2>15 Stocks</h2>
           <div class="info">
-            <p>Profit made: $10.00</p>
-            <p>Potential: $15.00</p>
+            <p>Profit: $10.00</p>
+            <p>Holding: $15.00</p>
           </div>
         </div>
         <div class="card">
@@ -448,31 +478,75 @@
           <h2>1,428,190</h2>
           <div class="info">
             <p>Declining Fast</p>
-            <p>Change: -3.45%</p>
+            <p>C: -3.45%</p>
           </div>
         </div>
 
         <div class="chart">
-          <div id="chart-container"></div>
+          <div
+            id="chart-container"
+            class="chart-container"
+          ></div>
         </div>
 
-        <div class="trade card">
+        <div class="trade">
           <h2>Trade Stock</h2>
-          <div class="trade-controls">
+          <form class="trade-controls-input">
             <label for="quantity">Quantity:</label>
             <input
               type="number"
               id="quantity"
+              class="quantity"
               name="quantity"
               min="1"
-              value="1"
             />
 
             <div class="buttons">
-              <button id="buy-button">Buy</button>
-              <button id="sell-button">Sell</button>
+              <button id="buy">Buy</button>
+              <button id="sell">Sell</button>
             </div>
+          </form>
+          <div class="trade-controls-output">
+            <label for="total_price">Cost: </label>
+            <output
+              id="total_price"
+              disabled
+              readonly
+            >
+              $0.00 USD
+            </output>
           </div>
+          <div class="fake"></div>
+        </div>
+
+        <div class="holdings">
+          <div
+            class="chart-container"
+            id="holdings_chart"
+          ></div>
+        </div>
+
+        <div class="transactions">
+          <table>
+            <caption>
+              List of all stock transactions
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Type</th>
+                <th scope="col" class="extra">Stock</th>
+                <th scope="col">Shares</th>
+                <th scope="col" class="extra">Price</th>
+                <th scope="col">Total</th>
+                <th scope="col">Date</th>
+                <th scope="col" class="extra">Status</th>
+              </tr>
+            </thead>
+            <tbody data-stock="AAPL">
+              <!-- Dynamically generated rows will go here -->
+            </tbody>
+          </table>
         </div>
       </section>
     </main>
@@ -483,4 +557,5 @@
 
   <script src="../../../app.js"></script>
   <script src="../chart.js"></script>
+  <script src="../stocks.js"></script>
 </html>

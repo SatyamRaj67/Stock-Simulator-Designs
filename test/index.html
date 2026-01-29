@@ -78,7 +78,7 @@
       type="image/x-icon"
     />
 
-    <title>Dashboard | Stock Sim</title>
+    <title>Profile | Stock Sim</title>
   </head>
   <body>
     <section
@@ -87,20 +87,74 @@
       aria-hidden="true"
     >
       <div class="row row1">
-        <div class="overlay" style="--i: 2"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 0"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 2"></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 0"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
       </div>
       <div class="row row2">
-        <div class="overlay" style="--i: 2"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 0"></div>
-        <div class="overlay" style="--i: 1"></div>
-        <div class="overlay" style="--i: 2"></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 0"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 1"
+        ></div>
+        <div
+          class="overlay"
+          style="--i: 2"
+        ></div>
       </div>
     </section>
+    <div class="logo-container">
+      <a
+        class="logo"
+        href="../index.html"
+        >StockSim
+      </a>
+      <button
+        onclick="toggleSidebar()"
+        id="toggle-btn"
+        aria-label="Toggle Sidebar"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e3e3e3"
+        >
+          <path
+            d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+          />
+        </svg>
+      </button>
+    </div>
     <!-- ================== -->
     <!-- ===   Navigation Bar   === -->
     <!-- ================== -->
@@ -109,9 +163,7 @@
         <a href="./index.html">Stock<span>Sim</span>.</a>
       </div>
       <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#chart">Chart</a>
-        <a href="#transactions">Transactions</a>
+        <a href="#">Profile</a>
       </div>
 
       <div class="auth-links">
@@ -145,37 +197,13 @@
         </button>
       </div>
     </header>
-    <div class="logo-container">
-      <a
-        class="logo"
-        href="../index.html"
-        >StockSim
-      </a>
-      <button
-        onclick="toggleSidebar()"
-        id="toggle-btn"
-        aria-label="Toggle Sidebar"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#e3e3e3"
-        >
-          <path
-            d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
-          />
-        </svg>
-      </button>
-    </div>
 
     <!-- ================ -->
     <!-- ===       Sidebar      === -->
     <!-- ================ -->
     <nav id="sidebar">
       <ul>
-        <li class="active">
+        <li>
           <a
             href="../dashboard/index.html"
             aria-label="Go to Dashboard"
@@ -273,7 +301,7 @@
             <span> Learn</span>
           </a>
         </li>
-<li>
+        <li>
           <a
             href="../game/index.html"
             aria-label="Go to Game Section"
@@ -292,15 +320,11 @@
             <span> Game</span>
           </a>
         </li>
-        
         <li
           class="sidebar-footer"
           aria-label="Go to Settings"
         >
-          <a
-            href="../settings/index.html"
-            aria-label="Go to Settings"
-          >
+          <a href="../settings/index.html">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -315,7 +339,7 @@
             <span> Settings </span>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a
             href="../profile/index.html"
             aria-label="Go to Profile"
@@ -336,88 +360,17 @@
         </li>
       </ul>
     </nav>
+
+    <!-- =============== -->
+    <!-- ===       Main       === -->
+    <!-- =============== -->
     <main>
-      <h1 id="home">Dashboard</h1>
-      <section class="page">
-        <div class="card">
-          <span>Total Balance</span>
-          <h2>$69420.69</h2>
-          <div class="info">
-            <p>▲2.5%(+$320)</p>
-            <p>This Month</p>
-          </div>
-        </div>
-        <div class="card">
-          <span>Day's P&L</span>
-          <h2>+$420.69</h2>
-          <div class="info">
-            <p>▲ 1.2%</p>
-            <p>Today</p>
-          </div>
-        </div>
-        <div class="card">
-          <span>Margin Used</span>
-          <h2>$42069.42</h2>
-          <div class="info">
-            <p>36% Buy Power</p>
-            <p>Last Year</p>
-          </div>
-        </div>
-        <div class="card">
-          <span>Open Orders</span>
-          <h2>16 Orders</h2>
-          <div class="info">
-            <p>8 Buys</p>
-            <p>6 Sells</p>
-            <p>2 Others</p>
-          </div>
-        </div>
-
-        <div class="chart">
-          <div id="chart-container"
-class="chart-container"></div>
-        </div>
-        <div class="list">
-          <h2>Watchlist</h2>
-          <ul id="watchlist">
-            <!-- Watchlist items will be populated here -->
-          </ul>
-        </div>
-
-        <div
-          class="transactions"
-          id="transactions"
-        >
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Type</th>
-                <th scope="col">Stock</th>
-                <th scope="col">Shares</th>
-                <th scope="col">Price</th>
-                <th scope="col">Total</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </section>
+      <section></section>
     </main>
   </body>
-  <script src="../data.js"></script>
-
-  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="https://colorjs.io/dist/color.global.js"></script>
-
   <script
-    src="chart.js"
+    src="script.js"
     defer
   ></script>
-
   <script src="../app.js"></script>
-  <script src="script.js"></script>
-  <script src="../market/transactions/transactions.js"></script>
 </html>

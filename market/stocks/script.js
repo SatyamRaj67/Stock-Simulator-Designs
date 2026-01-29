@@ -40,16 +40,6 @@ const market_data = [
     href: "AMZN/index.html",
   },
   {
-    symbol: "TSLA",
-    name: "Tesla, Inc.",
-    price: 242.91,
-    change: -5.33,
-    change_percent: -2.15,
-    market_cap: "800B",
-    volume: "40M",
-    href: "TSLA/index.html",
-  },
-  {
     symbol: "NVDA",
     name: "NVIDIA Corporation",
     price: 135.62,
