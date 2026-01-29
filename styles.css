@@ -7,7 +7,7 @@
 
   --radius: 0.625rem;
 
-  --page-transition-duration: 800ms;
+  --page-transition-duration: 400ms;
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
