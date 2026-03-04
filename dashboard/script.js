@@ -27,6 +27,9 @@ if (!watchlist) throw new Error("Watchlist element not found");
 
 stock_data.forEach((stock) => {
   const li = document.createElement("li");
+
+  li.style.setProperty("--i", stock_data.indexOf(stock));
+
   li.innerHTML = `
       <div class="symbol">
         <h2>${stock.ticker}</h2>
@@ -34,9 +37,8 @@ stock_data.forEach((stock) => {
       </div>
       <div class="prices">
         <h2>$${stock.price.toFixed(2)}</h2>
-        <p class="${stock.change.startsWith("+") ? "up" : "down"}">${
-    stock.change
-  }</p>
+        <p class="${stock.change.startsWith("+") ? "up" : "down"}">${stock.change
+    }</p>
       </div>
     `;
   watchlist.appendChild(li);

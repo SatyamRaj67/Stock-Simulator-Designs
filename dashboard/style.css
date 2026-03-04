@@ -11,9 +11,36 @@ section.page {
   gap: 0.5em;
 }
 
+section.page .card:nth-child(1) {
+  grid-area: card1;
+  --i: 1;
+}
+
+section.page .card:nth-child(2) {
+  grid-area: card2;
+  --i: 2;
+}
+
+section.page .card:nth-child(3) {
+  grid-area: card3;
+  --i: 3;
+}
+
+section.page .card:nth-child(4) {
+  grid-area: card4;
+  --i: 4;
+}
+
 section.page .card {
   background: var(--card);
   border: 1px dashed var(--border);
+  transition-delay: calc(var(--i) * 0.05s);
+}
+
+@starting-style {
+  section.page .card {
+    transform: translateY(-100vh);
+  }
 }
 
 section.page .card span {
@@ -25,6 +52,13 @@ section.page .card span {
   font-size: 0.8em;
   color: var(--muted-foreground);
   border-bottom: 1px dashed var(--border);
+  transition-delay: calc(0.2s + var(--i) * 0.1s);
+}
+
+@starting-style {
+  section.page .card span {
+    transform: translateY(-100vh);
+  }
 }
 
 section.page .card h2 {
@@ -32,6 +66,13 @@ section.page .card h2 {
   font-size: 1.5em;
   margin: 0.2em 0;
   font-weight: 500;
+  transition-delay: calc(0.6s + var(--i) * 0.1s);
+}
+
+@starting-style {
+  section.page .card h2 {
+    opacity: 0;
+  }
 }
 
 section.page .card .info {
@@ -50,7 +91,7 @@ section.page .card .info p:first-child {
   border: 1px solid;
   border-bottom: 0;
   border-left: 0;
-  background: color-mix(in oklab, var(--green) 18%, transparent );
+  background: color-mix(in oklab, var(--green) 18%, transparent);
   border-color: color-mix(in oklch, var(--green) 35%, transparent);
   color: var(--green);
 }
@@ -58,7 +99,7 @@ section.page .card .info p:first-child {
 section.page .card .info p:nth-child(2) {
   border: 1px solid;
   border-bottom: 0;
-  background: color-mix(in oklab, var(--red) 18%, transparent );
+  background: color-mix(in oklab, var(--red) 18%, transparent);
   border-color: color-mix(in oklch, var(--red) 35%, transparent);
   color: var(--red);
 }
@@ -72,25 +113,19 @@ section.page .card .info p:last-child {
   color: var(--muted-foreground);
 }
 
-section.page .card:nth-child(1) {
-  grid-area: card1;
-}
-section.page .card:nth-child(2) {
-  grid-area: card2;
-}
-section.page .card:nth-child(3) {
-  grid-area: card3;
-}
-section.page .card:nth-child(4) {
-  grid-area: card4;
-}
-
 section.page .chart {
   grid-area: chart;
   width: 100%;
   background: var(--card);
   border: 1px dashed var(--border);
   padding: 0.5em;
+  transition-delay: calc(0.2s * 5);
+}
+
+@starting-style {
+  section.page .chart {
+    transform: translateY(100vh);
+  }
 }
 
 section.page .list {
@@ -100,6 +135,13 @@ section.page .list {
 
   display: flex;
   flex-direction: column;
+  transition-delay: calc(0.2s * 6);
+}
+
+@starting-style {
+  section.page .list {
+    transform: translateY(100vh);
+  }
 }
 
 section.page h2 {
@@ -120,10 +162,17 @@ section.page ul li {
   border-bottom: 1px dashed var(--border);
   font-size: 1.2em;
   font-weight: 500;
+  transition-delay: calc(1.2s + var(--i) * 0.1s);
 }
 
 section.page ul li:hover {
   background: var(--sidebar-accent);
+}
+
+@starting-style {
+  section.page ul li {
+    transform: translateX(100vw);
+  }
 }
 
 section.page ul li h2 {
@@ -135,11 +184,13 @@ section.page ul li p {
   font-size: 0.65em;
   color: var(--muted-foreground);
 }
+
 section.page ul li p.up {
-  color: oklch(72.276% 0.19199 149.6);
+  color: var(--green);
 }
+
 section.page ul li p.down {
-  color: oklch(63.681% 0.20784 25.315);
+  color: var(--red);
 }
 
 section.page ul li .prices {

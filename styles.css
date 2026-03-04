@@ -8,6 +8,7 @@
   --radius: 0.625rem;
 
   --page-transition-duration: 400ms;
+  --page-transition-color: transparent;
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -130,6 +131,7 @@
 @layer base, nav, aside, top;
 
 @layer base {
+
   /* ================== */
   /* ===     Global Styles    === */
   /* ================== */
@@ -315,20 +317,16 @@
       border: 1px solid var(--table-border);
       border-bottom: 2px solid var(--table-border);
       margin-bottom: 3em;
-      background: linear-gradient(
-        90deg,
-        var(--table-accent) 100px,
-        transparent 100px
-      );
+      background: linear-gradient(90deg,
+          var(--table-accent) 100px,
+          transparent 100px);
     }
 
     table tr:hover {
-      background: linear-gradient(
-        90deg,
-        var(--table-accent) 100px,
-        var(--table-accent-foreground) 101px,
-        transparent 101px
-      );
+      background: linear-gradient(90deg,
+          var(--table-accent) 100px,
+          var(--table-accent-foreground) 101px,
+          transparent 101px);
       border-color: var(--table-accent-foreground);
     }
 
@@ -348,6 +346,7 @@
       text-align: left;
     }
   }
+
   /* ================== */
   /* ===     Utility Styles     === */
   /* ================== */
@@ -363,12 +362,20 @@
   h1::before {
     content: "";
     position: absolute;
-    left: 50%;
+    left: calc(50%);
     transform: translateX(-50%);
     bottom: 0;
     width: 60px;
     height: 2px;
     background: var(--foreground);
+    transition: all 0.5s ease-in-out;
+    transform-origin: left;
+  }
+
+  @starting-style {
+    h1:before {
+      width: 0;
+    }
   }
 
   input {
@@ -540,6 +547,8 @@
     flex-direction: column;
     pointer-events: none;
     z-index: 2;
+
+    display: if(var(--page-transition-color)=transparent, none, flex);
   }
 
   #page-transition .row {
@@ -560,7 +569,7 @@
 
   #page-transition .overlay {
     flex: 1;
-    background: var(--foreground);
+    background: var(--page-transition-color);
     color: var(--background);
     transform: scaleY(0);
     transition-delay: calc(var(--page-transition-duration) * var(--i) / 5);
@@ -762,6 +771,7 @@
   }
 
   @media (max-width: 768px) {
+
     body:has(nav),
     html.sidebar-closed body:has(nav) {
       display: grid;
@@ -987,7 +997,7 @@
     grid-template-rows: 0fr;
     transition: 300ms ease-in-out;
 
-    > div {
+    >div {
       overflow: hidden;
     }
   }
