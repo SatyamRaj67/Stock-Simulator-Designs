@@ -51,6 +51,19 @@
         console.error("Error accessing localStorage:", error);
       }
     </script>
+    <script>
+      try {
+        const raw = localStorage.getItem("STOCKSIM:CUSTOM_THEME");
+        const obj = raw ? JSON.parse(raw) : {};
+        if (obj && typeof obj === "object") {
+          for (const [cssVar, value] of Object.entries(obj)) {
+            if (typeof cssVar !== "string" || !cssVar.startsWith("--")) continue;
+            if (typeof value !== "string" || !value.trim()) continue;
+            document.documentElement.style.setProperty(cssVar, value.trim());
+          }
+        }
+      } catch {}
+    </script>
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -334,11 +347,6 @@
     </nav>
     <main>
       <section class="page">
-        <article class="danger">
-          <strong>Warning:</strong> This is currently experimental, and will be
-          released in the near future, and currently doesn't work. <br />
-          Sorry for the inconvenience!
-        </article>
         <h1>Settings</h1>
         <p>Theming Section! Design your own</p>
         <article>
