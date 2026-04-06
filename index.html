@@ -198,10 +198,11 @@
           <div class="card">
             <h2>Interactive</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
-              reprehenderit eum repellendus totam tenetur? Asperiores rerum
-              harum unde fuga nobis consectetur eos at! Obcaecati optio fugiat
-              saepe, repellendus voluptatem officia.
+              We have worked hard to make the simulator as interactive and
+              engaging as possible. From real-time stock price updates to
+              interactive charts and news feeds, we strive to create an
+              immersive experience that keeps you hooked and eager to learn more
+              about the stock market.
             </p>
           </div>
           <div class="card">
@@ -307,7 +308,47 @@
         </div>
       </section>
     </main>
+
+    <canvas id="canvas"> </canvas>
   </body>
+  <script>
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    let matrix =
+      "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()*&^%+-/~{[|`]}".split("");
+    let drops = [];
+
+    let font_size = 16;
+    let columns = canvas.width / font_size;
+
+    for (var i = 0; i < columns; i++) drops[i] = 50;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0,0,0,0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = "rgba(255,255,255,0.2)";
+      ctx.font = font_size + "px monospace";
+
+      for (var i = 0; i < drops.length; i++) {
+        var text = matrix[Math.floor(Math.random() * matrix.length)];
+
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+        if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 50);
+  </script>
+
   <script src="./data.js"></script>
 
   <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
