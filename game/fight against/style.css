@@ -1,0 +1,34 @@
+main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.danger {
+  width: clamp(50%, 400px, 90%);
+  background: color-mix(in oklch, var(--red) 10%, transparent 90%);
+  color: var(--red);
+  border: 1px dashed var(--red);
+  text-align: center;
+}
+
+article {
+  width: 80%;
+  background: var(--card);
+  color: var(--card-foreground);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+  gap: 1em;
+}
+
+article h1 {
+  font-size: 1em;
+  padding: 0;
+  padding-bottom: 0.5em;
+}

@@ -548,7 +548,7 @@
     pointer-events: none;
     z-index: 2;
 
-    display: if(style(--page-transition-color: transparent) : none; else : flex);
+    display: if(style(--page-transition-color: transparent) : hidden; else : flex);
   }
 
   #page-transition .row {
